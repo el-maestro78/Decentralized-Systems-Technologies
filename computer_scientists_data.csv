@@ -1,0 +1,682 @@
+Surname,#Awards,Education
+Khan,10,"['University of Malaya', 'COMSATS University']"
+Aalst,0,['Technische Universiteit Eindhoven']
+Aaronson,4,"['Cornell University', 'University of California, Berkeley']"
+Abebe,3,"['Cornell University', 'University of Cambridge', 'Harvard University']"
+Abelson,1,"['Princeton University', 'Massachusetts Institute of Technology']"
+Abiteboul,4,['University of Southern California']
+Abramsky,4,"[""King's College, Cambridge"", 'Queen Mary University of London']"
+Adleman,2,"['University of California, Berkeley']"
+Agrawal,8,['Indian Institute of Technology Kanpur']
+Ahn,3,"['Duke University', 'BS', 'Carnegie Mellon University']"
+Aho,7,"['University of Toronto', 'Princeton University']"
+Allen,6,"['University at Albany', 'University of Michigan']"
+Amdahl,2,"['South Dakota State University', 'BS', 'University of Wisconsin', 'MS', 'PhD']"
+Anderson,2,"['Wesleyan University', 'University of Wisconsin-Madison']"
+Anthony,6,['Drexel University']
+Appel,0,['Princeton University']
+Aragon,1,"['California Institute of Technology', 'University of California, Berkeley']"
+Arden,0,['Purdue University']
+Jones,0,"['Tennessee State University', 'North Carolina State University']"
+Arora,0,"['SB', 'Massachusetts Institute of Technology', 'PhD', 'UC Berkeley']"
+Asprey,0,"['Vassar College', 'University of Iowa']"
+Atanasoff,2,"['University of Florida', 'Iowa State University', 'University of Wisconsin–Madison']"
+Atre,0,"['University of Poona', 'University of Heidelberg']"
+Babbage,2,"['Peterhouse, Cambridge']"
+Bachman,3,"['University of Pennsylvania', 'Michigan State University']"
+Backhouse,0,"['Churchill College, Cambridge', 'Imperial College London']"
+Backus,3,"['University of Virginia', 'University of Pittsburgh', 'Haverford College', 'Columbia University']"
+Bacon,1,['U.C. Berkeley']
+Bader,5,"['Lehigh University', 'University of Maryland, College Park']"
+Bahl,4,"['University of Massachusetts, Amherst', 'Modern School, New Delhi']"
+Barr,0,['North Carolina State University']
+Bartik,4,"['Northwest Missouri State Teachers College', 'University of Pennsylvania']"
+Barto,3,['University of Michigan']
+Bauer,3,['Ludwig-Maximilians-Universität']
+Bayer,2,['University of Illinois at Urbana–Champaign']
+Bell,8,['MIT']
+Bellovin,0,"['Columbia University', 'University of North Carolina at Chapel Hill']"
+Berdichevsky,0,[]
+Berners-Lee,5,"[""The Queen's College, Oxford""]"
+Bernstein,0,"['University of California, Berkeley', 'New York University']"
+Bernus,0,['Budapest Technical University']
+Bhushan,0,"['Indian Institute of Technology Kanpur', 'Massachusetts Institute of Technology', 'MIT Sloan School of Management']"
+Bjørner,4,['Technical University of Denmark']
+Blaauw,0,['Delft University of Technology']
+Black,1,['London South Bank University']
+Blei,2,"['Brown University', 'University of California, Berkeley']"
+Blum,0,['Brooklyn College']
+Blum,3,"['Simmons College', 'Massachusetts Institute of Technology']"
+Blum,4,"['Massachusetts Institute of Technology', 'BA', 'MA', 'PhD']"
+Boehm,3,['Harvard University']
+Böhm,0,['ETH Zürich']
+Bollacker,0,[]
+Bonwick,0,[]
+Booch,2,"['U.S. Air Force Academy', 'B.S.', 'University of California, Santa Barbara', 'M.S.']"
+Boole,17,['[3]']
+Booth,0,['Jesus College']
+Booth,0,[]
+Borg,18,['New York University']
+Bos,0,[]
+Botvinnik,0,[]
+Bowen,4,"['University College', 'Oxford']"
+Bourne,3,"[""King's College London"", 'BSc', 'Trinity College, Cambridge', 'Diploma in Computer Science', 'Ph.D.']"
+Bouwman,0,['VU University Amsterdam']
+Boyer,0,"['Ph.D.', 'Mathematics']"
+Brandenburg,1,['University of Erlangen-Nuremberg']
+Brassard,3,[]
+Breed,2,[]
+Bresenham,0,['Winthrop University']
+Brin,5,"['University of Maryland, College Park', 'BS', 'Stanford University', 'MS']"
+Brown,0,['University of Pennsylvania']
+Hansen,1,['Technical University of Denmark']
+Brinkkemper,0,['University of Amsterdam']
+Brooks,5,"['Duke University', 'Harvard University']"
+Brooks,1,"['Stanford University', 'Flinders University']"
+Burnett,0,[]
+Butler,0,"['Trinity College, Dublin', 'Wolfson College', 'Oxford']"
+Gil,3,[]
+Camp,2,"['The College of William and Mary', 'Michigan State University', 'Kalamazoo College']"
+Campbell-Kelly,0,['Sunderland Polytechnic']
+Candlin,0,['University of Cambridge']
+Canion,0,['University of Houston']
+Cantrill,0,[]
+Cardelli,2,"['University of Pisa', 'University of Edinburgh']"
+Carmack,0,['University of Missouri–Kansas City']
+Caspersen,8,"['Aarhus U.', 'Aarhus U.', '[11]', 'PhD', 'Aarhus U.']"
+Catmull,4,['University of Utah']
+Cerf,12,"['Stanford University', 'BS', 'University of California, Los Angeles', 'MS', 'PhD']"
+Chaitin,0,[]
+Cailliau,12,"['Ghent University', 'University of Michigan']"
+Chaochen,3,[]
+Chen,7,"['National Taiwan University', 'Harvard University']"
+Chiariglione,8,['Polytechnic University of Turin']
+Chou,0,"['Stanford University', '[1]', 'B.S.', 'M.S.']"
+Church,0,"['Princeton University', 'BS', 'PhD']"
+Ciaramella,0,[]
+Clarke,1,['Cornell University']
+Cocke,6,['Duke University']
+Codd,3,"['Exeter College, Oxford', 'University of Michigan']"
+Cohen,0,[]
+Coldwater,0,[]
+Colton,0,"['Durham University', 'University of Liverpool', 'University of Edinburgh']"
+Colmerauer,0,[]
+Comer,8,[]
+Compton,0,[]
+Conway,2,"['Cornell', 'PhD', 'Cornell']"
+Cormack,0,[]
+Cook,8,"['Harvard University', 'University of Michigan']"
+Cooley,0,[]
+Cooper,0,"['University of California, Los Angeles', 'BA']"
+Corbató,2,"['California Institute of Technology', 'Massachusetts Institute of Technology']"
+Cosper,0,[]
+Cousot,8,['École Nationale Supérieure des Mines de Nancy']
+Cox,4,"['University College London', 'Oxford University']"
+Cray,0,['University of Minnesota']
+Cristianini,3,"['University of Trieste', 'University of London', 'University of Bristol']"
+Crowcroft,2,"['University of Cambridge', 'University College London']"
+Croft,8,['Monash University']
+Culler,5,"['University of California, Berkeley', 'University of California, Los Angeles']"
+Curry,0,"['Harvard University', 'University of Göttingen']"
+Dadda,0,['Politecnico di Milano']
+Dahl,2,['University of Oslo']
+Dahl,0,"['UC San Diego', 'University of Rochester']"
+Dam,0,[]
+Das,0,"['Georgia Tech', 'Indian Institute of Science', 'Jadavpur University']"
+Daswani,0,"['Stanford University', 'Columbia University']"
+Date,0,['University of Cambridge']
+Davis,0,"[""Bachelor's degree"", 'computer engineering', ""master's degree"", 'electrical engineering', 'Arizona State University']"
+Dean,6,"['University of Minnesota', 'University of Washington']"
+Demaine,3,"['Dalhousie University', 'University of Waterloo']"
+DeMarco,2,"['Cornell University', 'Columbia University', 'University of Paris']"
+DeMillo,0,"['University of St. Thomas', 'Georgia Institute of Technology']"
+Denning,2,"['University of Michigan', 'Purdue University']"
+Denning,2,"['Massachusetts Institute of Technology', '[1]', 'Manhattan College']"
+Dertouzos,0,[]
+Dewdney,0,[]
+Dewar,0,"['University of Chicago', 'B.S.', 'Ph.D.']"
+Dham,0,"['Delhi College of Engineering', 'Delhi Technological University', 'Delhi University', 'University of Cincinnati']"
+Dietz,0,['Eindhoven University of Technology']
+Diffie,6,['Massachusetts Institute of Technology']
+Dijkstra,5,"['Leiden University', 'University of Amsterdam']"
+Dillon,0,"['University of California, Berkeley']"
+Dix,0,[]
+Dongarra,15,"['Chicago State University', 'BS', 'Illinois Institute of Technology', 'MS', 'University of New Mexico', 'PhD']"
+Dorigo,0,[]
+Dourish,7,['Computer Science']
+Draper,6,"['Massachusetts Institute of Technology', 'Stanford University']"
+Dumais,1,"['Indiana University', 'Bates College']"
+Dunkels,0,"['Swedish Institute of Computer Science', 'B.S.', 'M.S.', 'Ph.D.']"
+Dunn,11,"['Oberlin College', 'University of Pittsburgh']"
+Dustdar,0,[]
+Eades,0,[]
+Easley,0,['Cleveland State University']
+Ebbinkhuijsen,0,[]
+Eckert,4,['University of Pennsylvania']
+Edelman,7,"['MIT', 'Yale University']"
+Eich,0,"['University of Illinois Urbana-Champaign', 'Santa Clara University']"
+Emeagwali,0,"['George Washington University School of Engineering and Applied Science', 'Oregon State University']"
+Emerson,2,"['Harvard', 'UT Austin']"
+Engelbart,7,"['Oregon State University', 'University of California, Berkeley']"
+Engelhardt,2,"['Stanford University', 'University of California, Berkeley']"
+Eppstein,0,"['Stanford University', 'Columbia University']"
+Yershov,0,['Moscow State University']
+Estridge,0,['University of Florida']
+Etzioni,2,"['Harvard University', 'Carnegie Mellon University']"
+Evans,0,"['University College London', 'University of Reading']"
+Evans,3,[]
+Even,0,['Harvard University']
+Fahlman,3,"['Massachusetts Institute of Technology', 'B.S.', 'M.S.', 'Ph.D.']"
+Feigenbaum,4,['Carnegie Mellon University']
+Felten,2,"['California Institute of Technology', 'BS', 'University of Washington', 'MS', 'PhD']"
+Finin,3,['University of Illinois']
+Finkel,0,['University of Chicago']
+Firesmith,0,['Arizona State University']
+Flake,0,[]
+Flowers,0,['University of London']
+Floyd,2,"['University of Chicago', 'B.A.']"
+Floyd,1,"['University of California, Berkeley']"
+Fogel,0,"['New York University', 'Rutgers University', 'University of California, Los Angeles']"
+Foley,11,"['University of Michigan', 'Lehigh University']"
+Forbus,0,"['Massachusetts Institute of Technology', 'BS', 'MS', 'PhD']"
+Jr.,0,[]
+Fortnow,7,"['Cornell University', 'Massachusetts Institute of Technology']"
+Fayed,0,"['Menoufia University', 'King Saud University']"
+Fowler,0,"['University College London', 'BSc', '[1]']"
+France,2,"['University of the West Indies', 'Trinidad and Tobago', 'Massey University', 'New Zealand']"
+Franke,9,[]
+Fredkin,2,['California Institute of Technology']
+Freund,2,"['The Hebrew University of Jerusalem', 'University of California, Santa Cruz']"
+Friedman,0,"['University of Houston', '[1]']"
+Fischer,8,"['University of British Columbia', 'University of Cambridge']"
+Fu,53,"['University of California, San Diego']"
+Fu,6,[]
+Fukushima,1,['Kyoto University']
+Fulkerson,5,"['Southern Illinois University', 'University of Wisconsin–Madison']"
+Gabriel,2,"['Northeastern University', 'Massachusetts Institute of Technology', 'University of Illinois', 'Stanford University', 'Warren Wilson College']"
+Galil,3,"['Tel Aviv University', 'BSc', 'MSc', 'Cornell University', 'PhD']"
+Galler,0,"['University of Chicago', 'UCLA']"
+García-Molina,3,"['Monterrey Institute of Technology and Higher Education', 'BS', 'Stanford University', 'MS', 'PhD']"
+Garey,0,['University of Wisconsin–Madison']
+Garis,0,[]
+Gates,4,['Harvard University']
+Gelernter,3,"['Yale University', 'BA', 'State University of New York at Stony Brook', 'PhD']"
+Gelobter,4,['Brown University']
+Geschke,3,"['Xavier University', 'AB', 'MS', 'Carnegie Mellon University', 'PhD']"
+Ghahramani,3,"['University of Pennsylvania', 'Massachusetts Institute of Technology']"
+Ghemawat,1,"['Cornell University', 'MIT']"
+Gibbons,0,"['University of Edinburgh', 'B.Sc.', 'University of Oxford', 'D.Phil.']"
+Gilbert,1,"['Miami University', 'University of Cincinnati']"
+Giles,7,"['Rhodes College', 'University of Tennessee', 'University of Michigan', 'University of Arizona']"
+Ginsburg,0,"['City College of New York', 'University of Michigan']"
+Glass,0,[]
+Gödel,3,"['University of Vienna', 'PhD']"
+Goel,3,['Ohio State University']
+Goguen,0,"['Harvard University', 'University of California, Berkeley']"
+Gold,0,[]
+Goldberg,0,"['University of Michigan', 'University of Chicago']"
+Goldberg,2,"['Massachusetts Institute of Technology', 'University of California, Berkeley']"
+Goldberg,0,"['University of California, Berkeley', 'University of Waterloo']"
+Goldsmith,0,[]
+Goldreich,2,"['Technion', 'Weizmann Institute']"
+Goldwasser,11,"['Carnegie Mellon University', 'University of California, Berkeley']"
+Golub,0,['University of Illinois at Urbana-Champaign']
+Golumbic,0,[]
+Gonnet,1,['University of Waterloo']
+Goodfellow,0,"['Stanford University', 'Université de Montréal']"
+Gosling,7,"['University of Calgary', 'BSc', 'Carnegie Mellon University', 'MA', 'PhD']"
+Graham,0,"['Cornell University', 'Harvard University']"
+Graham,0,[]
+Graham,5,"['Harvard', 'Stanford']"
+Gray,2,"['University of California, Berkeley']"
+Greibach,0,"['Radcliffe College', 'Harvard University']"
+Gries,4,"['B.S.', 'Queens College', 'M.S.', 'University of Illinois at Urbana-Champaign', 'Dr. rer. nat.', 'Technical University of Munich']"
+Griswold,0,[]
+Gropp,2,['Stanford University']
+Gruber,0,['Loyola University New Orleans']
+Guberman,0,[]
+Guha,16,"['Indian Institute of Technology Madras', 'University of California, Berkeley', 'Stanford University']"
+Gunther,9,"['La Trobe University', 'University of Southampton']"
+Gutknecht,0,"['Ph.D.', 'ETH Zurich']"
+Guy,0,[]
+Griesemer,0,[]
+Habermann,0,"['Free University of Amsterdam', 'Eindhoven University of Technology']"
+Hahn,0,[]
+Hall,1,"['University of Washington', 'Rutgers University', 'Eastern Nazarene College', 'Boston University', 'Massachusetts Institute of Technology', 'Harvard University']"
+Hall,2,"['University of Southampton', 'City University London', '[5]']"
+Halpern,3,['University of Toronto']
+Hamilton,1,"['University of Michigan', 'Earlham College', 'BA']"
+Hamming,4,"['University of Chicago', 'University of Nebraska', 'University of Illinois at Urbana–Champaign']"
+Han,0,"['University of Wisconsin - Madison', 'PhD', 'University of Science and Technology of China', 'BSc.']"
+Harary,0,"['Brooklyn College', 'University of California, Berkeley']"
+Harris,0,"['School of Oriental and African Studies', 'American University in Cairo', ""Quai d'Orsay""]"
+Hartmanis,2,"['University of Marburg', 'University of Kansas City', 'Caltech']"
+Håstad,4,"['Massachusetts Institute of Technology', 'Uppsala University', 'Stockholm University']"
+Hatton,2,"[""King's College, Cambridge""]"
+Hawryszkiewycz,0,[]
+Jifeng,0,['Fudan University']
+Hehner,0,"['Carleton University', 'B.Sc.', 'University of Toronto', 'M.Sc.', 'Ph.D.']"
+Hellman,9,"['New York University', 'Stanford University']"
+Heiser,6,"['University of Freiburg', 'Brock University', 'ETH Zurich']"
+Hendler,0,"['Yale University', 'Southern Methodist University', 'Brown University']"
+Hennessy,9,"['Villanova University', 'Stony Brook University']"
+Herbert,0,['Leeds University']
+Hewitt,0,['MIT']
+Hightower,0,[]
+Hillis,2,['Massachusetts Institute of Technology']
+Hinton,9,"['University of Cambridge', 'BA', 'University of Edinburgh']"
+Hirschberg,10,"['University of Pennsylvania', 'University of Michigan']"
+Ho,7,['Chinese University of Hong Kong']
+Hoare,7,"['University of Oxford', 'Moscow State University']"
+Hodes,0,"['B.S.', 'Polytechnic Institute of Brooklyn', 'Ph.D.', 'MIT']"
+Holberton,4,['University of Pennsylvania']
+Holland,3,['University of Michigan']
+Hollerith,3,"['City College of New York', 'Columbia University']"
+Holzmann,2,['Delft University of Technology']
+Hopcroft,8,"['Seattle University', 'Stanford University']"
+Hopper,9,"['Vassar College', 'BA', 'Yale University', 'MS', 'PhD']"
+Horvitz,0,['Stanford University']
+Householder,0,['University of Chicago']
+Hudak,6,"['Vanderbilt University', 'B.S.', 'Massachusetts Institute of Technology', 'M.S.', 'University of Utah', 'Ph.D.']"
+Huffman,2,"['Ohio State University', 'Massachusetts Institute of Technology']"
+Hughes,3,"['University of Oxford', 'PhD']"
+Hui,1,"['University of Alberta', 'University of Toronto']"
+Humphrey,1,['United States Navy']
+Hutchins,0,[]
+Ichbiah,6,[]
+Ierusalimschy,0,['Pontifical Catholic University of Rio de Janeiro']
+Ingalls,2,"['Harvard University', 'B.A.', 'Stanford University', 'M.S.']"
+Irwin,3,"['University of Illinois at Urbana-Champaign', 'Memphis State University']"
+Iverson,4,"[""Queen's University"", 'Harvard University']"
+Jacobson,0,"['Chalmers Institute of Technology', 'Gothenburg', 'Royal Institute of Technology', 'Stockholm']"
+Jain,10,"['Indian Institute of Technology, Kanpur', 'Ohio State University']"
+Jain,0,"['Indian Institute of Technology, Kharagpur', 'Visvesvaraya National Institute of Technology Nagpur']"
+James,0,[]
+Johnson,2,"['Amherst College', 'MIT']"
+Johnson,0,"['Columbia University', 'Haverford College']"
+Jones,0,['University of Oxford']
+Jordan,5,"['University of California, San Diego']"
+Joseph,2,"['Wilson College, Mumbai', 'University of Bombay', 'Welsh College of Advanced Technology', 'University of Cambridge']"
+Joshi,12,"['College of Engineering, Pune', 'Indian Institute of Science', 'University of Pennsylvania']"
+Joy,4,"['University of Michigan', 'University of California, Berkeley']"
+Jurafsky,2,"['University of California at Berkeley', '[1]']"
+Kahan,4,['University of Toronto']
+Kahn,12,"['City College of New York', 'Princeton University']"
+Kak,0,"['University of Madras', 'Indian Institute of Technology, Delhi']"
+Kamp,0,[]
+Karger,1,"['Harvard University', 'Stanford University']"
+Karp,10,['Harvard University']
+Karmarkar,11,"['IIT Bombay', 'Caltech', 'University of California, Berkeley']"
+Karpinski,0,[]
+Kaehler,0,"['Stanford University', 'B.S.', 'Carnegie Mellon University', 'MSc']"
+Kay,3,"['University of Colorado at Boulder', 'BS', 'University of Utah College of Engineering', 'MS', 'PhD']"
+Kayal,8,['IIT Kanpur']
+Kellis,3,['Massachusetts Institute of Technology']
+Kemeny,2,['Princeton University']
+Kennedy,0,"['Rice University', 'New York University']"
+Kernighan,0,"['University of Toronto', 'BASc', 'Princeton University', 'PhD']"
+Kesselman,0,[]
+Kiczales,0,['Massachusetts Institute of Technology']
+Kirstein,3,"['University of Cambridge', 'Stanford University']"
+Kleene,2,"['Amherst College', 'Princeton University']"
+Klein,4,"['Cornell University', 'University of Oxford', 'Stanford University']"
+Kleinrock,5,"['City College of New York', 'MIT']"
+Knuth,14,"['Case Institute of Technology', 'BS', 'MS', 'California Institute of Technology', 'PhD']"
+Koenig,0,['Columbia University']
+Koller,5,"['Hebrew University of Jerusalem', 'Stanford University']"
+Kölling,3,"['University of Bremen', 'University of Sydney']"
+Kolmogorov,7,"['Moscow State University', 'Ph.D.']"
+Kolodner,2,"['Brandeis University', 'Yale University']"
+Korn,0,[]
+Koster,0,['University of Amsterdam']
+Kowalski,2,"['University of Chicago', 'University of Bridgeport', 'BA', 'Stanford University', 'MSc', 'University of Warsaw', 'University of Edinburgh', 'PhD']"
+Koza,0,[]
+Krogstie,0,[]
+Kruskal,0,"['University of Chicago', 'Princeton University']"
+Kruusmaa,4,"['Tallinn University of Technology', 'Chalmers University of Technology']"
+Kurtz,2,"['Princeton University', 'Knox College', 'mathematics']"
+Ladner,5,"[""St. Mary's College of California"", 'University of California, Berkeley']"
+Lam,9,['Carnegie Mellon University']
+Lamport,6,"['Massachusetts Institute of Technology', 'BS', 'Brandeis University', 'MA', 'PhD']"
+Lampson,6,"['Harvard University', 'University of California, Berkeley']"
+Landin,0,"['Clare College', 'Cambridge University']"
+Lane,0,"['Carnegie Mellon University', 'Ph.D.']"
+Langefors,0,['Stockholm University']
+Lattner,2,"['University of Portland', 'University of Illinois at Urbana-Champaign']"
+Lawrence,8,[]
+Lazowska,0,"['Brown University', 'University of Toronto']"
+Lederberg,3,"['Stuyvesant High School', 'Columbia University', 'Yale University']"
+Lehman,2,['Imperial College London']
+Leiserson,0,"['Carnegie Mellon University', 'Yale University']"
+Lenat,2,"['University of Pennsylvania', 'Stanford University']"
+LeCun,3,"['ESIEE Paris', 'MS', 'Pierre and Marie Curie University', 'PhD']"
+Lerdorf,0,['University of Waterloo']
+Levchin,0,['University of Illinois at Urbana-Champaign']
+Levin,2,"['Moscow University', 'Massachusetts Institute of Technology']"
+Leyton-Brown,1,"['McMaster University', 'Stanford University']"
+Licklider,0,"['Washington University in St. Louis', 'University of Rochester']"
+Liddle,0,[]
+Liedtke,0,"['Bielefeld University', 'Technical University of Berlin']"
+Lions,0,"['University of Sydney', 'University of Cambridge']"
+Lindsey,0,[]
+Lipton,2,['Carnegie Mellon']
+Liskov,3,"['University of California, Berkeley', 'Stanford University']"
+Liu,0,"['Cornell University', 'Tsinghua University', 'Peking University']"
+Long,2,"['San Diego State University', 'University of California, San Diego']"
+Lopez,1,['New Mexico State University']
+Lovegrove,0,"['Newnham College, Cambridge', 'Cambridge University']"
+Luckham,0,"['Ph.D.', 'MIT']"
+Luks,3,[]
+Lynch,7,"['Brooklyn College', 'MIT']"
+Thalmann,2,"['University of Geneva', 'École Polytechnique Fédérale de Lausanne']"
+Maibaum,1,"['B.Sc.', 'University of Toronto', 'Ph.D.', 'University of London']"
+Marlow,2,"['University of Glasgow', 'University of Bristol']"
+Manna,4,"['Technion – Israel Institute of Technology', 'Carnegie Mellon University']"
+Martin,3,['University of Oxford']
+Martin,0,[]
+Mashey,0,[]
+Matiyasevich,3,['Leningrad State University']
+Matsumoto,0,"['University of Tsukuba', 'Shimane University']"
+Mauchly,3,['Johns Hopkins University']
+Maulik,11,"['Nabadwip Bakultala High School', 'Calcutta University', 'Jadavpur University']"
+McAuley,1,['University of Cambridge']
+McCarthy,6,"['Princeton University', 'California Institute of Technology']"
+McCallum,1,"['Dartmouth College', 'University of Rochester', '[2]']"
+McIlroy,3,"['Cornell University', 'Massachusetts Institute of Technology']"
+McKinstry,0,[]
+McKusick,0,"['University of California, Berkeley']"
+Meertens,2,[]
+Mehlhorn,4,"['Cornell University', '[2]']"
+Metcalf,0,[]
+Meyer,3,"['Université de Nancy', 'Stanford University', 'École Polytechnique']"
+Micali,3,"['La Sapienza University of Rome', 'UC Berkeley']"
+Milner,5,[]
+Minker,2,"['Brooklyn College', 'University of Wisconsin', 'University of Pennsylvania']"
+Minsky,6,"['Harvard University', 'BA', 'Princeton University', 'MA', 'PhD']"
+Mitchell,2,"['University of Waterloo', 'Carnegie Mellon University']"
+Mitchell,3,"['Stanford University', 'Massachusetts Institute of Technology']"
+Arvind,14,"['IIT Kanpur', 'B.Sc., 1969', 'University of Minnesota', 'M.S.', 'Ph.D.']"
+Mockapetris,4,"['Massachusetts Institute of Technology', 'University of California at Irvine']"
+Moler,2,"['California Institute of Technology', 'Stanford University']"
+Moller,0,"['University of British Columbia', 'University of Waterloo', 'University of Edinburgh']"
+Moon,0,['Pennsylvania State University']
+Moore,0,[]
+Moore,0,"['Virginia Tech', 'Brown University']"
+Moore,9,"['University of California, Berkeley', 'BS', 'California Institute of Technology', 'PhD']"
+Moore,0,[]
+Moore,4,['Stanford University']
+Moravec,0,"['Acadia University', '[1]', 'University of Western Ontario', '[1]', 'Stanford University', '[1]']"
+Morgan,0,"['Ph.D.', 'University of Sydney']"
+Morris,0,"['Harvard University ', 'Cornell University']"
+Moses,0,"['BA', 'MA', 'Columbia University', 'PhD', 'mathematics', 'MIT']"
+Motwani,1,"['IIT Kanpur', 'B.Tech', 'C.S.', 'UC Berkeley', 'Ph.D.', 'C.S.']"
+Mukhanov,0,[]
+Muggleton,4,['University of Edinburgh']
+Müller,1,"['University of Karlsruhe', 'Diplom', 'University of Karlsruhe']"
+Mycroft,0,"['University of Cambridge', 'University of Edinburgh']"
+Myers,8,"['University of Toronto', 'Massachusetts Institute of Technology']"
+Nadin,0,[]
+Nagao,8,['Kyoto University']
+Nake,9,[]
+Nardi,0,[]
+Naur,2,['Technical University of Denmark']
+Needham,2,['University of Cambridge']
+Nell,0,['Drexel University']
+Nelson,2,"['Harvard University', 'Stanford University']"
+Neumann,0,[]
+Neumann,0,[]
+Neumann,6,"['Pázmány Péter University', 'University of Berlin', 'ETH Zürich']"
+Newell,5,"['Stanford University', 'Princeton University', 'Carnegie Mellon University']"
+Newman,3,"[""St John's College, Cambridge""]"
+Ng,9,"['University of California, Berkeley', 'Massachusetts Institute of Technology', 'Carnegie Mellon University']"
+Nilsson,6,['Stanford University']
+Nijssen,0,['Eindhoven University of Technology']
+Nipkow,0,[]
+Nivat,7,['Joseph Fourier University']
+Nkambule,3,"['University of Pretoria', 'Cefups Academy']"
+Noe,0,"['UC Berkeley', 'Stanford University']"
+Nordin,0,"['University of Dortmund', 'Chalmers University of Technology', 'Göteborg University']"
+Norman,4,"['MIT', 'University of Pennsylvania']"
+Norvig,2,"['Brown University', 'University of California, Berkeley']"
+Novacky,0,['University of Pittsburgh']
+Nygaard,4,"['M.Sc.', 'University of Oslo']"
+Odersky,0,"['Ludwig Maximilian University of Munich', 'ETH Zurich']"
+O'Hearn,9,"['Dalhousie University', ""Queen's University""]"
+Olle,0,['University of Manchester']
+Omohundro,0,"['Stanford University', 'University of California, Berkeley']"
+Ornstein,0,[]
+O'Sullivan,2,[]
+Ousterhout,2,"[""Bachelor's degree"", 'Ph.D']"
+Overmars,0,['Utrecht University']
+Owicki,0,['Cornell University']
+Page,9,"['University of Michigan', 'BS', 'Stanford University', 'MS']"
+Pal,2,"['Rajabazar Science College', 'University of Calcutta', 'Indian Statistical Institute', 'Imperial College London']"
+Pandya,2,[]
+Papadimitriou,5,"['Athens Polytechnic', 'Princeton University']"
+Park,0,"['University of Oxford', 'Massachusetts Institute of Technology']"
+Parnas,0,[]
+Patil,0,"['University of California, San Diego', 'BA', 'University of Maryland College Park', 'PhD']"
+Patt,6,[]
+Patterson,6,"['University of California, Los Angeles']"
+Paterson,2,"['Ph.D.', 'University of Cambridge']"
+Pătrașcu,0,['Massachusetts Institute of Technology']
+Paulson,1,"['California Institute of Technology', 'Stanford University']"
+Pausch,5,"['Brown University', 'Carnegie Mellon University']"
+Pavón,0,"['Technical University of Madrid', 'Université Pierre et Marie Curie']"
+Pearl,5,"['Technion – Israel Institute of Technology', 'New Jersey Institute of Technology', 'Rutgers University', 'New York University Tandon School of Engineering']"
+Perlis,2,"['Chemistry', 'Carnegie Mellon', 'MIT']"
+Perlman,11,['MIT']
+Perotto,0,[]
+Péter,0,[]
+Jones,3,['University of Cambridge']
+Pham,0,"['Georgia Institute of Technology', 'Supélec', 'MIT Media Lab', 'Harvard University']"
+Pieraccini,11,['University of Pisa']
+Pingali,3,"['IIT Kanpur', 'MIT']"
+Plotkin,3,"['University of Glasgow', 'University of Edinburgh']"
+Pnueli,2,['Stanford University']
+Poel,2,"['Delft University of Technology', 'B.S.', 'University of Amsterdam', 'Ph.D.']"
+Popplewell,0,['University of Cambridge']
+Post,0,"['City College of New York', '[1]', 'Columbia University', '[2]']"
+Postel,6,['UCLA']
+Preparata,2,['University of Rome']
+Press,0,"['Harvard University', 'California Institute of Technology']"
+Rabana,0,[]
+Rozenberg,10,['Polish Academy of Sciences']
+Rabin,10,"['Hebrew University of Jerusalem', 'MSc', 'University of Pennsylvania', 'Princeton University', 'PhD']"
+Radev,2,[]
+Raman,4,[]
+Randell,0,['Imperial College London']
+Ravn,2,"['University of Copenhagen', 'Technical University of Denmark']"
+Reddy,6,"['University of Madras', 'BE', 'University of New South Wales', 'MTech', 'Stanford University', 'PhD']"
+Reed,0,['MIT']
+Reenskaug,0,[]
+Reynolds,2,"['Purdue University', 'Ph.D.', 'Harvard University']"
+Reynolds,0,['University of Southern California']
+Riet,0,"['University of Amsterdam', 'Ph.D.']"
+Richards,0,[]
+Richards,1,['University of Cambridge']
+Ries,0,[]
+Rijsbergen,1,"['University of Western Australia', 'University of Cambridge']"
+Ritchie,8,['Harvard University']
+Rivest,5,"['Stanford University', 'Yale University']"
+Robinson,2,['University of Sydney']
+Rolland,0,['University of Nancy']
+Romero,0,[]
+Rosenfeld,3,[]
+Ross,3,"['Oberlin College', 'B.Sc.', 'Massachusetts Institute of Technology', 'M.Sc.']"
+Rossum,2,['University of Amsterdam']
+Rothman,0,['United States Patent and Trademark Office']
+Royce,0,[]
+Rucker,0,"['St. Xavier High School', 'Swarthmore College', 'BA', 'Rutgers University', 'MS', 'PhD']"
+Rudich,1,[]
+Rulifson,25,"['University of Washington', 'Stanford University']"
+Rumbaugh,0,[]
+Ružička,4,['Comenius University in Bratislava']
+Sadowsky,0,['Harvard University']
+Sadrzadeh,0,"['Université du Québec à Montréal', 'Sharif University of Technology']"
+Saif,0,"['Lahore University of Management Sciences', 'University of Cambridge', 'Massachusetts Institute of Technology']"
+Salton,6,"['Brooklyn College', 'Harvard University']"
+Sammet,3,"['Mount Holyoke College', 'B.A.', 'University of Illinois at Urbana Champaign', 'M.A.', 'Columbia University']"
+Sammut,0,[]
+Sassenrath,0,"['University of California, Davis']"
+Satyanarayanan,5,"['Carnegie Mellon University (Ph.D.)', 'IIT Madras (M.Tech., B.Tech.)']"
+Savitch,0,"['University of California, Berkeley']"
+Schaeffer,2,"['University of Waterloo', 'University of Toronto']"
+Schickard,0,[]
+Schmidhuber,0,['Technical University of Munich']
+Schneider,0,['University of Oxford']
+Schneier,0,"['American University', 'University of Rochester']"
+Schneider,5,['Stony Brook University']
+Schoenebeck,6,"['Georgia Institute of Technology', 'University of California, Berkeley', 'Dartmouth College']"
+Schroeder,0,['Unix shell']
+Schölkopf,10,"['University of London', 'University of Tübingen', 'TU Berlin']"
+Scott,6,"['UC Berkeley', 'Princeton University']"
+Scott,0,[]
+Sedgewick,4,['Brown University']
+Sethi,0,"['Indian Institute of Technology, Kanpur', 'Princeton University']"
+Shadbolt,2,"['Newcastle University', 'University of Edinburgh']"
+Shamir,6,"['Tel Aviv University', 'Weizmann Institute of Science']"
+Shannon,10,"['University of Michigan', 'AB', 'BS', 'Massachusetts Institute of Technology', 'MS', 'PhD']"
+Shaw,0,"['University of California, San Diego', 'BS', 'Stanford University', 'MS', 'PhD']"
+Shaw,0,[]
+Shenker,5,"['Brown University', 'University of Chicago']"
+Shekhar,28,"['University of California, Berkeley']"
+Shneiderman,3,"['City College of New York', 'Stony Brook University']"
+Shortliffe,0,"['Harvard University', 'Stanford University']"
+Siewiorek,4,"['University of Michigan', 'B.A.', 'Stanford University', 'M.A.', 'Ph.D.']"
+Sifakis,2,"['National Technical University of Athens', 'University of Grenoble']"
+Simon,10,['University of Chicago']
+Singh,5,"['University of Texas at Austin', 'Indian Institute of Technology Delhi']"
+Sitaraman,0,"['Indian Institute of Technology, Madras', '[2]', 'Princeton University', '[2]']"
+Sleator,2,"['University of Illinois at Urbana–Champaign', 'Stanford University']"
+Sloman,0,[]
+Sølvberg,0,[]
+Smith,0,['MIT']
+Smith,1,"['Oberlin College', 'Stanford University']"
+Spewak,0,['Case Western Reserve University']
+Spradling,0,['University of Nebraska - Lincoln']
+Sproull,0,"['Deep Springs College', 'Cornell University']"
+Srihari,0,"['University of Waterloo', 'University at Buffalo']"
+Srihari,3,"['Bangalore University', 'Indian Institute of Science', 'Ohio State University']"
+Stachowiak,0,"['Course 6 - Electrical Engineering and Computer Science', 'S.B.', 'M.Eng.']"
+Stallman,5,"['Harvard University', 'BS', 'Massachusetts Institute of Technology']"
+Stamper,0,['United Kingdom']
+Stearns,2,"['Carleton College', 'Princeton University']"
+Jr.,2,"['BA', 'Harvard University', 'MS', 'PhD', 'MIT']"
+Sterling,6,"['Old Dominion University', 'Massachusetts Institute of Technology']"
+Stepanov,0,[]
+Stevens,0,"['University of Michigan', 'University of Arizona']"
+Stockmeyer,0,[]
+Stolfo,0,[]
+Stonebraker,2,"['Princeton University', 'University of Michigan']"
+Storaasli,0,['University of Edinburgh']
+Strachey,0,['University of Cambridge']
+Strassen,8,['University of Göttingen']
+Stroustrup,11,"['Aarhus University', 'Cand.scient.', 'University of Cambridge', 'PhD']"
+Sudan,2,"['IIT Delhi', 'University of California, Berkeley']"
+Sussman,2,"['SB', 'PhD']"
+Sutherland,1,"['RPI', 'MIT']"
+Sutherland,8,"['MIT', 'Caltech', 'Carnegie Institute of Technology']"
+Sweeney,0,"['Harvard University', 'ALB', 'MIT', 'SM', 'PhD']"
+Szegedy,2,['University of Chicago']
+Tabriz,0,['University of Illinois at Urbana–Champaign']
+Tamassia,4,[]
+Tanenbaum,22,"['Massachusetts Institute of Technology', 'University of California, Berkeley']"
+Tate,2,"['Lancaster University', 'University of Edinburgh']"
+Thalheim,4,"['Dresden University of Technology', 'Lomonosov Moscow State University']"
+Tardos,5,['Eötvös Loránd University']
+Tardos,4,['Eötvös Loránd University']
+Tarjan,3,"['California Institute of Technology', 'BS', 'Stanford University', 'MS', 'PhD']"
+Taylor,5,"['Purdue University', 'University of California at Berkeley']"
+Tchou,0,[]
+Teevan,7,"['Yale University', 'BS', 'Massachusetts Institute of Technology', 'PhD']"
+Teng,6,"['Shanghai Jiao Tong University', 'University of Southern California', 'Carnegie Mellon']"
+Tesler,0,['Stanford University']
+Tevanian,0,[]
+Thacker,3,"['University of California, Berkeley']"
+Thalmann,4,['University of Geneva']
+Thompson,9,"['University of California, Berkeley']"
+Thrun,3,"['University of Bonn', 'University of Hildesheim']"
+Tichy,0,"['Technische Universität München', 'Carnegie Mellon University']"
+Toda,0,[]
+Torvalds,3,"['University of Helsinki', '[2]']"
+Quevedo,1,"[""Official School of the Road Engineers' Corps of Madrid"", 'es']"
+Toussaint,11,['University of Tulsa']
+Townsend,2,['Indiana University']
+Tozer,0,[]
+Traub,0,[]
+Tucker,0,['University of Warwick']
+Tukey,7,"['Brown University', 'Princeton University']"
+Turing,2,"['University of Cambridge', 'BA', 'MA', 'Princeton University']"
+Turner,0,"['D.Phil.', 'University of Oxford']"
+Turoff,1,"['University of California - Berkeley', 'Brandeis University']"
+Ullman,4,"['Columbia University', 'Princeton University']"
+Valiant,6,"['University of Cambridge', 'Imperial College London', 'University of Warwick']"
+Vapnik,11,"['Institute of Control Sciences, Russian Academy of Sciences', 'Uzbek State University']"
+Vardi,7,"['Bar-Ilan University', 'Weizmann Institute of Science', '[4]', 'Hebrew University of Jerusalem']"
+Vaughan,7,"['Wilberforce University', 'BA']"
+Vauquois,0,['Ph.D.']
+Vazirani,2,"['MIT', 'University of California, Berkeley']"
+Veloso,3,"['Instituto Superior Técnico', 'University of Lisbon', 'Boston University', 'Carnegie Mellon University']"
+Vernadat,0,['University of Clermont']
+Veryard,0,['Open University']
+Vilkomir,4,"['Kharkov State University', 'Kharkov Polytechnic Institute']"
+Vitányi,8,"['Delft University of Technology', 'Free University of Amsterdam']"
+Viterbi,8,"['Massachusetts Institute of Technology', 'BS', 'MS', 'University of Southern California', 'PhD']"
+Vitter,0,"['University of Notre Dame', 'BS', 'Duke University', 'MBA', 'Stanford University', 'PhD']"
+Vixie,0,['Keio University']
+Wada,0,['University of Tokyo']
+Wagner,0,[]
+Waltz,2,['Massachusetts Institute of Technology']
+Wang,2,"['Stanford University', 'M.S.', 'M.S.', 'Ph.D.', 'University of Minnesota', 'B.S.']"
+Ward,0,[]
+Warmuth,3,"['University of Colorado, Boulder']"
+Warren,0,['University of Edinburgh']
+Warwick,4,"['Aston University', 'Imperial College London']"
+Węglarz,0,['Poznań University of Technology']
+Wadler,4,"['Stanford University', 'Carnegie Mellon University']"
+Wegner,2,['[1]']
+Wegstein,0,"['University of Illinois', 'B.S.', 'M.S.']"
+Weinberger,0,"['University of California, Berkeley']"
+Weiser,0,['University of Michigan']
+Weizenbaum,0,['Wayne State University']
+Wheeler,3,['University of Cambridge']
+Westervelt,0,[]
+Whittaker,3,[]
+Widom,6,"['Cornell University', 'Indiana University Jacobs School of Music']"
+Wiederhold,3,"['University of California, San Francisco']"
+Wiener,2,"['Tufts College', 'BA', 'Cornell University', 'MA', 'Harvard University', 'PhD']"
+Wijngaarden,2,['Delft University of Technology']
+Wilkes,0,"['Wellesley College', 'Harvard Law School']"
+Wilkes,5,['University of Cambridge']
+Wilks,1,['University of Cambridge']
+Wilkinson,3,"['Trinity College, Cambridge']"
+Wilson,6,"['Selwyn College, Cambridge', 'University of Cambridge']"
+Winograd,0,"['New York University', 'Massachusetts Institute of Technology']"
+Winograd,1,"['Colorado College', 'Massachusetts Institute of Technology']"
+Winston,1,"['MIT', '[1]']"
+Wirth,5,"['BS', 'MSc', 'Université Laval', 'University of California, Berkeley']"
+Wiseman,0,"['University of Cambridge', 'University of Illinois', 'Queen Mary College']"
+Wisnosky,0,['California University of Pennsylvania']
+Wolfram,2,"[""St. John's College, Oxford"", 'California Institute of Technology']"
+Woodger,0,['University College London']
+Woodward,3,['Oxford University']
+Worsley,3,"['University of Toronto', 'Massachusetts Institute of Technology', 'University of Cambridge']"
+Wozniak,13,"['University of Colorado Boulder', 'De Anza College', 'University of California, Berkeley', 'BS', '[3]']"
+Wu,0,[]
+Wulf,0,"['University of Illinois Urbana-Champaign', 'University of Virginia']"
+Yannakakis,2,"['National Technical University of Athens', 'Princeton University']"
+Yao,4,"['National Taiwan University', 'Harvard University', 'University of Illinois at Urbana–Champaign']"
+Yen,2,"['University of California, Berkeley', 'Santa Clara University', 'National Taiwan University', 'National Hsinchu Senior High School']"
+Yoneda,0,['University of Tokyo']
+Yourdon,1,['Massachusetts Institute of Technology']
+Yung,6,['Columbia University']
+Zadeh,12,"['University of Tehran', 'Massachusetts Institute of Technology', 'Columbia University']"
+Zantema,0,['University of Amsterdam']
+Zaman,0,"['Stanford University', '[2]', 'Harvey Mudd College', 'Claremont Graduate University']"
+Zdonik,0,['Massachusetts Institute of Technology']
+Zedan,0,['University of Bristol']
+Zilberstein,6,"['University of California, Berkeley', 'Technion – Israel Institute of Technology']"
+Zimmerman,0,"['Purdue University', 'University of Minnesota']"
+Zuse,5,['Technical University of Berlin']
+Wikipedia:Contents/Lists,0,[]
