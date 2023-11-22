@@ -45,7 +45,7 @@ class Node:
             p = self.predecessor
             p.update_finger_table(other, i)
 
-    def leave(self, nodes_l):
+    def leave(self):
         # Update the predecessor's successor pointer
         self.predecessor.successor = self.successor
         # Update the successor's predecessor pointer
@@ -53,9 +53,6 @@ class Node:
 
         # Notify predecessor to update its finger table
         self.predecessor.update_finger_table_leave(self)
-
-        # Remove node from the network
-        nodes_l.pop(self.node_id)
 
     def update_finger_table_leave(self, departed_node):
         visited_nodes = set()  # Keep track of visited nodes to avoid infinite loops
@@ -151,7 +148,13 @@ if __name__ == '__main__':
         item.print_finger_table()
         print()
 
-    chord_nodes[5].leave(chord_nodes)
+    k = 3
+    # Διαγράφει τον κόμβο με id = k 
+    for item in chord_nodes:
+        if item.node_id == k:
+            item.leave()
+            # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
+            chord_nodes.pop(item.node_id)
     
     print("Ring Status:")
     for item in chord_nodes:
