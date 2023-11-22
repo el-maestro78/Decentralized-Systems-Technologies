@@ -2,7 +2,7 @@ import csv
 import itertools
 
 # Καθορίζει το μέγεθος του finger table
-m = 3
+m = 2
 
 class Node:
     def __init__(self, node_id, data = None):
@@ -123,26 +123,26 @@ def create_education_dictionary(csv_file):
 
 # Συνάρτηση που δημιουργεί ένα node για κάθε key/value pair του dictionary 
 # και επιστρέφει μια λίστα με όλα τα αντικείμενα που δημιούργησε
-def create_chord_nodes(education_dict):
-    chord_nodes = []
+def create_network(education_dict):
+    network = []
     node_id = 0
 
     for key, value in education_dict.items():
         node_data = {'education': key, 'scientist': value}
         node = Node(node_id, node_data)
-        chord_nodes.append(node)
+        network.append(node)
         node_id += 1
 
-    return chord_nodes
+    return network
 
 # Συνάρτηση που δημιουργεί το δίκτυο με τα nodes
-def create_nodes_network(chord_nodes):
-    for node_num in range(0, len(chord_nodes)):
-        chord_nodes[node_num].join(chord_nodes[0])
+def create_nodes_network(network):
+    for node_num in range(0, len(network)):
+        network[node_num].join(network[0])
 
         
 if __name__ == '__main__':
-
+    
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
     CSV_PATH = './computer_scientists_data.csv'
 
@@ -150,51 +150,57 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    n = 8
+    n = 4
     education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
-    chord_nodes = create_chord_nodes(education_dictionary)
+    network = create_network(education_dictionary)
 
-    print(len(chord_nodes)) 
+    print(len(network)) 
 
     # Δημιουργεί το δίκτυο με τα nodes
-    create_nodes_network(chord_nodes)
+    create_nodes_network(network)
 
     print("Ring Status:")
-    for item in chord_nodes:
+    for item in network:
         item.print_node()
         item.print_finger_table()
         print()
 
     k = 3
     # Διαγράφει τον κόμβο με node_id = k 
-    for item in chord_nodes:
+    for item in network:
         if item.node_id == k:
             item.leave()
             # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
-            chord_nodes.remove(item)
+            network.remove(item)
 
     # Προσθέτει έναν κόμβο στο δίκτυο
     node1 = Node(34)
-    chord_nodes.append(node1)
-    node1.join(chord_nodes[0])
+    network.append(node1)
+    node1.join(network[0])
 
     # Προσθέτει έναν κόμβο στο δίκτυο
     node2 = Node(35)
-    chord_nodes.append(node2)
-    node2.join(chord_nodes[0])
+    network.append(node2)
+    node2.join(network[0])
+
+    print("Ring Status:")
+    for item in network:
+        item.print_node()
+        item.print_finger_table()
+        print()
 
     k = 34
     # Διαγράφει τον κόμβο με node_id = k 
-    for item in chord_nodes:
+    for item in network:
         if item.node_id == k:
             item.leave()
             # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
-            chord_nodes.remove(item)
+            network.remove(item)
 
     print("Ring Status:")
-    for item in chord_nodes:
+    for item in network:
         item.print_node()
         item.print_finger_table()
         print()
