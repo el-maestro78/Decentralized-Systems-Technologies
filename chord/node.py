@@ -1,4 +1,5 @@
 import csv
+import itertools
 
 class ChordNode:
     def __init__(self, node_id, data = None):
@@ -41,6 +42,12 @@ class ChordNode:
         for i in range(0, len(chord_nodes)-1):
             if i in self.finger_table:
                 print(f"  {i}: {self.finger_table[i].node_id}")
+    
+    def print(self):
+        print(f"Node {self.node_id}: Successor = {self.successor.node_id}, Predecessor = {self.predecessor.node_id}")
+        print(f"Education: {self.data['education']}")
+        print(f"Scientist: {self.data['scientist']}")
+        print()
 
 # Συνάρτηση που δημιουργεί ένα dictionary για κάθε εγγραφή στο csv 
 # και έχει ως key: education και ως value: surname, awards και επιστρέφει το dictionary
@@ -82,13 +89,9 @@ def create_chord_nodes(education_dict):
 
 # Συνάρτηση που δημιουργεί το δίκτυο με τα nodes
 def create_nodes_network(chord_nodes):
-    for node_num in range(0, len(chord_nodes)-1):
+    for node_num in range(0, len(chord_nodes)):
         chord_nodes[node_num].join(chord_nodes[0])
 
-# Συνάρτηση που τυπώνει για κάθε node το successor και predecessor του
-def print_ring_status(chord_nodes):
-    for node_num in range(0, len(chord_nodes)-1):
-        print(f"Node {chord_nodes[node_num].node_id}: Successor = {chord_nodes[node_num].successor.node_id}, Predecessor = {chord_nodes[node_num].predecessor.node_id}")
         
 if __name__ == '__main__':
 
@@ -98,22 +101,17 @@ if __name__ == '__main__':
     # Αποθηκεύει το dictionary με τους επιστήμονες σε μια μεταβλητή
     education_dictionary = create_education_dictionary(csv_file_path)
 
+    # Κρατάει μόνο τα 5 πρώτα στοιχεία του dictionary 
+    education_dictionary = dict(itertools.islice(education_dictionary.items(), 5))
+
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
     chord_nodes = create_chord_nodes(education_dictionary)
 
     print(len(chord_nodes))
 
-
-
-    
     # Δημιουργεί το δίκτυο με τα nodes
-    chord_nodes = chord_nodes[:10]
     create_nodes_network(chord_nodes)
-    
-    print("Ring Status:")
-    print_ring_status(chord_nodes)
-    print()
 
-    print(chord_nodes[3].node_id)
-    print(chord_nodes[3].data['education'])
-    print(chord_nodes[3].data['scientist'])
+    print("Ring Status:")
+    for item in chord_nodes:
+        item.print()
