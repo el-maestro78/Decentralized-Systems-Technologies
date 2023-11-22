@@ -1,8 +1,10 @@
 import csv
 import itertools
 
-class ChordNode:
-    def __init__(self, node_id, data = None, m = 5):
+m = 8
+
+class Node:
+    def __init__(self, node_id, data = None):
         self.node_id = node_id
         self.successor = None
         self.predecessor = None
@@ -16,7 +18,7 @@ class ChordNode:
             return self.successor
         else:
             # Find the node responsible for the key in the finger table
-            for i in range(len(chord_nodes)-1, 0, -1):
+            for i in range(m-1, 0, -1):
                 if i in self.finger_table:
                     if self.finger_table[i].node_id <= key:
                         return self.finger_table[i].find_successor(key)
@@ -27,23 +29,29 @@ class ChordNode:
         self.predecessor = self.successor.predecessor
         self.successor.predecessor = self
         self.predecessor.successor = self
-        self.update_finger_table(existing_node, 0)
+
+        # Initialize finger table of the joining node
+        for i in range(m):
+            self.update_finger_table(self, i)
 
     def update_finger_table(self, other, i):
-        if self.node_id == other.node_id:
-            return
-        if other.node_id in range(self.node_id + 1, self.finger_table[i].node_id):
+        # Calculate the start of the range for this finger table entry
+        start = (self.node_id + 2 ** i) % (2 ** m)
+        end = (start + 2 ** i) % (2 ** m)
+
+        # Check if the other node falls within the range (exclusive)
+        if start <= other.node_id < end:
             self.finger_table[i] = other
             p = self.predecessor
             p.update_finger_table(other, i)
 
+
     def print_finger_table(self):
         print(f"Finger table for Node {self.node_id}:")
-        for i in range(0, len(chord_nodes)-1):
-            if i in self.finger_table:
-                print(f"  {i}: {self.finger_table[i].node_id}")
+        for i in range(0, m):
+            print(f"  {i}: {self.finger_table[i].node_id}")
     
-    def print(self):
+    def print_node(self):
         print(f"Node {self.node_id}: Successor = {self.successor.node_id}, Predecessor = {self.predecessor.node_id}")
         print(f"Education: {self.data['education']}")
         print(f"Scientist/Awards: {self.data['scientist']}")
@@ -80,7 +88,7 @@ def create_chord_nodes(education_dict):
 
     for key, value in education_dict.items():
         node_data = {'education': key, 'scientist': value}
-        node = ChordNode(node_id, node_data)
+        node = Node(node_id, node_data)
         chord_nodes.append(node)
         node_id += 1
 
@@ -95,24 +103,25 @@ def create_nodes_network(chord_nodes):
 if __name__ == '__main__':
 
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
-    csv_file_path = './computer_scientists_data.csv'
+    CSV_PATH = './computer_scientists_data.csv'
 
     # Αποθηκεύει το dictionary με τους επιστήμονες σε μια μεταβλητή
-    education_dictionary = create_education_dictionary(csv_file_path)
+    education_dictionary = create_education_dictionary(CSV_PATH)
 
-    # Κρατάει μόνο τα 5 πρώτα στοιχεία του dictionary 
-    education_dictionary = dict(itertools.islice(education_dictionary.items(), 5))
+    # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
+    n = 8
+    education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
     chord_nodes = create_chord_nodes(education_dictionary)
 
-    print(len(chord_nodes))
+    print(len(chord_nodes)) 
 
     # Δημιουργεί το δίκτυο με τα nodes
     create_nodes_network(chord_nodes)
 
     print("Ring Status:")
     for item in chord_nodes:
-        item.print()
+        item.print_node()
         item.print_finger_table()
         print()
