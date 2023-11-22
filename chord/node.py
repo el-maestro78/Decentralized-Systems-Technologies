@@ -45,7 +45,6 @@ class ChordNode:
         for i in range(1, 482):
             if i in self.finger_table:
                 print(f"  {i}: {self.finger_table[i].node_id}")
-        print()
 
 # Συνάρτηση που δημιουργεί ένα dictionary για κάθε εγγραφή στο csv 
 # και έχει ως key: education και ως value: surname, awards και επιστρέφει το dictionary
@@ -90,25 +89,31 @@ def create_chord_nodes(education_dict):
 
 # Συνάρτηση που δημιουργεί το δίκτυο με τα ChordNodes
 def create_nodes_network(chord_nodes):
-    previousNode = chord_nodes[0]
-    for node in chord_nodes:
-        print(node.node_id)
-        node.join(previousNode)
-        previousNode = node
-    
+    for node_num in range(0, len(chord_nodes)-1):
+        chord_nodes[node_num].join(chord_nodes[0])
+
+def print_ring_status(chord_nodes):
+    for node_num in range(0, len(chord_nodes)-1):
+        print(f"Node {chord_nodes[node_num].node_id}: Successor = {chord_nodes[node_num].successor.node_id}, Predecessor = {chord_nodes[node_num].predecessor.node_id}")
+        
 if __name__ == '__main__':
 
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
     csv_file_path = './computer_scientists_data.csv'
+
     # Αποθηκεύει το dictionary με τους επιστήμονες σε μια μεταβλητή
     education_dictionary = create_education_dictionary(csv_file_path)
+
     # Αποθηκεύει τη λίστα με όλα τα ChordNodes αντικείμενα σε μια μεταβλητή
     chord_nodes = create_chord_nodes(education_dictionary)
-    print(chord_nodes)
+
     print(len(chord_nodes))
+
     # Δημιουργεί το δίκτυο με τα ChordNodes
+    chord_nodes = chord_nodes[:10]
     create_nodes_network(chord_nodes)
-
-
-
+    
+    print("Ring Status:")
+    print_ring_status(chord_nodes)
+    print()
 
