@@ -1,7 +1,7 @@
 import csv
 import itertools
 
-m = 8
+m = 4
 
 class Node:
     def __init__(self, node_id, data = None):
@@ -109,7 +109,7 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    n = 8
+    n = 12
     education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
