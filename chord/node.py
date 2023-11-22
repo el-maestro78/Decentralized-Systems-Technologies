@@ -1,16 +1,12 @@
-import hashlib
 import csv
 
 class ChordNode:
-    def __init__(self, node_id, data=None):
+    def __init__(self, node_id, data = None):
         self.node_id = node_id
         self.successor = None
         self.predecessor = None
         self.finger_table = {}
         self.data = data
-
-    def create_key(self, data):
-        return data
 
     def find_successor(self, key):
         if self.node_id == key:
@@ -19,7 +15,7 @@ class ChordNode:
             return self.successor
         else:
             # Find the node responsible for the key in the finger table
-            for i in range(482, 0, -1):
+            for i in range(len(chord_nodes)-1, 0, -1):
                 if i in self.finger_table:
                     if self.finger_table[i].node_id <= key:
                         return self.finger_table[i].find_successor(key)
@@ -42,7 +38,7 @@ class ChordNode:
 
     def print_finger_table(self):
         print(f"Finger table for Node {self.node_id}:")
-        for i in range(1, 482):
+        for i in range(0, len(chord_nodes)-1):
             if i in self.finger_table:
                 print(f"  {i}: {self.finger_table[i].node_id}")
 
@@ -70,28 +66,26 @@ def create_education_dictionary(csv_file):
 
     return education_dict
 
-# Συνάρτηση που δημιουργεί ένα ChordNode αντικείμενο για κάθε key/value pair του dictionary 
+# Συνάρτηση που δημιουργεί ένα node για κάθε key/value pair του dictionary 
 # και επιστρέφει μια λίστα με όλα τα αντικείμενα που δημιούργησε
 def create_chord_nodes(education_dict):
     chord_nodes = []
+    node_id = 0
 
-    for education, values in education_dict.items():
-        # Συνένωση awards και surname ως το value του dictionary
-        value = ''.join([f"{surname}, {awards} " for surname, awards in values])
-        # Δημιουργεί ένα κενό ChordNode αντικείμενο και καλεί τη create_key σε αυτό
-        node = ChordNode(None)
-        node_id = node.create_key(education)
-        node.node_id = node_id
-        node.data = value
+    for key, value in education_dict.items():
+        node_data = {'education': key, 'scientist': value}
+        node = ChordNode(node_id, node_data)
         chord_nodes.append(node)
+        node_id += 1
 
     return chord_nodes
 
-# Συνάρτηση που δημιουργεί το δίκτυο με τα ChordNodes
+# Συνάρτηση που δημιουργεί το δίκτυο με τα nodes
 def create_nodes_network(chord_nodes):
     for node_num in range(0, len(chord_nodes)-1):
         chord_nodes[node_num].join(chord_nodes[0])
 
+# Συνάρτηση που τυπώνει για κάθε node το successor και predecessor του
 def print_ring_status(chord_nodes):
     for node_num in range(0, len(chord_nodes)-1):
         print(f"Node {chord_nodes[node_num].node_id}: Successor = {chord_nodes[node_num].successor.node_id}, Predecessor = {chord_nodes[node_num].predecessor.node_id}")
@@ -104,12 +98,15 @@ if __name__ == '__main__':
     # Αποθηκεύει το dictionary με τους επιστήμονες σε μια μεταβλητή
     education_dictionary = create_education_dictionary(csv_file_path)
 
-    # Αποθηκεύει τη λίστα με όλα τα ChordNodes αντικείμενα σε μια μεταβλητή
+    # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
     chord_nodes = create_chord_nodes(education_dictionary)
 
     print(len(chord_nodes))
 
-    # Δημιουργεί το δίκτυο με τα ChordNodes
+
+
+    
+    # Δημιουργεί το δίκτυο με τα nodes
     chord_nodes = chord_nodes[:10]
     create_nodes_network(chord_nodes)
     
@@ -117,3 +114,6 @@ if __name__ == '__main__':
     print_ring_status(chord_nodes)
     print()
 
+    print(chord_nodes[3].node_id)
+    print(chord_nodes[3].data['education'])
+    print(chord_nodes[3].data['scientist'])
