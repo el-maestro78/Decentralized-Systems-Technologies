@@ -156,6 +156,13 @@ def insert_node_to_network(network, node):
     network.append(node)
     node.join(network[0])
 
+# Συνάρτηση που τυπώνει πληροφορίες για τους κόμβους του δικτύου
+def print_ring_status(network):
+    print("Ring Status:")
+    for item in network:
+        item.print_node()
+        item.print_finger_table()
+        print()
 if __name__ == '__main__':
     
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
@@ -176,26 +183,18 @@ if __name__ == '__main__':
     # Δημιουργεί το δίκτυο με τα nodes
     create_network(network)
 
-    print("Ring Status:")
-    for item in network:
-        item.print_node()
-        item.print_finger_table()
-        print()
+    # Τυπώνει την κατάσταση του ring
+    print_ring_status(network)
 
-    k = 3
     # Διαγράφει τον κόμβο με node_id = k 
+    k = 3
     remove_node_from_network(network, k)
 
     # Προσθέτει έναν κόμβο στο δίκτυο
     node1 = Node(34)
     insert_node_to_network(network, node1)
 
-    # Προσθέτει έναν κόμβο στο δίκτυο
     node2 = Node(35)
     insert_node_to_network(network, node2)
 
-    print("Ring Status:")
-    for item in network:
-        item.print_node()
-        item.print_finger_table()
-        print()
+    print_ring_status(network)
