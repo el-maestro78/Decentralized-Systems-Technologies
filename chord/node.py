@@ -45,6 +45,31 @@ class Node:
             p = self.predecessor
             p.update_finger_table(other, i)
 
+    def leave(self, nodes_l):
+        # Update the predecessor's successor pointer
+        self.predecessor.successor = self.successor
+        # Update the successor's predecessor pointer
+        self.successor.predecessor = self.predecessor
+
+        # Notify predecessor to update its finger table
+        self.predecessor.update_finger_table_leave(self)
+
+        # Remove node from the network
+        nodes_l.pop(self.node_id)
+
+    def update_finger_table_leave(self, departed_node):
+        visited_nodes = set()  # Keep track of visited nodes to avoid infinite loops
+
+        current_node = self.predecessor
+        while current_node != self and current_node not in visited_nodes:
+            visited_nodes.add(current_node)
+            
+            for i in range(len(current_node.finger_table)):
+                if departed_node.node_id == current_node.finger_table[i].node_id:
+                    # If the departing node is in the finger table, update it to the successor
+                    current_node.finger_table[i] = departed_node.successor
+
+            current_node = current_node.predecessor
 
     def print_finger_table(self):
         print(f"Finger table for Node {self.node_id}:")
@@ -125,3 +150,12 @@ if __name__ == '__main__':
         item.print_node()
         item.print_finger_table()
         print()
+
+    chord_nodes[5].leave(chord_nodes)
+    
+    print("Ring Status:")
+    for item in chord_nodes:
+        item.print_node()
+        item.print_finger_table()
+        print()
+    
