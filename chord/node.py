@@ -1,7 +1,8 @@
 import csv
 import itertools
 
-m = 4
+# Καθορίζει το μέγεθος του finger table
+m = 3
 
 class Node:
     def __init__(self, node_id, data = None):
@@ -75,8 +76,9 @@ class Node:
     
     def print_node(self):
         print(f"Node {self.node_id}: Successor = {self.successor.node_id}, Predecessor = {self.predecessor.node_id}")
-        print(f"Education: {self.data['education']}")
-        print(f"Scientist/Awards: {self.data['scientist']}")
+        if self.data != None :
+            print(f"Education: {self.data['education']}")
+            print(f"Scientist/Awards: {self.data['scientist']}")
 
 # Συνάρτηση που δημιουργεί ένα dictionary για κάθε εγγραφή στο csv 
 # και έχει ως key: education και ως value: surname, awards και επιστρέφει το dictionary
@@ -131,7 +133,7 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    n = 12
+    n = 8
     education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
@@ -149,16 +151,39 @@ if __name__ == '__main__':
         print()
 
     k = 3
-    # Διαγράφει τον κόμβο με id = k 
+    # Διαγράφει τον κόμβο με node_id = k 
     for item in chord_nodes:
         if item.node_id == k:
             item.leave()
             # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
-            chord_nodes.pop(item.node_id)
+            chord_nodes.remove(item)
     
     print("Ring Status:")
     for item in chord_nodes:
         item.print_node()
         item.print_finger_table()
         print()
-    
+
+    # Προσθέτει έναν κόμβο στο δίκτυο
+    node1 = Node(34)
+    chord_nodes.append(node1)
+    node1.join(chord_nodes[0])
+
+    # Προσθέτει έναν κόμβο στο δίκτυο
+    node2 = Node(35)
+    chord_nodes.append(node2)
+    node2.join(chord_nodes[0])
+
+    k = 34
+    # Διαγράφει τον κόμβο με node_id = k 
+    for item in chord_nodes:
+        if item.node_id == k:
+            item.leave()
+            # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
+            chord_nodes.remove(item)
+
+    print("Ring Status:")
+    for item in chord_nodes:
+        item.print_node()
+        item.print_finger_table()
+        print()
