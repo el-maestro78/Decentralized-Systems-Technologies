@@ -80,6 +80,23 @@ class Node:
             print(f"Education: {self.data['education']}")
             print(f"Scientist/Awards: {self.data['scientist']}")
 
+class Network:
+
+    def __init__(self):
+        self.nodes = []
+
+    def insert_node(self, node):
+        self.append(node)
+        node.join(self[0])
+    
+    def remove_node(self, k):
+        # Διαγράφει τον κόμβο με node_id = k 
+        for item in self:
+            if item.node_id == k:
+                item.leave()
+                # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
+                self.remove(item)
+        
 # Συνάρτηση που δημιουργεί ένα dictionary για κάθε εγγραφή στο csv 
 # και έχει ως key: education και ως value: surname, awards και επιστρέφει το dictionary
 def create_education_dictionary(csv_file):
@@ -157,12 +174,6 @@ if __name__ == '__main__':
             item.leave()
             # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
             chord_nodes.remove(item)
-    
-    print("Ring Status:")
-    for item in chord_nodes:
-        item.print_node()
-        item.print_finger_table()
-        print()
 
     # Προσθέτει έναν κόμβο στο δίκτυο
     node1 = Node(34)
