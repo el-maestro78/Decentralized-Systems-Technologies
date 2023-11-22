@@ -47,7 +47,6 @@ class ChordNode:
         print(f"Node {self.node_id}: Successor = {self.successor.node_id}, Predecessor = {self.predecessor.node_id}")
         print(f"Education: {self.data['education']}")
         print(f"Scientist: {self.data['scientist']}")
-        print()
 
 # Συνάρτηση που δημιουργεί ένα dictionary για κάθε εγγραφή στο csv 
 # και έχει ως key: education και ως value: surname, awards και επιστρέφει το dictionary
@@ -115,3 +114,5 @@ if __name__ == '__main__':
     print("Ring Status:")
     for item in chord_nodes:
         item.print()
+        item.print_finger_table()
+        print()
