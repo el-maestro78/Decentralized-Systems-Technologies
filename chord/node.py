@@ -123,7 +123,7 @@ def create_education_dictionary(csv_file):
 
 # Συνάρτηση που δημιουργεί ένα node για κάθε key/value pair του dictionary 
 # και επιστρέφει μια λίστα με όλα τα αντικείμενα που δημιούργησε
-def create_network(education_dict):
+def create_nodes(education_dict):
     network = []
     node_id = 0
 
@@ -136,7 +136,7 @@ def create_network(education_dict):
     return network
 
 # Συνάρτηση που δημιουργεί το δίκτυο με τα nodes
-def create_nodes_network(network):
+def create_network(network):
     for node_num in range(0, len(network)):
         network[node_num].join(network[0])
 
@@ -154,12 +154,12 @@ if __name__ == '__main__':
     education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
-    network = create_network(education_dictionary)
+    network = create_nodes(education_dictionary)
 
     print(len(network)) 
 
     # Δημιουργεί το δίκτυο με τα nodes
-    create_nodes_network(network)
+    create_network(network)
 
     print("Ring Status:")
     for item in network:
