@@ -2,11 +2,11 @@ import csv
 import itertools
 
 class ChordNode:
-    def __init__(self, node_id, data = None):
+    def __init__(self, node_id, data = None, m = 5):
         self.node_id = node_id
         self.successor = None
         self.predecessor = None
-        self.finger_table = {}
+        self.finger_table = [self]*m
         self.data = data
 
     def find_successor(self, key):
@@ -27,12 +27,12 @@ class ChordNode:
         self.predecessor = self.successor.predecessor
         self.successor.predecessor = self
         self.predecessor.successor = self
+        self.update_finger_table(existing_node, 0)
 
     def update_finger_table(self, other, i):
         if self.node_id == other.node_id:
             return
-        if other.node_id in range(self.node_id, self.finger_table[i].node_id) or \
-                other.node_id == self.finger_table[i].node_id:
+        if other.node_id in range(self.node_id + 1, self.finger_table[i].node_id):
             self.finger_table[i] = other
             p = self.predecessor
             p.update_finger_table(other, i)
@@ -46,7 +46,7 @@ class ChordNode:
     def print(self):
         print(f"Node {self.node_id}: Successor = {self.successor.node_id}, Predecessor = {self.predecessor.node_id}")
         print(f"Education: {self.data['education']}")
-        print(f"Scientist: {self.data['scientist']}")
+        print(f"Scientist/Awards: {self.data['scientist']}")
 
 # Συνάρτηση που δημιουργεί ένα dictionary για κάθε εγγραφή στο csv 
 # και έχει ως key: education και ως value: surname, awards και επιστρέφει το dictionary
