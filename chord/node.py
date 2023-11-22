@@ -2,8 +2,9 @@ import csv
 import itertools
 
 # Καθορίζει το μέγεθος του finger table
-m = 2
+m = 3
 
+# Η κλάση που ορίζει τους κόμβους
 class Node:
     def __init__(self, node_id, data = None):
         self.node_id = node_id
@@ -80,6 +81,7 @@ class Node:
             print(f"Education: {self.data['education']}")
             print(f"Scientist/Awards: {self.data['scientist']}")
 
+# under construction class, might delete later
 class Network:
 
     def __init__(self):
@@ -140,7 +142,20 @@ def create_network(network):
     for node_num in range(0, len(network)):
         network[node_num].join(network[0])
 
-        
+# Συνάρτηση που χειρίζεται την αφαίρεση κόμβων από το δίκτυο
+def remove_node_from_network(network, k):
+    # Διαγράφει τον κόμβο με node_id = k 
+        for item in network:
+            if item.node_id == k:
+                item.leave()
+                # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
+                network.remove(item)
+
+# Συνάρτηση που χειρίζεται την προσθήκη κόμβων στο δίκτυο
+def insert_node_to_network(network, node):
+    network.append(node)
+    node.join(network[0])
+
 if __name__ == '__main__':
     
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
@@ -150,7 +165,7 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    n = 4
+    n = 5
     education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
@@ -169,35 +184,15 @@ if __name__ == '__main__':
 
     k = 3
     # Διαγράφει τον κόμβο με node_id = k 
-    for item in network:
-        if item.node_id == k:
-            item.leave()
-            # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
-            network.remove(item)
+    remove_node_from_network(network, k)
 
     # Προσθέτει έναν κόμβο στο δίκτυο
     node1 = Node(34)
-    network.append(node1)
-    node1.join(network[0])
+    insert_node_to_network(network, node1)
 
     # Προσθέτει έναν κόμβο στο δίκτυο
     node2 = Node(35)
-    network.append(node2)
-    node2.join(network[0])
-
-    print("Ring Status:")
-    for item in network:
-        item.print_node()
-        item.print_finger_table()
-        print()
-
-    k = 34
-    # Διαγράφει τον κόμβο με node_id = k 
-    for item in network:
-        if item.node_id == k:
-            item.leave()
-            # Αφαιρεί τον κόμβο από τη λίστα με τους κόμβους του δικτύου
-            network.remove(item)
+    insert_node_to_network(network, node2)
 
     print("Ring Status:")
     for item in network:
