@@ -137,7 +137,7 @@ def create_nodes(education_dict):
 
     return network
 
-# Συνάρτηση που δημιουργεί το δίκτυο με τα nodes
+# Συνάρτηση που δημιουργεί το δίκτυο με τα nodes, παίρνοντας ως όρισμα μια λίστα από nodes
 def create_network(network):
     for node_num in range(0, len(network)):
         network[node_num].join(network[0])
@@ -163,6 +163,7 @@ def print_ring_status(network):
         item.print_node()
         item.print_finger_table()
         print()
+
 if __name__ == '__main__':
     
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
