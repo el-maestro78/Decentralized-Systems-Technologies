@@ -31,8 +31,10 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    education_dictionary = dict(itertools.islice(education_dictionary.items(), 100))
+    n = 25
+    education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
-    print(education_dictionary)
-    for key in education_dictionary.keys():
-        print(key)
+    for key, value in education_dictionary.items():
+        print(f"Education: {key}")
+        print(f"Scientists/Awards: {value}")
+        print()
