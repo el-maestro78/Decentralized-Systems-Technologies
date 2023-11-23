@@ -7,7 +7,7 @@ def create_education_dictionary(csv_file):
     with open(csv_file, 'r', encoding="utf-8") as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
-            education_str = row['Education'].strip('[]').replace("'", "").replace("\"", "")  # Remove brackets and quotes
+            education_str = row['Education'].split(',')[0].strip('[]').replace("'", "").replace("\"", "")  # Keeps only the first university if education has more than one and removes brackets and excess quotes
             surname = row['Surname']
             awards = row['#Awards']
 
@@ -31,7 +31,8 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    education_dictionary = dict(itertools.islice(education_dictionary.items(), 20))
+    education_dictionary = dict(itertools.islice(education_dictionary.items(), 100))
 
+    print(education_dictionary)
     for key in education_dictionary.keys():
         print(key)
