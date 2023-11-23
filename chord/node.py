@@ -2,7 +2,7 @@ import csv
 import itertools
 
 # Καθορίζει το μέγεθος του finger table
-m = 6
+m = 4
 
 # Η κλάση που ορίζει τους κόμβους
 class Node:
@@ -81,7 +81,7 @@ class Node:
             print(f"Education: {self.data['education']}")
             print(f"Scientist/Awards: {self.data['scientist']}")
 
-    def get_data_local_awards(self, threshold, education):
+    def search_node_data(self, threshold, education):
         results = []
         for key, value in self.data['scientist']:
             if (int(value) >= threshold) & (education in self.data['education']):
@@ -180,7 +180,7 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    n = 2 * m
+    n = 2 ** m
     education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
@@ -195,10 +195,10 @@ if __name__ == '__main__':
     print_ring_status(network)
 
     # Ψάχνει για επιστήμονες με βραβεία >= threshold και εκπαίδευση σε συγκεκριμένο πανεπιστήμιο, σε κάθε κόμβο
-    threshold = 4
-    education = 'Indian Institute of Technology Kanpur'
+    threshold = 2
+    education = 'Cornell University'
     for node in network:
-        results = node.get_data_local_awards(threshold, education)
+        results = node.search_node_data(threshold, education)
         print(f"Node {node.node_id}: {results}")
     '''
     # Διαγράφει τον κόμβο με node_id = k 
