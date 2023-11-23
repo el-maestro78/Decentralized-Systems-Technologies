@@ -34,8 +34,8 @@ class Node:
 
         # Initialize finger table of the joining node
         for i in range(m):
-            self.update_finger_table(self, i)
-
+            self.update_finger_table(existing_node, i)
+    
     def update_finger_table(self, other, i):
         # Calculate the start of the range for this finger table entry
         start = (self.node_id + 2 ** i) % (2 ** m)
@@ -87,7 +87,7 @@ class Node:
             if (education in self.data['education']) & (int(value) >= threshold):
                 results.append(key)
         return results
-
+    
 # under construction class, might delete later
 class Network:
 
@@ -133,16 +133,16 @@ def create_education_dictionary(csv_file):
 # Συνάρτηση που δημιουργεί ένα node για κάθε key/value pair του dictionary 
 # και επιστρέφει μια λίστα με όλα τα αντικείμενα που δημιούργησε
 def create_nodes(education_dict):
-    network = []
+    node_list = []
     node_id = 0
 
     for key, value in education_dict.items():
         node_data = {'education': key, 'scientist': value}
         node = Node(node_id, node_data)
-        network.append(node)
+        node_list.append(node)
         node_id += 1
 
-    return network
+    return node_list
 
 # Συνάρτηση που δημιουργεί το δίκτυο με τα nodes, παίρνοντας ως όρισμα μια λίστα από nodes
 def create_network(network):
@@ -163,15 +163,16 @@ def insert_node_to_network(network, node):
     network.append(node)
     node.join(network[0])
 
-# Συνάρτηση που τυπώνει πληροφορίες για τους κόμβους του δικτύου
+# Συνάρτηση που τυπώνει πληροφορίες για τους κόμβους του δακτύλιου
 def print_ring_status(network):
-    print("Κατάσταση δικτύου:")
+    print("Κατάσταση δακτύλιου:")
     for item in network:
         item.print_node()
         item.print_finger_table()
         print()
 
-# Συνάρτηση που κάνει local range query για κάθε κόμβο
+# Συνάρτηση που ψάχνει τοπικά σε κάθε κόμβο ή local range query
+# πολυπλοκότητα Ο(n) όπου n: αριθμός κόμβων
 def local_range_query(network, threshold, education):
     print(f"Επιστήμονες που σπούδασαν στο {education} και πήραν >= {threshold} βραβεία:")
     for node in network:
@@ -198,23 +199,19 @@ if __name__ == '__main__':
     # Δημιουργεί το δίκτυο με τα nodes
     create_network(network)
 
-    # Τυπώνει την κατάσταση του ring
+    # Τυπώνει την κατάσταση του δακτύλιου
     print_ring_status(network)
-
-    # Ψάχνει για επιστήμονες με βραβεία >= threshold και εκπαίδευση σε συγκεκριμένο πανεπιστήμιο, σε κάθε κόμβο
-    local_range_query(network, 4, 'Harvard University')
-
     '''
     # Διαγράφει τον κόμβο με node_id = k 
     k = 3
     remove_node_from_network(network, k)
     
     # Προσθέτει έναν κόμβο στο δίκτυο
-    node1 = Node(34)
+    data = {'education': "['GTXM']", 'scientist': [('Papadopoulos', '69')]}
+    node1 = Node(666, data)
     insert_node_to_network(network, node1)
-
-    node2 = Node(35)
-    insert_node_to_network(network, node2)
     
     print_ring_status(network)
     '''
+    # Ψάχνει για επιστήμονες με βραβεία >= threshold και εκπαίδευση σε συγκεκριμένο πανεπιστήμιο, σε κάθε κόμβο
+    local_range_query(network, 2, 'Harvard University')    
