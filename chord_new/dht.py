@@ -64,7 +64,7 @@ class DHT:
     def lookup(self, start, key):
         nodeForKey = self.findNode(start, key)
         if key in nodeForKey.data:
-            print(f"The key {key} is in node {nodeForKey.ID}")
+            print(f"The key {key} is in node {nodeForKey.ID}.")
             return nodeForKey.data[key]
         return None
 
@@ -81,7 +81,7 @@ class DHT:
     def join(self, newNode):
         origNode = self.findNode(self._startNode, newNode.ID)
         if origNode.ID == newNode.ID:
-            print("There is already a node with the same id!")
+            # print("There is already a node with the same id!")
             return
 
         for key in origNode.data:
@@ -122,7 +122,7 @@ class DHT:
 
     def printFingerTables(self):
         current_node = self._startNode
-
+        print("================FINGER TABLE================")
         while True:
             finger_table_ids = [node.ID for node in current_node.fingerTable]
             print(f"Finger Table for Node {current_node.ID}: {finger_table_ids}")

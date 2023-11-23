@@ -20,11 +20,12 @@ d.updateAllFingerTables()
 d.printFingerTables()
 
 # Print the stored data for each node
+print("===================DATA===================")
 for node in [d._startNode] + nodes:
     print(f"Data stored at Node {node.ID}: {node.data}")
 
 # Remove the third node from the network
-print(f"Removing node {nodes[2].ID}")
+print(f"Removing node {nodes[2].ID}.")
 d.leave(nodes[2])
 nodes.pop(2)
 
@@ -41,18 +42,19 @@ for key, values in data_to_store.items():
         d.store(chosen_node, key, value)
 
 # Print the stored data for each node
+print("===================DATA===================")
 for node in [d._startNode] + nodes:
     print(f"Data stored at Node {node.ID}: {node.data}")
 
 # Lookup specific keys in all nodes
 key_to_lookup = 'University of Patras'
-awards_threshold = 2
+awards_threshold = 3
 
 for node in [d._startNode] + nodes:
     values = d.lookup(node, key_to_lookup)
     if values is not None:
         for value in values:
-            if value[1] > awards_threshold:
+            if value[1] >= awards_threshold:
                 print(f"{value[0]} studied at {key} and has earned {value[1]} awards.")
         break
 else:
