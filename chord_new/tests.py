@@ -18,9 +18,10 @@ for node in nodes:
         node.ID = randint(0, 128)
     existing_ids.add(node.ID)
     d.join(node)
+    # Update finger tables after a node joins
+    d.updateAllFingerTables()
 
-# Update finger tables after all nodes have joined
-d.updateAllFingerTables()
+
 d.printFingerTables()
 
 '''
