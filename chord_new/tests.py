@@ -35,12 +35,15 @@ d.updateAllFingerTables()
 d.printFingerTables()
 '''
 # Store data in the DHT with string keys and multiple values
-data_to_store = {'University of Patras': [('Alexiou', 3), ('Tsichlas', 2)],
-                 'Harvard University': [('Vergos', 1)]}
+data_to_store = {'University of Patras': [('Alexiou', 3), ('Tsichlas', 2)], 'Harvard University': [('Vergos', 1)]}
 for key, values in data_to_store.items():
-    chosen_node = nodes[randint(0, u-1)]
-    for value in values:
-        d.store(chosen_node, key, value)
+    chosen_node = nodes[randint(0, u - 1)]
+
+    while len(chosen_node.data) != 0:
+        chosen_node = nodes[randint(0, u - 1)]
+
+    # At this point, chosen_node is a node without a key-value pair
+    chosen_node.data = {key: values}
 
 # Print the stored data for each node
 print("===================DATA===================")
