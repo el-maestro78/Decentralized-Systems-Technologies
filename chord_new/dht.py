@@ -3,7 +3,7 @@
 class Node:
     def __init__(self, ID, nxt=None, prev=None):
         self.ID = ID
-        self.data = dict()
+        self.data = dict()  # Use a dictionary to store keys and lists of values
         self.prev = prev
         self.fingerTable = [nxt]
 
@@ -12,17 +12,16 @@ class Node:
         for i in range(1, k):
             self.fingerTable.append(dht.findNode(dht._startNode, self.ID + 2 ** i))
 
-        
+
 class DHT:
     def __init__(self, k):
         self._k = k
-        self._size = 2 ** k    
+        self._size = 2 ** k
         self._startNode = Node(0, k)
         self._startNode.fingerTable[0] = self._startNode
         self._startNode.prev = self._startNode
         self._startNode.updateFingerTable(self, k)
 
-    # Updated hash function for string keys
     def getHashId(self, key):
         return hash(key) % self._size
 
@@ -34,7 +33,7 @@ class DHT:
         return self._size - n1 + n2
 
     def getNumNodes(self):
-        if self._startNode == None:
+        if self._startNode is None:
             return 0
         node = self._startNode
         n = 1
@@ -42,7 +41,7 @@ class DHT:
             n = n + 1
             node = node.fingerTable[0]
         return n
-    
+
     def findNode(self, start, key):
         hashId = self.getHashId(key)
         curr = start
@@ -71,36 +70,41 @@ class DHT:
 
     def store(self, start, key, value):
         nodeForKey = self.findNode(start, key)
-        nodeForKey.data[key] = value
+        
+        if key not in nodeForKey.data:
+            # If the key is not present, create a new list for the key
+            nodeForKey.data[key] = [value]
+        else:
+            # If the key is already present, append the value to the existing list
+            nodeForKey.data[key].append(value)
 
     def join(self, newNode):
         origNode = self.findNode(self._startNode, newNode.ID)
         if origNode.ID == newNode.ID:
             print("There is already a node with the same id!")
             return
-        
+
         for key in origNode.data:
             hashId = self.getHashId(key)
             if self.distance(hashId, newNode.ID) < self.distance(hashId, origNode.ID):
-                newNode.data[key] = origNode.data[key]
+                newNode.data.setdefault(key, []).extend(origNode.data[key])
 
         prevNode = origNode.prev
         newNode.fingerTable[0] = origNode
         newNode.prev = prevNode
         origNode.prev = newNode
         prevNode.fingerTable[0] = newNode
-    
+
         newNode.updateFingerTable(self, self._k)
 
         for key in list(origNode.data.keys()):
             hashId = self.getHashId(key)
             if self.distance(hashId, newNode.ID) < self.distance(hashId, origNode.ID):
                 del origNode.data[key]
-                
-    
+
     def leave(self, node):
-        for k, v in node.data.items():
-            node.fingerTable[0].data[k] = v
+        for k, v_list in node.data.items():
+            node.fingerTable[0].data.setdefault(k, []).extend(v_list)
         if node.fingerTable[0] == node:
             self._startNode = None
         else:
@@ -108,7 +112,7 @@ class DHT:
             node.fingerTable[0] = prev = node.prev
             if self._startNode == node:
                 self._startNode = node.fingerTable[0]
-    
+
     def updateAllFingerTables(self):
         self._startNode.updateFingerTable(self, self._k)
         curr = self._startNode.fingerTable[0]
