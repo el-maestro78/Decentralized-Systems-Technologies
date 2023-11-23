@@ -2,7 +2,7 @@ import csv
 import itertools
 
 # Καθορίζει το μέγεθος του finger table
-m = 4
+m = 9
 
 # Η κλάση που ορίζει τους κόμβους
 class Node:
@@ -84,7 +84,7 @@ class Node:
     def search_node_data(self, threshold, education):
         results = []
         for key, value in self.data['scientist']:
-            if (int(value) >= threshold) & (education in self.data['education']):
+            if (education in self.data['education']) & (int(value) >= threshold):
                 results.append(key)
         return results
 
@@ -171,6 +171,12 @@ def print_ring_status(network):
         item.print_finger_table()
         print()
 
+# Συνάρτηση που κάνει local range query για κάθε κόμβο
+def local_range_query(network, threshold, education):
+    for node in network:
+        results = node.search_node_data(threshold, education)
+        print(f"Node {node.node_id}: {results}")
+    
 if __name__ == '__main__':
     
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
@@ -195,11 +201,8 @@ if __name__ == '__main__':
     print_ring_status(network)
 
     # Ψάχνει για επιστήμονες με βραβεία >= threshold και εκπαίδευση σε συγκεκριμένο πανεπιστήμιο, σε κάθε κόμβο
-    threshold = 2
-    education = 'Cornell University'
-    for node in network:
-        results = node.search_node_data(threshold, education)
-        print(f"Node {node.node_id}: {results}")
+    local_range_query(network, 4, 'Harvard University')
+    
     '''
     # Διαγράφει τον κόμβο με node_id = k 
     k = 3
