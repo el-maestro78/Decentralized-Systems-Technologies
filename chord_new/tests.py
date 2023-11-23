@@ -6,9 +6,13 @@ d = DHT(4)
 
 # Add three nodes to the DHT
 d.join(d._startNode)
+# Generate unique random IDs for nodes
+existing_ids = {d._startNode.ID}
 nodes = [Node(randint(0, 128)) for _ in range(12)]
-
 for node in nodes:
+    while node.ID in existing_ids:
+        node.ID = randint(0, 128)
+    existing_ids.add(node.ID)
     d.join(node)
 
 # Update finger tables after all nodes have joined
@@ -52,4 +56,4 @@ for node in [d._startNode] + nodes:
                 print(f"{value[0]} studied at {key} and has earned {value[1]} awards.")
         break
 else:
-    print(f"The key {key} is not present in any node.")
+    print(f"The key {key_to_lookup} is not present in any node.")
