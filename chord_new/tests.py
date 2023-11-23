@@ -2,13 +2,17 @@ from dht import DHT, Node
 from random import randint
 
 # Create a DHT with k=4
-d = DHT(4)
+d = DHT(3)
 
-# Add three nodes to the DHT
+# Number of nodes to add 
+u = 6
+
+# Add u nodes to the DHT
 d.join(d._startNode)
+
 # Generate unique random IDs for nodes
 existing_ids = {d._startNode.ID}
-nodes = [Node(randint(0, 128)) for _ in range(12)]
+nodes = [Node(randint(0, 128)) for _ in range(u)]
 for node in nodes:
     while node.ID in existing_ids:
         node.ID = randint(0, 128)
@@ -19,10 +23,6 @@ for node in nodes:
 d.updateAllFingerTables()
 d.printFingerTables()
 
-# Print the stored data for each node
-print("===================DATA===================")
-for node in [d._startNode] + nodes:
-    print(f"Data stored at Node {node.ID}: {node.data}")
 '''
 # Remove the third node from the network
 print("===============REMOVING NODE===============")
@@ -38,7 +38,7 @@ d.printFingerTables()
 data_to_store = {'University of Patras': [('Alexiou', 3), ('Tsichlas', 2)],
                  'Harvard University': [('Vergos', 1)]}
 for key, values in data_to_store.items():
-    chosen_node = nodes[randint(3, 7)]
+    chosen_node = nodes[randint(0, u-1)]
     for value in values:
         d.store(chosen_node, key, value)
 
@@ -48,11 +48,11 @@ for node in [d._startNode] + nodes:
     print(f"Data stored at Node {node.ID}: {node.data}")
 
 # Lookup specific keys in all nodes
+print("==================LOOKUP==================")
 key_to_lookup = 'University of Patras'
 awards_threshold = 3
 
 for node in [d._startNode] + nodes:
-    print(f"Current node: {node.ID}")
     values = d.lookup(node, key_to_lookup)
     if values is not None:
         for value in values:
