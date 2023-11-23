@@ -69,14 +69,14 @@ class DHT:
             return nodeForKey.data[key]
         return None
 
-    def store(self, start, key, value):
+    def store(self, start, key, values):
         nodeForKey = self.findNode(start, key)
-        
-        if key not in nodeForKey.data:
-            # If the key is not present, create a new list for the key
-            nodeForKey.data[key] = [value]
-        else:
-            # If the key is already present, append the value to the existing list
+
+        # Clear existing values for the key
+        nodeForKey.data[key] = []
+
+        # Append each tuple in the list as a separate key-value pair
+        for value in values:
             nodeForKey.data[key].append(value)
 
     def join(self, newNode):
