@@ -63,6 +63,7 @@ class DHT:
 
     def lookup(self, start, key):
         nodeForKey = self.findNode(start, key)
+        print(f"Looking for key in node: {nodeForKey.ID}")
         if key in nodeForKey.data:
             print(f"The key {key} is in node {nodeForKey.ID}.")
             return nodeForKey.data[key]
@@ -122,7 +123,7 @@ class DHT:
 
     def printFingerTables(self):
         current_node = self._startNode
-        print("================FINGER TABLE================")
+        print("================FINGER TABLE===============")
         while True:
             finger_table_ids = [node.ID for node in current_node.fingerTable]
             print(f"Finger Table for Node {current_node.ID}: {finger_table_ids}")
