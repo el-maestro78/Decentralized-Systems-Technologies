@@ -2,7 +2,7 @@ import csv
 import itertools
 
 # Καθορίζει το μέγεθος του finger table
-m = 9
+m = 6
 
 # Η κλάση που ορίζει τους κόμβους
 class Node:
@@ -71,15 +71,15 @@ class Node:
             current_node = current_node.predecessor
 
     def print_finger_table(self):
-        print(f"Finger table for Node {self.node_id}:")
+        print(f"Finger table για τον κόμβο {self.node_id}:")
         for i in range(0, m):
             print(f"  {i}: {self.finger_table[i].node_id}")
     
     def print_node(self):
-        print(f"Node {self.node_id}: Successor = {self.successor.node_id}, Predecessor = {self.predecessor.node_id}")
+        print(f"Κόμβος {self.node_id}: Διάδοχος = {self.successor.node_id}, Προηγούμενος = {self.predecessor.node_id}")
         if self.data != None :
-            print(f"Education: {self.data['education']}")
-            print(f"Scientist/Awards: {self.data['scientist']}")
+            print(f"Εκπαίδευση: {self.data['education']}")
+            print(f"Επιστήμονες/#Βραβεία: {self.data['scientist']}")
 
     def search_node_data(self, threshold, education):
         results = []
@@ -165,7 +165,7 @@ def insert_node_to_network(network, node):
 
 # Συνάρτηση που τυπώνει πληροφορίες για τους κόμβους του δικτύου
 def print_ring_status(network):
-    print("Ring Status:")
+    print("Κατάσταση δικτύου:")
     for item in network:
         item.print_node()
         item.print_finger_table()
@@ -173,9 +173,10 @@ def print_ring_status(network):
 
 # Συνάρτηση που κάνει local range query για κάθε κόμβο
 def local_range_query(network, threshold, education):
+    print(f"Επιστήμονες που σπούδασαν στο {education} και πήραν >= {threshold} βραβεία:")
     for node in network:
         results = node.search_node_data(threshold, education)
-        print(f"Node {node.node_id}: {results}")
+        print(f"Κόμβος {node.node_id}: {results}")
     
 if __name__ == '__main__':
     
@@ -202,7 +203,7 @@ if __name__ == '__main__':
 
     # Ψάχνει για επιστήμονες με βραβεία >= threshold και εκπαίδευση σε συγκεκριμένο πανεπιστήμιο, σε κάθε κόμβο
     local_range_query(network, 4, 'Harvard University')
-    
+
     '''
     # Διαγράφει τον κόμβο με node_id = k 
     k = 3
