@@ -28,16 +28,10 @@ nodes.pop(2)
 d.updateAllFingerTables()
 d.printFingerTables()
 
-# Store data in the DHT
-n_fake = 4
-data_to_store = {}
-# fake_scientists = [('Sioutas', 4), ('Alexiou', 2), ('Vergos', 2), ('Tsichlas', 3)]
-for i in range(n_fake):
-    data_to_store[i] = f"hello{i}"
-
+# Store data in the DHT with string keys
+data_to_store = {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
 for key, value in data_to_store.items():
-    # Choose a random node to store the key-value pair
-    chosen_node = nodes[randint(0, 2)]  # Choose one of the three nodes randomly
+    chosen_node = nodes[randint(0, 6)]
     d.store(chosen_node, key, value)
 
 # Print the stored data for each node
@@ -45,10 +39,9 @@ for node in [d._startNode] + nodes:
     print(f"Data stored at Node {node.ID}: {node.data}")
 
 # Lookup specific keys in all nodes
-keys_to_lookup = [0, 1, 2, 3, 5]
+keys_to_lookup = ['key1', 'key2', 'key3']
 
 for key in keys_to_lookup:
-    # Use the lookup function to find the value for each key in all nodes
     for node in [d._startNode] + nodes:
         value = d.lookup(node, key)
         if value is not None:
