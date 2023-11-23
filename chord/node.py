@@ -2,7 +2,7 @@ import csv
 import itertools
 
 # Καθορίζει το μέγεθος του finger table
-m = 3
+m = 6
 
 # Η κλάση που ορίζει τους κόμβους
 class Node:
@@ -80,6 +80,13 @@ class Node:
         if self.data != None :
             print(f"Education: {self.data['education']}")
             print(f"Scientist/Awards: {self.data['scientist']}")
+
+    def get_data_local_awards(self, threshold, education):
+        results = []
+        for key, value in self.data['scientist']:
+            if (int(value) >= threshold) & (education in self.data['education']):
+                results.append(key)
+        return results
 
 # under construction class, might delete later
 class Network:
@@ -173,7 +180,7 @@ if __name__ == '__main__':
     education_dictionary = create_education_dictionary(CSV_PATH)
 
     # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    n = 5
+    n = 2 * m
     education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
 
     # Αποθηκεύει τη λίστα με όλα τα nodes αντικείμενα σε μια μεταβλητή
@@ -187,15 +194,23 @@ if __name__ == '__main__':
     # Τυπώνει την κατάσταση του ring
     print_ring_status(network)
 
+    # Ψάχνει για επιστήμονες με βραβεία >= threshold και εκπαίδευση σε συγκεκριμένο πανεπιστήμιο, σε κάθε κόμβο
+    threshold = 4
+    education = 'Indian Institute of Technology Kanpur'
+    for node in network:
+        results = node.get_data_local_awards(threshold, education)
+        print(f"Node {node.node_id}: {results}")
+    '''
     # Διαγράφει τον κόμβο με node_id = k 
     k = 3
     remove_node_from_network(network, k)
-
+    
     # Προσθέτει έναν κόμβο στο δίκτυο
     node1 = Node(34)
     insert_node_to_network(network, node1)
 
     node2 = Node(35)
     insert_node_to_network(network, node2)
-
+    
     print_ring_status(network)
+    '''
