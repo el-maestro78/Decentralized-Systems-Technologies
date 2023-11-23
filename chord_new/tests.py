@@ -16,6 +16,18 @@ for node in nodes:
 d.updateAllFingerTables()
 d.printFingerTables()
 
+# Print the stored data for each node
+for node in [d._startNode] + nodes:
+    print(f"Data stored at Node {node.ID}: {node.data}")
+
+# Remove the third node from the network
+d.leave(nodes[2])
+nodes.pop(2)
+
+# Update finger tables after all nodes have joined
+d.updateAllFingerTables()
+d.printFingerTables()
+
 # Store data in the DHT
 n_fake = 4
 data_to_store = {}
@@ -33,7 +45,7 @@ for node in [d._startNode] + nodes:
     print(f"Data stored at Node {node.ID}: {node.data}")
 
 # Lookup specific keys in all nodes
-keys_to_lookup = [5, 8, 0, 13]
+keys_to_lookup = [0, 1, 2, 3, 5]
 
 for key in keys_to_lookup:
     # Use the lookup function to find the value for each key in all nodes
