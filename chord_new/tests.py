@@ -5,7 +5,7 @@ from random import randint
 d = DHT(3)
 
 # Number of nodes to add 
-u = 6
+u = 5
 
 # Add u nodes to the DHT
 d.join(d._startNode)
@@ -54,6 +54,7 @@ for node in [d._startNode] + nodes:
 print("==================LOOKUP==================")
 key_to_lookup = 'University of Patras'
 awards_threshold = 3
+key_found = False
 
 for node in [d._startNode] + nodes:
     values = d.lookup(node, key_to_lookup)
@@ -61,6 +62,7 @@ for node in [d._startNode] + nodes:
         for value in values:
             if value[1] >= awards_threshold:
                 print(f"{value[0]} studied at {key_to_lookup} and has earned {value[1]} awards.")
-        break
-else:
+        key_found = True
+        
+if not key_found:
     print(f"The key {key_to_lookup} is not present in any node.")
