@@ -1,5 +1,6 @@
 from dht import DHT, Node
 from random import randint
+from csv_to_dict import education_dictionary
 
 if __name__ == '__main__':
     # Create a DHT with k=4
@@ -38,7 +39,7 @@ if __name__ == '__main__':
     '''
     # Store data in the DHT with string keys and multiple values
     data_to_store = {'University of Patras': [('Alexiou', 3), ('Vergos', 1)], 'MIT': [('Gates', 4)]}
-    for key, values in data_to_store.items():
+    for key, values in education_dictionary.items():
         chosen_node = nodes[randint(0, u - 1)]
         d.store(chosen_node, key, values)
 
@@ -50,7 +51,7 @@ if __name__ == '__main__':
 
     # Lookup specific keys in all nodes
     print("==================LOOKUP==================")
-    key_to_lookup = 'University of Patras'
+    key_to_lookup = 'University of Malaya'
     awards_threshold = 0
     key_found = False
 

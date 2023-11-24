@@ -25,18 +25,18 @@ def create_education_dictionary(csv_file):
 
     return education_dict
 
-if __name__ == '__main__':
-    # Το path που περιέχει το csv αρχείο με τους επιστήμονες
-    CSV_PATH = './computer_scientists_data.csv'
 
-    # Αποθηκεύει το dictionary με τους επιστήμονες σε μια μεταβλητή
-    education_dictionary = create_education_dictionary(CSV_PATH)
+# Το path που περιέχει το csv αρχείο με τους επιστήμονες
+CSV_PATH = './computer_scientists_data.csv'
 
-    # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-    n = 25
-    education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
-    print(education_dictionary)
-    for key, value in education_dictionary.items():
-        print(f"Education: {key}")
-        print(f"Scientists/Awards: {value}")
-        print()
+# Αποθηκεύει το dictionary με τους επιστήμονες σε μια μεταβλητή
+education_dictionary = create_education_dictionary(CSV_PATH)
+
+# Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
+n = 3
+education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
+print(education_dictionary)
+for key, value in education_dictionary.items():
+    print(f"Education: {key}")
+    print(f"Scientists/Awards: {value}")
+    print()
