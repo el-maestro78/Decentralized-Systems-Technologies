@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 
 def visualize_chord():
     plt.figure()
+    s_network.chord_ring.clear()
     sorted_nodes = sorted(s_network.nodes, key=lambda x: x.node_id, reverse = True)
     for node_id in sorted_nodes:
         s_network.chord_ring.add_node(node_id)
 
     for i in range(len(sorted_nodes)):
-        successor_id = (i + 1) % len(s_network.nodes)
-        s_network.chord_ring.add_edge(sorted_nodes[i], sorted_nodes[successor_id])
+        s_network.chord_ring.add_edge(sorted_nodes[i], sorted_nodes[i].successor)
 
     pos = nx.circular_layout(s_network.chord_ring)
     nx.draw(s_network.chord_ring, pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
@@ -81,6 +81,8 @@ while True:
         s_network.lookup(query, num_awards)
     elif choice == 4: 
         s_network.print_network()
+    elif choice == 5:
+        visualize_chord()
     else: 
         print('Τερματισμός')
         break
