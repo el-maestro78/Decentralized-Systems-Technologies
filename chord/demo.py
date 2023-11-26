@@ -12,20 +12,23 @@ while num_nodes > 2 ** m_user:
     print('Μη έγκυρο πλήθος κόμβων')
     num_nodes = int(input('Πλήθος κόμβων: '))
 
+# Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό
 node_ids = sample(range(Node.r_size), num_nodes)
 
+# Κατασκευή του δικτύου
 s_network = Network(m_user, node_ids)
 
-
+# Κατασκευή των κόμβων που θα εισαχθούν στο δίκτυο
 for node_id in node_ids: 
     node = Node(node_id, m_user)
     s_network.nodes.append(node)
 
+# Προσθήκη των κόμβων στο δίκτυο
 for node in s_network.nodes:
     node.join(s_network.first_node)
     print(f'Κόμβος {node.node_id} εισήχθει στο δίκτυο')
 
-n_data = int(input(f'Πόσα δεδομένα θέλετε να εισάγετε: '))
+n_data = int(input(f'Πλήθος δεδομένων: '))
 s_network.add_data(n_data)
 
 while True:
@@ -38,6 +41,8 @@ while True:
         node_id = int(input('ID Κόμβου: '))
         if node_id in node_ids:
             print('Υπάρχει ήδη κόμβος με αυτό το ID!')
+        elif node_id > s_network.r_size:
+            print(f'Το ID πρέπει να είναι από 0 έως {s_network.r_size}!')
         else:
             s_network.add_node(node_id)
             node_ids.append(node_id)
