@@ -16,8 +16,8 @@ def visualize_chord():
 
     pos = nx.circular_layout(s_network.chord_ring)
     nx.draw(s_network.chord_ring, pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
-    plt.title("Chord DHT Ring")
-    plt.pause(0.001)  # Introduce a small delay to allow the plot to be displayed
+    plt.title("Chord DHT")
+    plt.pause(0.001)
     plt.ioff() 
 
 m_user = int(input('Μέγεθος fingers table: '))
@@ -43,7 +43,7 @@ for node_id in node_ids:
 # Προσθήκη των κόμβων στο δίκτυο
 for node in s_network.nodes:
     node.join(s_network.first_node)
-    print(f'Κόμβος {node.node_id} εισήχθει στο δίκτυο')
+    print(f'Κόμβος {node.node_id} προστέθηκε στο δίκτυο')
 
 # Προσθήκη δεδομένων στους κόμβους του δικτύου
 n_data = int(input(f'Πλήθος δεδομένων: '))
