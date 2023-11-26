@@ -83,7 +83,9 @@ class Node():
         if self.node_id == key:
             return self
         if self.distance(self.node_id, key) <= self.distance(self.successor.node_id, key):
+            # print('jump')
             return self.successor
         else:
+            # print('jump')
             return self.closest_preceding_node(self, key).find_successor(key)
 
