@@ -79,14 +79,16 @@ class Network():
 
         found_data = node.data.get(h_key, None)
         if found_data != None:
+            found = False
             print(
                 f'Βρέθηκε το key \'{data}\' στον κόμβο {node.node_id} με hash {h_key}')
             for scientists in found_data['value']:
                 if scientists[1] >= threshold:
+                    found = True
                     print(
                 f'{scientists[0]}: {scientists[1]} βραβεία')
-                else: 
-                    print(f'Δεν υπάρχουν επιστήμονες με >= {threshold} βραβεία')
+            if not found:
+                print(f'Δεν υπάρχουν επιστήμονες με >= {threshold} βραβεία')
         else:
             print(f'Το \'{data}\' δεν υπάρχει σε κανένα κόμβο')
 
