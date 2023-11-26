@@ -12,7 +12,10 @@ class Node():
         self.successor = self
         self.fingers_table = [self]*m
         self.data = {}
-        
+    
+    def __str__(self):
+        return str(self.node_id)
+    
     # Δείχνει το fingers table του κόμβου
     def print_fingers_table(self):
         print(f'ID: {self.node_id}\nΕπόμενος: {self.successor.node_id}\nΠροηγούμενος: {self.predecessor.node_id}')

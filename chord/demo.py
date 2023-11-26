@@ -1,7 +1,24 @@
 from node import Node
 from network import Network
 from random import sample
+import networkx as nx
+import matplotlib.pyplot as plt
 
+def visualize_chord():
+    plt.figure()
+    sorted_nodes = sorted(s_network.nodes, key=lambda x: x.node_id, reverse = True)
+    for node_id in sorted_nodes:
+        s_network.chord_ring.add_node(node_id)
+
+    for i in range(len(sorted_nodes)):
+        successor_id = (i + 1) % len(s_network.nodes)
+        s_network.chord_ring.add_edge(sorted_nodes[i], sorted_nodes[successor_id])
+
+    pos = nx.circular_layout(s_network.chord_ring)
+    nx.draw(s_network.chord_ring, pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
+    plt.title("Chord DHT Ring")
+    plt.pause(0.001)  # Introduce a small delay to allow the plot to be displayed
+    plt.ioff() 
 
 m_user = int(input('Μέγεθος fingers table: '))
 Node.m = m_user
@@ -28,14 +45,17 @@ for node in s_network.nodes:
     node.join(s_network.first_node)
     print(f'Κόμβος {node.node_id} εισήχθει στο δίκτυο')
 
+# Προσθήκη δεδομένων στους κόμβους του δικτύου
 n_data = int(input(f'Πλήθος δεδομένων: '))
 s_network.add_data(n_data)
+
+visualize_chord()
 
 while True:
     print('1. Προσθήκη κόμβου')
     print('2. Αφαίρεση κόμβου')
     print('3. Αναζήτηση δεδομένων')
-    print('4. Προβολή κατάστασης δικτύου')
+    print('4. Πληροφορίες κόμβων')
     choice = int(input('Επιλογή: '))
     if choice == 1: 
         node_id = int(input('ID Κόμβου: '))

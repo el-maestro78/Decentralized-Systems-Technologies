@@ -1,6 +1,7 @@
 from node import Node
 from csv_to_dict import create_education_dictionary
 import hashlib
+import networkx as nx
 
 class Network():
     def __init__(self, m, node_ids):
@@ -10,6 +11,7 @@ class Network():
         self.add_first_node(node_ids[0])
         self.first_node = self.nodes[0]
         node_ids.pop(0)
+        self.chord_ring = nx.Graph()
     
     # Δείχνει τα στοιχεία του δικτύου
     def __str__(self):
