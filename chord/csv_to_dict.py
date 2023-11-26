@@ -1,10 +1,12 @@
 import csv
 import itertools
+import random
 
-def create_education_dictionary(csv_file):
+def create_education_dictionary(n):
     education_dict = {}
-
-    with open(csv_file, 'r', encoding="utf-8") as file:
+    # Το path που περιέχει το csv αρχείο με τους επιστήμονες
+    CSV_PATH = './computer_scientists_data.csv'
+    with open(CSV_PATH, 'r', encoding="utf-8") as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
             education_values = eval(row['Education'])
@@ -23,20 +25,18 @@ def create_education_dictionary(csv_file):
     # Remove scientists with an empty education
     education_dict.pop('', None)
 
+    # Ανακατεύει τα περιεχόμενα του dictionary
+    education_dict = list(education_dict.items())
+    random.shuffle(education_dict)
+    education_dict = dict(education_dict)
+
+    # Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
+    education_dict = dict(itertools.islice(education_dict.items(), n))
+    '''
+    for key, value in education_dictionary.items():
+        print(f"Education: {key}")
+        print(f"Scientists/Awards: {value}")
+        print()
+    '''
     return education_dict
 
-
-# Το path που περιέχει το csv αρχείο με τους επιστήμονες
-CSV_PATH = './computer_scientists_data.csv'
-
-# Αποθηκεύει το dictionary με τους επιστήμονες σε μια μεταβλητή
-education_dictionary = create_education_dictionary(CSV_PATH)
-
-# Κρατάει μόνο τα n πρώτα στοιχεία του dictionary 
-n = 3
-education_dictionary = dict(itertools.islice(education_dictionary.items(), n))
-print(education_dictionary)
-for key, value in education_dictionary.items():
-    print(f"Education: {key}")
-    print(f"Scientists/Awards: {value}")
-    print()
