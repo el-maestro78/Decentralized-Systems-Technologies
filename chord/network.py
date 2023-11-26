@@ -2,6 +2,7 @@ from node import Node
 from csv_to_dict import create_education_dictionary
 import hashlib
 import networkx as nx
+import matplotlib.pyplot as plt
 
 class Network():
     def __init__(self, m, node_ids):
@@ -106,3 +107,25 @@ class Network():
             suc = node.find_successor(h_key)
 
             suc.data[h_key] = {'key': key, 'value': values}
+
+    def visualize_chord(self):
+        plt.figure()
+        self.chord_ring.clear()
+        sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse = True)
+        # Προσθέτει τους κόμβους στο γράφο
+        for node_id in sorted_nodes:
+            self.chord_ring.add_node(node_id)
+
+        # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
+        for i in range(len(sorted_nodes)):
+            self.chord_ring.add_edge(sorted_nodes[i], sorted_nodes[i].successor)
+            # Προσθέτει ακμές από κάθε κόμβο σε κάθε κόμβο του fingers table του
+            for j in sorted_nodes[i].fingers_table:
+                if j != sorted_nodes[i]:
+                    self.chord_ring.add_edge(sorted_nodes[i], j)
+        
+        pos = nx.circular_layout(self.chord_ring)
+        nx.draw(self.chord_ring, pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
+        plt.title("Chord DHT")
+        plt.pause(0.001)
+        plt.ioff() 

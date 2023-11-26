@@ -1,30 +1,7 @@
 from node import Node
 from network import Network
 from random import sample
-import networkx as nx
-import matplotlib.pyplot as plt
 
-def visualize_chord():
-    plt.figure()
-    s_network.chord_ring.clear()
-    sorted_nodes = sorted(s_network.nodes, key=lambda x: x.node_id, reverse = True)
-    # Προσθέτει τους κόμβους στο γράφο
-    for node_id in sorted_nodes:
-        s_network.chord_ring.add_node(node_id)
-
-    # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
-    for i in range(len(sorted_nodes)):
-        s_network.chord_ring.add_edge(sorted_nodes[i], sorted_nodes[i].successor)
-        # Προσθέτει ακμές από κάθε κόμβο σε κάθε κόμβο του fingers table του
-        for j in sorted_nodes[i].fingers_table:
-            if j != sorted_nodes[i]:
-                s_network.chord_ring.add_edge(sorted_nodes[i], j)
-    
-    pos = nx.circular_layout(s_network.chord_ring)
-    nx.draw(s_network.chord_ring, pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
-    plt.title("Chord DHT")
-    plt.pause(0.001)
-    plt.ioff() 
 
 m_user = int(input('Μέγεθος fingers table: '))
 Node.m = m_user
@@ -55,7 +32,7 @@ for node in s_network.nodes:
 n_data = int(input(f'Πλήθος δεδομένων: '))
 s_network.add_data(n_data)
 
-visualize_chord()
+s_network.visualize_chord()
 
 while True:
     print('1 -> Προσθήκη κόμβου')
@@ -88,7 +65,7 @@ while True:
     elif choice == 4: 
         s_network.print_network()
     elif choice == 5:
-        visualize_chord()
+        s_network.visualize_chord()
     else: 
         print('Τερματισμός')
         break
