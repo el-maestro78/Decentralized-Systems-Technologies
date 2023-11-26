@@ -52,11 +52,11 @@ s_network.add_data(n_data)
 visualize_chord()
 
 while True:
-    print('1. Προσθήκη κόμβου')
-    print('2. Αφαίρεση κόμβου')
-    print('3. Αναζήτηση δεδομένων')
-    print('4. Πληροφορίες κόμβων')
-    choice = int(input('Επιλογή: '))
+    print('1 -> Προσθήκη κόμβου')
+    print('2 -> Αφαίρεση κόμβου')
+    print('3 -> Αναζήτηση δεδομένων')
+    print('4 -> Πληροφορίες κόμβων')
+    choice = int(input('# -> '))
     if choice == 1: 
         node_id = int(input('ID Κόμβου: '))
         if node_id in node_ids:
