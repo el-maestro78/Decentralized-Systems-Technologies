@@ -13,7 +13,7 @@ class Network():
     
     # Δείχνει τα στοιχεία του δικτύου
     def __str__(self):
-        return f'Δίκτυο:\nΠλήθος: {len(self.nodes)} κόμβοι.\nΧωρητικότητα: {self.r_size} κόμβοι.\nΜέγεθος Fingers Table: {self.m}\nΠρώτος Κόμβος: {self.first_node.node_id}\n '
+        return f'---------------\nΠλήθος: {len(self.nodes)} κόμβοι\nΧωρητικότητα: {self.r_size} κόμβοι\nΜέγεθος Fingers Table: {self.m}\nΠρώτος Κόμβος: {self.first_node.node_id}\n---------------'
 
     # Δείχνει τα fingers table και data όλων των κόμβων
     def print_network(self):

@@ -13,9 +13,9 @@ class Node():
         
     # Δείχνει το fingers table του κόμβου
     def print_fingers_table(self):
-        print(f'Node ID: {self.node_id}\nSuccessor: {self.successor.node_id}\nPredecessor: {self.predecessor.node_id}')
-        print(f'Data: {self.data}')
-        print(f'Finger Table:')
+        print(f'ID: {self.node_id}\nΕπόμενος: {self.successor.node_id}\nΠροηγούμενος: {self.predecessor.node_id}')
+        print(f'Δεδομένα: {self.data}')
+        print(f'Fingers Table:')
         for i in range(self.m):
             print(f'{(self.node_id + 2 ** i) % self.r_size} : {self.fingers_table[i].node_id}')
 
