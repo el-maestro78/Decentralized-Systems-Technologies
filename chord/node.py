@@ -62,7 +62,7 @@ class Node():
 
     def update_fingers_table(self):
         for i in range(1, len(self.fingers_table)):
-            temp_node = self.find_successor(self.node_id + 2 ** i)
+            temp_node = self.find_successor((self.node_id + 2 ** i) % self.r_size)
             self.fingers_table[i] = temp_node
 
     # Βρίσκει τον κόμβο που είναι πιο κοντά στο key

@@ -3,7 +3,7 @@ from network import Network
 from random import sample
 
 
-m_user = int(input('Μέγεθος fingers table: '))
+m_user = int(input('Παράμετρoς m: '))
 Node.m = m_user
 Node.r_size = 2 ** m_user
 print(f'Το δίκτυο έχει χωρητικότητα για {Node.r_size} κόμβους')
@@ -39,6 +39,7 @@ while True:
     print('2 -> Αφαίρεση κόμβου')
     print('3 -> Αναζήτηση δεδομένων')
     print('4 -> Πληροφορίες κόμβων')
+    print('5 -> Προβολή γράφου')
     choice = int(input('# -> '))
     if choice == 1: 
         node_id = int(input('ID Κόμβου: '))
@@ -66,6 +67,8 @@ while True:
         s_network.print_network()
     elif choice == 5:
         s_network.visualize_chord()
+    elif choice == 6:
+        s_network.update_fingers_tables()
     else: 
         print('Τερματισμός')
         break

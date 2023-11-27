@@ -64,7 +64,7 @@ class Network():
         self.nodes.append(new_node)   
         node = self.nodes[-1]
         node.join(self.first_node)
-        self.update_fingers_tables()
+        # self.update_fingers_tables()
 
     # Αφαιρεί έναν κόμβο
     def remove_node(self, node_id):
@@ -121,11 +121,13 @@ class Network():
             self.chord_ring.add_edge(sorted_nodes[i], sorted_nodes[i].successor)
             # Προσθέτει ακμές από κάθε κόμβο σε κάθε κόμβο του fingers table του
             for j in sorted_nodes[i].fingers_table:
-                if j != sorted_nodes[i]:
-                    self.chord_ring.add_edge(sorted_nodes[i], j)
+                self.chord_ring.add_edge(sorted_nodes[i], j)
         
+        # Περιστρέφει το γράφο για να είναι ο μικρότερος κόμβος δεξιά
+        rotated_pos = {node: (-y, x) for node, (x, y) in nx.circular_layout(self.chord_ring).items()}
+
         pos = nx.circular_layout(self.chord_ring)
-        nx.draw(self.chord_ring, pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
+        nx.draw(self.chord_ring, rotated_pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
         plt.title("Chord DHT")
         plt.pause(0.001)
         plt.ioff() 
