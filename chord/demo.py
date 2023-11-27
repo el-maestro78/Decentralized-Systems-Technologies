@@ -32,6 +32,8 @@ for node in s_network.nodes:
 n_data = int(input(f'Πλήθος δεδομένων: '))
 s_network.add_data(n_data)
 
+s_network.update_fingers_tables()
+
 s_network.visualize_chord()
 
 while True:
