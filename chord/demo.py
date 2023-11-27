@@ -56,7 +56,6 @@ while True:
         else:
             s_network.add_node(node_id)
             node_ids.append(node_id)
-            s_network.print_network()
     elif choice == 2: 
         node_id = int(input('ID Κόμβου: '))
         if node_id not in node_ids:
@@ -64,7 +63,6 @@ while True:
         else:
             node_ids.remove(node_id)
             s_network.remove_node(node_id)
-            s_network.print_network()
     elif choice == 3: 
         query = input('Πανεπιστήμιο: ')
         num_awards = int(input('# Βραβεία: '))

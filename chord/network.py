@@ -119,15 +119,16 @@ class Network():
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
             self.chord_ring.add_edge(sorted_nodes[i], sorted_nodes[i].successor)
-            # Προσθέτει ακμές από κάθε κόμβο σε κάθε κόμβο του fingers table του
+            # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
             for j in sorted_nodes[i].fingers_table:
                 self.chord_ring.add_edge(sorted_nodes[i], j)
         
         # Περιστρέφει το γράφο για να είναι ο μικρότερος κόμβος δεξιά
         rotated_pos = {node: (-y, x) for node, (x, y) in nx.circular_layout(self.chord_ring).items()}
 
-        pos = nx.circular_layout(self.chord_ring)
         nx.draw(self.chord_ring, rotated_pos, with_labels=True, node_color='skyblue', node_size=1000, font_size=10)
+        
         plt.title("Chord DHT")
+        plt.gca().set_aspect('equal', adjustable='box')
         plt.pause(0.001)
         plt.ioff() 
