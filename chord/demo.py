@@ -30,6 +30,10 @@ for node in s_network.nodes:
 
 # Προσθήκη δεδομένων στους κόμβους του δικτύου
 n_data = int(input(f'Πλήθος δεδομένων: '))
+while n_data > 2 ** m_user:
+    print('Μη έγκυρο πλήθος δεδομένων')
+    n_data = int(input('Πλήθος δεδομένων: '))
+
 s_network.add_data(n_data)
 
 s_network.update_fingers_tables()
