@@ -30,21 +30,13 @@ class Network():
         self.nodes.append(node)
 
     # Ανανεώνει το fingers table για όλους τους κόμβους του δικτύου
-    def update_fingers_tables(self, node_left = None, leave = False):
-        if leave:
-            self.first_node.update_fingers_table(node_left, leave = True)
-        else:
-            self.first_node.update_fingers_table()
-
+    def update_fingers_tables(self):
+        self.first_node.update_fingers_table()
         curr = self.first_node.fingers_table[0]
 
         while curr != self.first_node:
-            if leave:
-                curr.update_fingers_table(node_left, leave = True)
-            else:
-                curr.update_fingers_table()
+            curr.update_fingers_table()
             curr = curr.fingers_table[0]
-
 
     # Κάνει hash στο key του κόμβου
     def hash_function(self, key):
@@ -80,9 +72,6 @@ class Network():
                                node_id, self.nodes))[0]
         node.leave()
         self.nodes.remove(node)
-        # Καλεί την update με παράμετρο leave = True
-        self.update_fingers_tables(node, leave = True)
-        # Ξανά update όλα γιατί αφήνει κόμβους με fingers στους εαυτούς τους για κάποιο λόγο
         self.update_fingers_tables()
 
     # Ψάχνει για το key στους κόμβους

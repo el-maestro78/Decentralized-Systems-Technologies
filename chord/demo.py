@@ -41,7 +41,11 @@ s_network.update_fingers_tables()
 s_network.visualize_chord()
 
 while True:
-    print('1 -> Προσθήκη κόμβου | 2 -> Αφαίρεση κόμβου | 3 -> Αναζήτηση δεδομένων | 4 -> Πληροφορίες κόμβων | 5 -> Προβολή γράφου')
+    print('1 -> Προσθήκη κόμβου')
+    print('2 -> Αφαίρεση κόμβου')
+    print('3 -> Αναζήτηση δεδομένων')
+    print('4 -> Πληροφορίες κόμβων')
+    print('5 -> Προβολή γράφου')
     choice = int(input('# -> '))
     if choice == 1: 
         node_id = int(input('ID Κόμβου: '))

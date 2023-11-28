@@ -60,20 +60,10 @@ class Node():
         self.successor = suc
         self.predecessor = pre
 
-
-    # Ανανεώνει τα fingers στους κόμβους, με παράμετρο leave True όταν φεύγει κόμβος, γιατί για κάποιο λόγο μένει στα fingers των άλλων αυτός που έφυγε
-    # και πρέπει να τσεκάρει ότι δεν θα μπει στο finger table καλώντας την find successor για τον successor αυτού που έφυγε (?!?)
-    def update_fingers_table(self, node_left = None, leave = False):
+    def update_fingers_table(self):
         for i in range(1, len(self.fingers_table)):
             temp_node = self.find_successor((self.node_id + 2 ** i) % self.r_size)
-            if leave:
-                if node_left != temp_node:
-                    self.fingers_table[i] = temp_node
-                else: 
-                    self.fingers_table[i] = self.find_successor((temp_node.node_id + 2 ** i) % self.r_size)
-            else:
-                self.fingers_table[i] = temp_node
-
+            self.fingers_table[i] = temp_node
 
     # Βρίσκει τον κόμβο που είναι πιο κοντά στο key
     def closest_preceding_node(self, node, h_key):
