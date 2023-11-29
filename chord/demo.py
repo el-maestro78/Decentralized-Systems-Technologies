@@ -47,6 +47,8 @@ while True:
         node_id = int(input('ID Κόμβου: '))
         if node_id in node_ids:
             print('Υπάρχει ήδη κόμβος με αυτό το ID!')
+        elif len(s_network.nodes) > Node.r_size - 1:
+            print('Δεν μπορούν να προστεθούν άλλοι κόμβοι')
         elif node_id > s_network.r_size:
             print(f'Το ID πρέπει να είναι από 0 έως {s_network.r_size}!')
         else:
