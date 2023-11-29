@@ -46,21 +46,20 @@ class Network():
             curr = curr.fingers_table[0]
 
 
-    # Κάνει hash στο key του κόμβου
+    # Κατακερματίζει το key
     def hash_function(self, key):
         num_bits = Node.m
 
-        # hashed bytes - transform key to hex and the to hashed bytes
+        # μετατροπή του key σε hex και έπειτα σε bytes
         bt = hashlib.sha1(str.encode(key)).digest()
 
-        # number of desired bytes for the id
+        # πόσα bytes θέλουμε για το id
         req_bytes = (num_bits + 7) // 8
 
-        # transform bytes of the key to int
-        # 'big' : the most significant byte is at the beginning of the byte array
+        # μετατροπή σε int από bits
         hashed_id = int.from_bytes(bt[:req_bytes], 'big')
 
-        # wrap hash_id
+        # αναδίπλωση του κατακερματεισμένου id
         if num_bits % 8:
             hashed_id >>= 8 - num_bits % 8
 

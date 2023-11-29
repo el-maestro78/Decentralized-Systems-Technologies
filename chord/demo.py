@@ -3,14 +3,14 @@ from network import Network
 from random import sample
 
 
-m_user = int(input('Παράμετρoς m: '))
+m_user = int(input('m: '))
 Node.m = m_user
 Node.r_size = 2 ** m_user
-print(f'Το δίκτυο έχει χωρητικότητα για {Node.r_size} κόμβους')
-num_nodes = int(input('Πλήθος κόμβων: '))
+print(f'Το δίκτυο έχει χωρητικότητα {Node.r_size}')
+num_nodes = int(input('Κόμβοι: '))
 while num_nodes > 2 ** m_user:
-    print('Μη έγκυρο πλήθος κόμβων')
-    num_nodes = int(input('Πλήθος κόμβων: '))
+    print('Δε μπορείς να εισάγεις πάνω από {Node.r_size} κόμβους')
+    num_nodes = int(input('Κόμβοι: '))
 
 # Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό
 node_ids = sample(range(Node.r_size), num_nodes)
@@ -29,10 +29,10 @@ for node in s_network.nodes:
     print(f'Κόμβος {node.node_id} προστέθηκε στο δίκτυο')
 
 # Προσθήκη δεδομένων στους κόμβους του δικτύου
-n_data = int(input(f'Πλήθος δεδομένων: '))
+n_data = int(input(f'Δεδομένα: '))
 while n_data > 2 ** m_user:
-    print('Μη έγκυρο πλήθος δεδομένων')
-    n_data = int(input('Πλήθος δεδομένων: '))
+    print(f'Δε μπορείς να εισάγεις πάνω από {Node.r_size} δεδομένα')
+    n_data = int(input('Δεδομένα: '))
 
 s_network.add_data(n_data)
 
@@ -41,7 +41,7 @@ s_network.update_fingers_tables()
 s_network.visualize_chord()
 
 while True:
-    print('1 -> Προσθήκη κόμβου | 2 -> Αφαίρεση κόμβου | 3 -> Αναζήτηση δεδομένων | 4 -> Πληροφορίες κόμβων | 5 -> Προβολή γράφου')
+    print('1 -> Προσθήκη κόμβου | 2 -> Αφαίρεση κόμβου | 3 -> Αναζήτηση δεδομένων | 4 -> Πληροφορίες κόμβων | 5 -> Προβολή γράφου | 6 -> Σταθεροποίηση | 0 -> Τερματισμός')
     choice = int(input('# -> '))
     if choice == 1: 
         node_id = int(input('ID Κόμβου: '))
@@ -69,6 +69,7 @@ while True:
         s_network.visualize_chord()
     elif choice == 6:
         s_network.update_fingers_tables()
+    elif choice == 0: break
     else: 
-        print('Τερματισμός')
-        break
+        choice = int(input('# -> '))
+        
