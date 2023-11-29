@@ -82,7 +82,6 @@ class Network():
         self.nodes.remove(node)
         # Καλεί την update με παράμετρο leave = True
         self.update_fingers_tables(node, leave = True)
-        # Ξανά update όλα γιατί αφήνει κόμβους με fingers στους εαυτούς τους για κάποιο λόγο
         self.update_fingers_tables()
 
     # Ψάχνει για το key στους κόμβους
