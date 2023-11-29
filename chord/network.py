@@ -71,7 +71,7 @@ class Network():
         self.nodes.append(new_node)   
         node = self.nodes[-1]
         node.join(self.first_node)
-        # self.update_fingers_tables()
+        self.update_fingers_tables()
 
     # Αφαιρεί έναν κόμβο
     def remove_node(self, node_id):
