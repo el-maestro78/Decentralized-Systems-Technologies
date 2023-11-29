@@ -9,7 +9,7 @@ Node.r_size = 2 ** m_user
 print(f'Το δίκτυο έχει χωρητικότητα {Node.r_size}')
 num_nodes = int(input('Κόμβοι: '))
 while num_nodes > 2 ** m_user:
-    print('Δε μπορείς να εισάγεις πάνω από {Node.r_size} κόμβους')
+    print(f'Δε μπορείς να εισάγεις πάνω από {Node.r_size} κόμβους')
     num_nodes = int(input('Κόμβοι: '))
 
 # Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό
