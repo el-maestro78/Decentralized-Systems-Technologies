@@ -1,5 +1,5 @@
-import pastry
-import node
+#import pastry.demo
+#import chord.demo
 
 
 def main():

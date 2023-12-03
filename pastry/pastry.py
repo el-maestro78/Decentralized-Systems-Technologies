@@ -1,8 +1,14 @@
-import node as Node
+from Pastry_node import Node as node
 import hashlib
+from csv_to_dict import create_education_dictionary
 
 
 def hash_func(node):
+    """
+Calculate the longest common prefix (LCP) between the current node's identifier and the destination key.
+Use the LCP to determine the next hop in the routing table.
+Forward the message to the node with the closest identifier in terms of the LCP.
+"""
     hs = hashlib.md5(b'node')
     return hs.hexdigest()
 
@@ -19,10 +25,6 @@ def delete(node):
     pass
 
 
-class Data:
-    def __init__(self, nodeId, surname, awards, education):
-        self.surname = surname
-        self.awards = awards
-        self.education = education
+
 
 
