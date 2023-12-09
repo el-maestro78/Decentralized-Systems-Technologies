@@ -1,6 +1,5 @@
 #from node import Node
-from Pastry_node import Node
-from Pastry_network import Network
+from node import Node
 from random import sample
 
 
