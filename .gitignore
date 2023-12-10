@@ -162,3 +162,4 @@ cython_debug/
 *.xml
 *.xml
 pastry/.idea/
+pastry/test.py

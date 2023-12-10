@@ -1,7 +1,7 @@
-#from node import Node
+from network import Network
 from node import Node
 from random import sample
-
+from hash import hash_function as hashf
 
 m_user = int(input('Παράμετρoς m: '))
 Node.m = m_user

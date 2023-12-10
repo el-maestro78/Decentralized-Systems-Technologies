@@ -1,17 +1,23 @@
 from node import Node
-import hashlib
+from hash import hash_function as hashf
 from csv_to_dict import create_education_dictionary
 import networkx as nx
 import matplotlib.pyplot as plt
 
 
 class Network:
+    """Pastry Network\n
+        :param int m: number of bits of the id
+        :param list node_ids: Node ids list
+        """
 
     def __init__(self, m, node_ids):
         self.nodes = []
         self.m = m
         self.r_size = m ** 2
+        node_ids.pop(0)
         self.first_node = node_ids
+        self.pastry_ring = nx.Graph()
 
     def __str__(self):
         start = '---------------\n'
@@ -38,22 +44,6 @@ class Network:
         while curr != self.first_node:
             curr.update_routing_table()
             curr = curr.routing_table[0]
-
-    def calculate_prefix(self, key):
-        """
-            Calculate the longest common prefix (LCP) between the current node's identifier and the destination key.
-            Use the LCP to determine the next hop in the routing table.
-            Forward the message to the node with the closest identifier in terms of the LCP.
-            """
-        lcp = 0
-        while lcp < len(key) and lcp < len(self.identifier) and key[lcp] == self.identifier[lcp]:
-            lcp += 1
-        return lcp
-
-    def hash_function(self, key):
-        """Κάνει hash στο key του κόμβου"""
-        hs = hashlib.md5(b'node')
-        return hs.hexdigest()
 
     def add_node(self, node_id):
         """Προσθέτει έναν κόμβο"""
