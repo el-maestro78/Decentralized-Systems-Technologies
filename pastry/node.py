@@ -10,7 +10,7 @@ class Node:
 
     def __init__(self, node_id, m=4):
         self.node_id = node_id
-        self.nodes_num = m**2
+        self.nodes_num = 2**m
         self.neighborhood_set = []
         # self.predecessor = self
         # self.successor = self
@@ -41,7 +41,7 @@ class Node:
             print(f'{(self.node_id + 2 ** i) % self.nodes_num} : {self.routing_table[i].node_id}')
 
     def calculate_lcp(self, key):
-        # Calculate the Longest Common Prefix (LCP) between the node's identifier and the key
+        """Calculate the Longest Common Prefix (LCP) between the node's id and the key"""
         lcp = 0
         while lcp < len(key) and lcp < len(self.node_id) and key[lcp] == self.node_id[lcp]:
             lcp += 1
@@ -73,49 +73,34 @@ class Node:
             else:
                 return current_node
 
-    def join(self, node):
+    def join(self, node_id):
         """ Βάζει τον κόμβο στο δίκτυο.
         Η τιμή του κόμβου είναι ήδη hashed """
-        suc = node.find_successor(self.node_id)
-        pre = suc.predecessor
-
-        self.find_node_place(pre, suc)
-        self.update_routing_table()
-
-        # Παίρνει τα keys από το successor
-        self.data = {key: self.successor.data[key] for key in sorted(
-            self.successor.data.keys()) if key <= self.node_id}
-
-        for key in sorted(self.data.keys()):
-            if key in self.successor.data:
-                del self.successor.data[key]
+        self.find_node_place(self.node_id)
+        self.update_routing_table(self.node_id)
+        self.update_leaf_set(self.node_id)
 
     def leave(self):
-        """Αφαίρεση κόμβου από το δίκτυο"""
-        # Διόρθωση successor, predecessor, και routing table αυτών
-        self.predecessor.successor = self.successor
-        self.predecessor.routing_table[0] = self.successor
-        self.successor.predecessor = self.predecessor
-        # Δίνει το key στον successor
-        for key in sorted(self.data.keys()):
-            self.successor.data[key] = self.data[key]
+        """Αφαιρεί τον κόμβο"""
+        self.update_routing_table(self)
+        pass
 
-    def find_node_place(self, pre, suc):
+    def find_node_place(self, node_id):
         """Βρίσκει τη θέση του κόμβου"""
-        pre.routing_table[0] = self
-        pre.successor = self
-        suc.predecessor = self
-        self.routing_table[0] = suc
-        self.successor = suc
-        self.predecessor = pre
+        pass
 
-    def update_routing_table(self):
+    def update_routing_table(self, node_id):
         """Ανανεώνει το routing table για τον κόμβο"""
         pass
 
-    def update_leaf_set(self):
+    def update_leaf_set(self, node_id):
         """Ανανεώνει το routing table για τον κόμβο"""
         pass
+
+    def update_neighbourhood_set(self, node_id):
+        """Ανανεώνει τις λίστες για τους γείτονες"""
+        for neighbor in self.neighborhood_set:
+            neighbor.update_routing_table(node_id)
 
     def closest_preceding_node(self, node, h_key):
         """Βρίσκει τον κόμβο που είναι πιο κοντά στο key"""
@@ -123,7 +108,10 @@ class Node:
 
     def distance(self, n1, n2):
         """Υπολογισμός απόστασης μεταξύ 2 κόμβων στο δίκτυο"""
-        pass
+        if n1 <= n2:
+            return n2 - n1
+        else:
+            return self.nodes_num - n1 + n2
 
     def find_successor(self, key):
         """Βρίσκει τον κόμβο που έχει την ευθύνη για το key"""

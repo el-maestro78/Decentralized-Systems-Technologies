@@ -15,8 +15,8 @@ class Network:
         self.nodes = []
         self.m = m
         self.r_size = m ** 2
-        node_ids.pop(0)
-        self.first_node = node_ids
+        self.add_first_node(node_ids[0])
+        self.first_node = self.nodes[0]
         self.pastry_ring = nx.Graph()
 
     def __str__(self):
@@ -47,7 +47,10 @@ class Network:
 
     def add_node(self, node_id):
         """Προσθέτει έναν κόμβο"""
-        pass
+        new_node = Node(node_id, self.m)
+        self.nodes.append(new_node)
+        node = self.nodes[-1]
+        node.join(self.first_node)
 
     def remove_node(self, node_id):
         """Αφαιρεί έναν κόμβο"""

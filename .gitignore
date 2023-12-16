@@ -163,3 +163,4 @@ cython_debug/
 *.xml
 pastry/.idea/
 pastry/test.py
+pastry/pastry/
