@@ -6,6 +6,7 @@ class Node:
     :param int node_id: Node's id
     :param int m: m-bit Keys and Nodes
     """
+
     nodes_cnt = 0
 
     def __init__(self, node_id, m=4):
@@ -14,7 +15,7 @@ class Node:
         self.neighborhood_set = []
         # self.predecessor = self
         # self.successor = self
-        self.leaf_set = {'left': [], 'right': []}
+        self.leaf_set = {"left": [], "right": []}
         # self.right_leaf = []
         # self.left_leaf = []
         self.routing_table = [[None] * self.nodes_num for _ in range(m)]
@@ -25,57 +26,67 @@ class Node:
         return str(self.node_id)
 
     def print_routing_table(self):
-        print(f'ID: {self.node_id}')
-        print(f'Επόμενος: {self.successor.node_id}')
-        print(f'Προηγούμενος: {self.predecessor.node_id}')
+        print(f"ID: {self.node_id}")
+        print(f"Επόμενος: {self.neighborhood_set[0].node_id}")
+        # print(f"Προηγούμενος: {self.predecessor.node_id}")
         """print('Right Leaf:') Idk if i should use list or dict ftm
         for _ in self.leaf_set:
             print(self.leaf_set['right'])
         print('Left Leaf:')
         for _ in self.leaf_set:
             print(self.leaf_set['left'])"""
-        print(f'Δεδομένα: ')
+        print(f"Δεδομένα: ")
         pprint.pprint(self.data, depth=5)
-        print(f'Routing Table: ')
+        print(f"Routing Table: ")
         for i in range(self.node_id):
-            print(f'{(self.node_id + 2 ** i) % self.nodes_num} : {self.routing_table[i].node_id}')
+            print(
+                f"{(self.node_id + 2 ** i) % self.nodes_num} : {self.routing_table[i].node_id}"
+            )
 
-    def calculate_lcp(self, key):
+    def lcp(self, key):
         """Calculate the Longest Common Prefix (LCP) between the node's id and the key"""
-        lcp = 0
-        while lcp < len(key) and lcp < len(self.node_id) and key[lcp] == self.node_id[lcp]:
-            lcp += 1
-        return lcp
+        # lcp = 0
+        # while (
+        #     lcp < len(key) and lcp < len(self.node_id) and key[lcp] == self.node_id[lcp]
+        # ):
+        #     lcp += 1
+        # return lcp
+        for i in range(key):
+            if self.node_id[i] != key[i]:
+                return i
+        return -1
 
     def traverse_tree_search(self, key):
         """Perform tree traversal search to find the node responsible for the given key"""
         current_node = self
         while True:
             # Calculate the LCP between the current node and the key
-            lcp = current_node.calculate_lcp(key)
+            lcp = current_node.lcp(key)
             # Check if the key matches the current node's identifier
-            if lcp == len(current_node.identifier) and lcp == len(key):
+            if lcp == len(current_node.node_id) and lcp == len(key):
                 return current_node  # Found the responsible node
             # Check if the LCP points to a node in the routing table
-            if lcp < len(current_node.identifier):
-                next_hop = current_node.routing_table[lcp][int(current_node.identifier[lcp], 16)]
+            if lcp < len(current_node.node_id):
+                next_hop = current_node.routing_table[lcp][
+                    int(current_node.identifier[lcp], 16)
+                ]
                 if next_hop:
                     current_node = next_hop
                 else:
                     return current_node  # No more specific route in the routing table
             # Check the leaf set for a closer node
             elif lcp < len(key):
-                if int(key[lcp], 16) < int(current_node.identifier[lcp], 16):
-                    current_node = current_node.leaf_set['left']
+                if int(key[lcp], 16) < int(current_node.node_id[lcp], 16):
+                    current_node = current_node.leaf_set["left"]
                 else:
-                    current_node = current_node.leaf_set['right']
+                    current_node = current_node.leaf_set["right"]
             # No specific route found, return the current node
             else:
                 return current_node
 
     def join(self, node_id):
-        """ Βάζει τον κόμβο στο δίκτυο.
-        Η τιμή του κόμβου είναι ήδη hashed """
+        """Βάζει τον κόμβο στο δίκτυο.
+        Η τιμή του κόμβου είναι ήδη hashed"""
         self.find_node_place(self.node_id)
         self.update_routing_table(self.node_id)
         self.update_leaf_set(self.node_id)

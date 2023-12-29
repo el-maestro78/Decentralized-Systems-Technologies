@@ -2,6 +2,7 @@ import csv
 import itertools
 import random
 
+
 def create_education_dictionary(n):
     education_dict = {}
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες

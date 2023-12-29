@@ -164,3 +164,5 @@ cython_debug/
 pastry/.idea/
 pastry/test.py
 pastry/pastry/
+pastry/.vscode/settings.json
+.idea/Decentralized-Systems-Technologies.iml
