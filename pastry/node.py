@@ -1,5 +1,11 @@
 import pprint
 
+"""
+#  DONE
+#  ?
+#  TODO
+"""
+
 
 class Node:
     """Pastry Node\n
@@ -12,7 +18,7 @@ class Node:
     def __init__(self, node_id, m=4):
         self.node_id = node_id
         self.nodes_num = 2**m
-        self.neighborhood_set = []
+        # self.neighborhood_set = []
         # self.predecessor = self
         # self.successor = self
         self.leaf_set = {"left": [], "right": []}
@@ -27,7 +33,7 @@ class Node:
 
     def print_routing_table(self):
         print(f"ID: {self.node_id}")
-        print(f"Επόμενος: {self.neighborhood_set[0].node_id}")
+        print(f"Επόμενος: {self.routing_table[0].node_id}")
         # print(f"Προηγούμενος: {self.predecessor.node_id}")
         """print('Right Leaf:') Idk if i should use list or dict ftm
         for _ in self.leaf_set:
@@ -56,7 +62,7 @@ class Node:
                 return i
         return -1
 
-    def traverse_tree_search(self, key):
+    def lookup(self, key):
         """Perform tree traversal search to find the node responsible for the given key"""
         current_node = self
         while True:
@@ -93,7 +99,7 @@ class Node:
 
     def leave(self):
         """Αφαιρεί τον κόμβο"""
-        self.update_routing_table(self)
+
         pass
 
     def find_node_place(self, node_id):
@@ -102,16 +108,17 @@ class Node:
 
     def update_routing_table(self, node_id):
         """Ανανεώνει το routing table για τον κόμβο"""
+
         pass
 
     def update_leaf_set(self, node_id):
         """Ανανεώνει το routing table για τον κόμβο"""
         pass
 
-    def update_neighbourhood_set(self, node_id):
-        """Ανανεώνει τις λίστες για τους γείτονες"""
-        for neighbor in self.neighborhood_set:
-            neighbor.update_routing_table(node_id)
+    # def update_neighbourhood_set(self, node_id):
+    #     """Ανανεώνει τις λίστες για τους γείτονες"""
+    #     for neighbor in self.neighborhood_set:
+    #         neighbor.update_routing_table(node_id)
 
     def closest_preceding_node(self, node, h_key):
         """Βρίσκει τον κόμβο που είναι πιο κοντά στο key"""

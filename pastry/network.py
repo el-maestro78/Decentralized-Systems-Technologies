@@ -68,10 +68,20 @@ class Network:
         self.update_routing_tables()
         self.update_leaf_sets()
 
-    def remove_node(self, node_id):  # ?
+    def remove_node(self, node_id):  # DONE
         """Αφαιρεί έναν κόμβο"""
         node_id.leave()
+        for node in self.nodes:
+            if node_id in node.routing_table:
+                node.routing_table.remove(node_id)
         self.update_routing_tables()
+
+        for node in self.nodes:
+            if node_id in node.leaf_set["left"]:
+                node.leaf_set["left"].remove(node_id)
+        for node in self.nodes:
+            if node_id in node.leaf_set["right"]:
+                node.leaf_set["right"].remove(node_id)
         self.update_leaf_sets()
 
     def lookup(self, data, threshold):  # TODO
