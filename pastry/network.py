@@ -46,11 +46,15 @@ class Network:
         node = Node(node_id, self.m)
         self.nodes.append(node)
 
+    def update_sets_and_tables(self):
+        self.update_routing_tables()
+        self.update_leaf_sets()
+
     def update_leaf_sets(self):
         for node in self.nodes:
             node.update_leaf_set()
 
-    def update_routing_tables(self):  # ?
+    def update_routing_tables(self):  # DONE
         """Ανανεώνει το routing table για όλους τους κόμβους του δικτύου"""
         # self.first_node.update_routing_table()
         # for node in self.nodes:
@@ -102,5 +106,32 @@ class Network:
 
             suc.data[h_key] = {"key": key, "value": values}
 
-    def visualize_pastry(self):
-        pass
+    def visualize_pastry(self):  # TODO successor
+        plt.figure()
+        self.pastry_ring.clear()
+        sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse=True)
+        # Προσθέτει τους κόμβους στο γράφο
+        for node_id in sorted_nodes:
+            self.pastry_ring.add_node(node_id)
+        # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
+        for i in range(len(sorted_nodes)):
+            self.pastry_ring.add_edge(sorted_nodes[i], sorted_nodes[i].succesor)
+            # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
+            for j in sorted_nodes[i].routing_table:
+                self.pastry_ring.add_edge(sorted_nodes[i], j)
+        rotated_pos = {
+            node: (-y, x)
+            for node, (x, y) in nx.circular_layout(self.pastry_ring).items()
+        }
+        nx.draw(
+            self.pastry_ring,
+            rotated_pos,
+            with_labels=True,
+            node_color="skyblue",
+            node_size=1000,
+            font_size=10,
+        )
+        plt.title("Pastry DHT")
+        plt.gca().set_aspect("equal", adjustable="box")
+        plt.pause(0.001)
+        plt.ioff()
