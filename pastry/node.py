@@ -51,12 +51,6 @@ class Node:
 
     def lcp(self, key):
         """Calculate the Longest Common Prefix (LCP) between the node's id and the key"""
-        # lcp = 0
-        # while (
-        #     lcp < len(key) and lcp < len(self.node_id) and key[lcp] == self.node_id[lcp]
-        # ):
-        #     lcp += 1
-        # return lcp
         lcp = ""
         if len(key) > len(self.node_id):
             for i in range(len(self.node_id)):
@@ -84,28 +78,42 @@ class Node:
         pass
 
     def find_node_place(self, node_id):
-        """Βρίσκει τη θέση του κόμβου"""
+        """Βρίσκει τη θέση του κόμβου.
+        Ελέγχει ένα εκ των 2 φύλλων του leaf_set ανάλογα αν το n.
+        Αν δε βρει κάτι πηγαίνει στο routing table"""
         lcp = self.lcp(node_id)
         max_lcp = lcp
-        for node in self.leaf_set["left"]:
-            lcp = node.lcp(node_id)
-            if lcp is -1 or lcp is None:
-                continue
-            elif lcp > max_lcp:
-                max_lcp = lcp
-        for node in self.leaf_set["right"]:
-            lcp = node.lcp(node_id)
-            if lcp is -1 or lcp is None:
-                continue
-            elif lcp > max_lcp:
-                max_lcp = lcp
-        for node in self.routing_table:
-            lcp = node.lcp(node_id)
-            if lcp is -1 or lcp is None:
-                continue
-            elif lcp > max_lcp:
-                max_lcp = lcp
-        return max_lcp
+        # global node_list
+        node_list = []
+        if int(node_id) < int(self.node_id):
+            for node in self.leaf_set["left"]:
+                lcp = node.lcp(node_id)
+                print(f"left {lcp}")
+                if lcp == -1 or lcp == "" or lcp is None:
+                    continue
+                elif int(lcp) >= int(max_lcp):
+                    max_lcp = lcp
+                    node_list.append(node.node_id)
+        elif int(node_id) > int(self.node_id):
+            for node in self.leaf_set["right"]:
+                lcp = node.lcp(node_id)
+                if lcp == -1 or lcp == "" or lcp is None:
+                    continue
+                elif int(lcp) >= int(max_lcp):
+                    max_lcp = lcp
+                    node_list.append(node.node_id)
+        if lcp == -1 or lcp == "" or lcp is None:
+            for node in self.routing_table:
+                lcp = node.lcp(node_id)
+                if lcp == -1 or lcp == "" or lcp is None:
+                    continue
+                elif int(lcp) >= int(max_lcp):
+                    max_lcp = lcp
+                    node_list.append(node.node_id)
+        node_list.append(self.node_id)
+        node_list.sort()
+
+        return node_list.index(node_id)
 
     def lookup(self, key):
         """Perform tree traversal search to find the node responsible for the given key"""
