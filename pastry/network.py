@@ -46,31 +46,38 @@ class Network:
         node = Node(node_id, self.m)
         self.nodes.append(node)
 
-    def update_sets_and_tables(self):
-        self.update_routing_tables()
-        self.update_leaf_sets()
+    def update_sets_and_tables(self, node_id, action):
+        self.update_routing_tables(node_id, action)
+        self.update_leaf_sets(node_id, action)
 
-    def update_leaf_sets(self):
-        for node in self.nodes:
-            node.update_leaf_set()
+    def update_leaf_sets(self, node_id, action):
+        if action != "INSERT" and action != "DELETE":
+            print("Error")
+        else:
+            for node in self.nodes:
+                node.update_leaf_set(node_id, action)
 
-    def update_routing_tables(self):  # DONE
+    def update_routing_tables(self, node_id, action):  # DONE
         """Ανανεώνει το routing table για όλους τους κόμβους του δικτύου"""
         # self.first_node.update_routing_table()
         # for node in self.nodes:
         #    if node is not self.first_node:
         #       node.update_routing_table()
-        for node in self.nodes:
-            node.update_routing_table()
+        if action != "INSERT" and action != "DELETE":
+            print("Error")
+        else:
+            for node in self.nodes:
+                node.update_routing_table(node_id, action)
 
     def add_node(self, node_id):  # DONE
         """Προσθέτει έναν κόμβο"""
         new_node = Node(node_id, self.m)
         self.nodes.append(new_node)
         node = self.nodes[-1]
-        node.join(self.first_node)
-        self.update_routing_tables()
-        self.update_leaf_sets()
+        # node.join(self.first_node)
+        new_node.join(self.first_node)
+        self.update_routing_tables(new_node.node_id, "INSERT")
+        self.update_leaf_sets(new_node.node_id, "INSERT")
 
     def remove_node(self, node_id):  # DONE
         """Αφαιρεί έναν κόμβο"""
@@ -78,19 +85,41 @@ class Network:
         for node in self.nodes:
             if node_id in node.routing_table:
                 node.routing_table.remove(node_id)
-        self.update_routing_tables()
+        self.update_routing_tables(node_id, "DELETE")
 
-        for node in self.nodes:
-            if node_id in node.leaf_set["left"]:
-                node.leaf_set["left"].remove(node_id)
-        for node in self.nodes:
-            if node_id in node.leaf_set["right"]:
-                node.leaf_set["right"].remove(node_id)
-        self.update_leaf_sets()
+        for leaf in ["left", "right"]:
+            for node in self.nodes:
+                if node_id in node.leaf_set[leaf]:
+                    node.leaf_set[leaf].remove(node_id)
+            self.update_leaf_sets(node_id, "DELETE")
 
     def lookup(self, data, threshold):  # TODO
         """Ψάχνει για το key στους κόμβους"""
-        pass
+        current_node = self
+        while True:
+            # Calculate the LCP between the current node and the key
+            lcp = current_node.lcp(data)
+            # Check if the key matches the current node's identifier
+            if lcp == len(current_node.node_id) and lcp == len(data):
+                return current_node  # Found the responsible node
+            # Check if the LCP points to a node in the routing table
+            if lcp < len(current_node.node_id):
+                next_hop = current_node.routing_table[lcp][
+                    int(current_node.node_id[lcp], 16)
+                ]
+                if next_hop:
+                    current_node = next_hop
+                else:
+                    return current_node  # No more specific route in the routing table
+            # Check the leaf set for a closer node
+            elif lcp < len(data):
+                if int(data[lcp], 16) < int(current_node.node_id[lcp], 16):
+                    current_node = current_node.leaf_set["left"]
+                else:
+                    current_node = current_node.leaf_set["right"]
+            # No specific route found, return the current node
+            else:
+                return current_node
 
     def add_data(self, n):  # TODO
         """Βάζει τα δεδομένα στους κόμβους"""
@@ -102,7 +131,7 @@ class Network:
             print(
                 f"Αποθήκευση του key '{key}' με hash {h_key} στον κόμβο {node.find_successor(h_key).node_id}"
             )
-            suc = node.find_successor(h_key)
+            suc = node.closest_preceding_node(node, h_key)
 
             suc.data[h_key] = {"key": key, "value": values}
 
@@ -115,7 +144,9 @@ class Network:
             self.pastry_ring.add_node(node_id)
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
-            self.pastry_ring.add_edge(sorted_nodes[i], sorted_nodes[i].succesor)
+            node_id = sorted_nodes[i].node_id
+            successor = sorted_nodes[i].closest_preceding_node(sorted_nodes[i], node_id)
+            self.pastry_ring.add_edge(sorted_nodes[i], successor)
             # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
             for j in sorted_nodes[i].routing_table:
                 self.pastry_ring.add_edge(sorted_nodes[i], j)
@@ -127,7 +158,7 @@ class Network:
             self.pastry_ring,
             rotated_pos,
             with_labels=True,
-            node_color="skyblue",
+            node_color="lightgreen",
             node_size=1000,
             font_size=10,
         )

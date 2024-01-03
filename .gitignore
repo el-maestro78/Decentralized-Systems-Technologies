@@ -162,8 +162,8 @@ cython_debug/
 *.xml
 *.xml
 pastry/.idea/
-pastry/test.py
+pastry/test/test.py
 pastry/test/
 pastry/.vscode/settings.json
 .idea/Decentralized-Systems-Technologies.iml
-pastry/test.py
+pastry/test/test.py
