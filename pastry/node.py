@@ -65,19 +65,19 @@ class Node:
         else:
             return -1
 
-    def join(self, node_id):
+    def join(self, node_id):  # ?
         """Βάζει τον κόμβο στο δίκτυο.
         Η τιμή του κόμβου είναι ήδη hashed"""
         self.find_node_place(self.node_id)
         self.update_routing_table(self.node_id)
         self.update_leaf_set(self.node_id)
 
-    def leave(self):
+    def leave(self):  # ?
         """Αφαιρεί τον κόμβο"""
 
         pass
 
-    def find_node_place(self, node_id):
+    def find_node_place(self, node_id):  # ?
         """Βρίσκει τη θέση του κόμβου.
         Ελέγχει ένα εκ των 2 φύλλων του leaf_set ανάλογα αν το n.
         Αν δε βρει κάτι πηγαίνει στο routing table"""
@@ -115,7 +115,7 @@ class Node:
 
         return node_list.index(node_id)
 
-    def lookup(self, key):
+    def lookup(self, key):  # probably wrong file
         """Perform tree traversal search to find the node responsible for the given key"""
         current_node = self
         while True:
@@ -143,14 +143,40 @@ class Node:
             else:
                 return current_node
 
-    def update_routing_table(self, node_id):
+    def update_routing_table(self, node_id, action):
         """Ανανεώνει το routing table για τον κόμβο"""
+        if action == "INSERT":
+            # if node_id in self.routing_table:
+            node_place = self.find_node_place(node_id)
+            if self.routing_table[node_place] is not None:
+                self.routing_table.insert(node_place, node_id)
+            else:
+                self.routing_table[node_place] = node_id
+        elif action == "DELETE":
+            for i in self.routing_table:
+                if i == node_id:
+                    i = None
+        else:
+            print("ERROR")
 
-        pass
-
-    def update_leaf_set(self, node_id):
-        """Ανανεώνει το routing table για τον κόμβο"""
-        pass
+    def update_leaf_set(self, node_id, action):
+        """Ανανεώνει το leaf set για τον κόμβο"""
+        if int(node_id) >= int(self.node_id):
+            leaf = "right"
+        else:
+            leaf = "left"
+        if action == "INSERT":
+            node_place = self.find_node_place(node_id)
+            if self.leaf_set[leaf] is not None:
+                self.leaf_set[leaf].insert(node_place, node_id)
+            else:
+                self.leaf_set[leaf][node_place] = node_id
+        elif action == "DELETE":
+            for i in self.leaf_set[leaf]:
+                if i == node_id:
+                    i = None
+        else:
+            print("ERROR")
 
     # def update_neighbourhood_set(self, node_id):
     #     """Ανανεώνει τις λίστες για τους γείτονες"""
