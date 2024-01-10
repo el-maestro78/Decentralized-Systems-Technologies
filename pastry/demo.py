@@ -1,7 +1,7 @@
 from network import Network
 from node import Node
 from random import sample
-from hash import hash_function
+# from hash import hash_function
 
 m_user = int(input("Παράμετρoς m: "))
 Node.m = m_user
@@ -12,20 +12,25 @@ while num_nodes > 2**m_user:
     print("Μη έγκυρο πλήθος κόμβων")
     num_nodes = int(input("Πλήθος κόμβων: "))
 
-# Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό
+# Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό.
+# Χωρίζονται σε εκατοντάδες για να υπάρχουν κοινά prefix.
 node_ids = sample(range(Node.r_size), num_nodes)
+# i = int(Node.m/num_nodes)  #
+# for i in range(1, Node.m):
+#     for j in range(i):
+#         node_ids = sample(range(i*10, j*10), j)
 
 # Κατασκευή του δικτύου
 s_network = Network(m_user, node_ids)
 
 # Κατασκευή των κόμβων που θα εισαχθούν στο δίκτυο
 for node_id in node_ids:
-    node = Node(node_id, m_user)
+    node = Node(str(node_id), m_user)
     s_network.nodes.append(node)
 
 # Προσθήκη των κόμβων στο δίκτυο
 for node in s_network.nodes:
-    node.join(s_network.first_node)
+    node.join(s_network.first_node.node_id)
     print(f"Κόμβος {node.node_id} προστέθηκε στο δίκτυο")
 
 # Προσθήκη δεδομένων στους κόμβους του δικτύου
@@ -36,7 +41,7 @@ while n_data > 2**m_user:
 
 s_network.add_data(n_data)
 
-s_network.update_routing_tables()
+# s_network.update_routing_tables()
 
 s_network.visualize_pastry()
 
@@ -71,8 +76,6 @@ while True:
         s_network.print_network()
     elif choice == 5:
         s_network.visualize_pastry()
-    elif choice == 6:
-        s_network.update_routing_tables()
     else:
         print("Τερματισμός")
         break

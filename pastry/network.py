@@ -4,12 +4,6 @@ from csv_to_dict import create_education_dictionary
 import networkx as nx
 import matplotlib.pyplot as plt
 
-"""
-#  DONE
-#  ?
-#  TODO
-"""
-
 
 class Network:
     """Pastry Network
@@ -73,7 +67,7 @@ class Network:
         """Προσθέτει έναν κόμβο"""
         new_node = Node(node_id, self.m)
         self.nodes.append(new_node)
-        node = self.nodes[-1]
+        # node = self.nodes[-1]
         # node.join(self.first_node)
         new_node.join(self.first_node)
         self.update_routing_tables(new_node.node_id, "INSERT")
@@ -93,9 +87,27 @@ class Network:
                     node.leaf_set[leaf].remove(node_id)
             self.update_leaf_sets(node_id, "DELETE")
 
-    def lookup(self, data, threshold):  # TODO
+    def lookup(self, data, threshold):  # DONE
         """Ψάχνει για το key στους κόμβους"""
-        current_node = self
+        h_key = hash_function(data)
+        node = self.first_node
+        node = node.find_successor(h_key)
+        # current_node = self
+        found_data = node.data.get(h_key, None)
+        if found_data is not None:
+            found = False
+            print(
+                f'Βρέθηκε το key \'{data}\' στον κόμβο {node.node_id} με hash {h_key}')
+            for scientists in found_data['value']:
+                if scientists[1] >= threshold:
+                    found = True
+                    print(
+                        f'{scientists[0]}: {scientists[1]} βραβεία')
+            if not found:
+                print(f'Δεν υπάρχουν επιστήμονες με >= {threshold} βραβεία')
+        else:
+            print(f'Το \'{data}\' δεν υπάρχει σε κανένα κόμβο')
+        """
         while True:
             # Calculate the LCP between the current node and the key
             lcp = current_node.lcp(data)
@@ -120,22 +132,21 @@ class Network:
             # No specific route found, return the current node
             else:
                 return current_node
+        """
 
-    def add_data(self, n):  # TODO
+    def add_data(self, n):  # DONE
         """Βάζει τα δεδομένα στους κόμβους"""
         my_dict = create_education_dictionary(n)
         for key, values in my_dict.items():
             node = self.first_node
-
             h_key = hash_function(key)
+            suc = node.find_successor(h_key)
             print(
-                f"Αποθήκευση του key '{key}' με hash {h_key} στον κόμβο {node.find_successor(h_key).node_id}"
+                f"Αποθήκευση του key '{key}' με hash {h_key} στον κόμβο {suc.node_id}"
             )
-            suc = node.closest_preceding_node(node, h_key)
-
             suc.data[h_key] = {"key": key, "value": values}
 
-    def visualize_pastry(self):  # TODO successor
+    def visualize_pastry(self):  # DONE
         plt.figure()
         self.pastry_ring.clear()
         sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse=True)
@@ -145,7 +156,7 @@ class Network:
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
             node_id = sorted_nodes[i].node_id
-            successor = sorted_nodes[i].closest_preceding_node(sorted_nodes[i], node_id)
+            successor = sorted_nodes[i].find_successor(node_id)
             self.pastry_ring.add_edge(sorted_nodes[i], successor)
             # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
             for j in sorted_nodes[i].routing_table:
