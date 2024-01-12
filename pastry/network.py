@@ -14,7 +14,7 @@ class Network:
     def __init__(self, m, node_ids):
         self.nodes = []
         self.m = m
-        self.r_size = m**2
+        self.r_size = 2**m
         self.add_first_node(node_ids[0])
         self.first_node = self.nodes[0]
         self.pastry_ring = nx.Graph()
@@ -35,23 +35,23 @@ class Network:
             node.print_routing_table()
             print("---------------")
 
-    def add_first_node(self, node_id):  # DONE
+    def add_first_node(self, node_id):
         """Αρχικοποίηση του 1ου κόμβου"""
         node = Node(node_id, self.m)
         self.nodes.append(node)
 
-    def update_sets_and_tables(self, node_id, action):
-        self.update_routing_tables(node_id, action)
-        self.update_leaf_sets(node_id, action)
+    def update_sets_and_tables(self, node, action):
+        self.update_routing_tables(node, action)
+        self.update_leaf_sets(node, action)
 
-    def update_leaf_sets(self, node_id, action):
+    def update_leaf_sets(self, node, action):
         if action != "INSERT" and action != "DELETE":
             print("Error")
         else:
-            for node in self.nodes:
-                node.update_leaf_set(node_id, action)
+            for n in self.nodes:
+                n.update_leaf_set(node, action)
 
-    def update_routing_tables(self, node_id, action):  # DONE
+    def update_routing_tables(self, node, action):  # DONE
         """Ανανεώνει το routing table για όλους τους κόμβους του δικτύου"""
         # self.first_node.update_routing_table()
         # for node in self.nodes:
@@ -60,8 +60,8 @@ class Network:
         if action != "INSERT" and action != "DELETE":
             print("Error")
         else:
-            for node in self.nodes:
-                node.update_routing_table(node_id, action)
+            for n in self.nodes:
+                n.update_routing_table(node, action)
 
     def add_node(self, node_id):  # DONE
         """Προσθέτει έναν κόμβο"""
@@ -69,23 +69,22 @@ class Network:
         self.nodes.append(new_node)
         # node = self.nodes[-1]
         # node.join(self.first_node)
-        new_node.join(self.first_node)
-        self.update_routing_tables(new_node.node_id, "INSERT")
-        self.update_leaf_sets(new_node.node_id, "INSERT")
+        self.first_node.join(new_node)
+        self.update_routing_tables(new_node, "INSERT")
+        self.update_leaf_sets(new_node, "INSERT")
 
-    def remove_node(self, node_id):  # DONE
+    def remove_node(self, node):  # DONE
         """Αφαιρεί έναν κόμβο"""
-        node_id.leave()
-        for node in self.nodes:
-            if node_id in node.routing_table:
-                node.routing_table.remove(node_id)
-        self.update_routing_tables(node_id, "DELETE")
-
-        for leaf in ["left", "right"]:
-            for node in self.nodes:
-                if node_id in node.leaf_set[leaf]:
-                    node.leaf_set[leaf].remove(node_id)
-            self.update_leaf_sets(node_id, "DELETE")
+        node.leave()
+        # for n in self.nodes:
+        #     if node in n.routing_table:
+        #         n.routing_table.remove(node)
+        self.update_routing_tables(node, "DELETE")
+        # for leaf in ["left", "right"]:
+        #     for n in self.nodes:
+        #         if node in node.leaf_set[leaf]:
+        #             n.leaf_set[leaf].remove(node)
+        self.update_leaf_sets(node, "DELETE")
 
     def lookup(self, data, threshold):  # DONE
         """Ψάχνει για το key στους κόμβους"""
@@ -151,13 +150,13 @@ class Network:
         self.pastry_ring.clear()
         sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse=True)
         # Προσθέτει τους κόμβους στο γράφο
-        for node_id in sorted_nodes:
-            self.pastry_ring.add_node(node_id)
+        for node in sorted_nodes:
+            self.pastry_ring.add_node(node.node_id)
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
-            node_id = sorted_nodes[i].node_id
-            successor = sorted_nodes[i].find_successor(node_id)
-            self.pastry_ring.add_edge(sorted_nodes[i], successor)
+            node = sorted_nodes[i].node
+            successor = sorted_nodes[i].find_successor(node)
+            self.pastry_ring.add_edge(sorted_nodes[i].node_id, successor.node_id)
             # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
             for j in sorted_nodes[i].routing_table:
                 self.pastry_ring.add_edge(sorted_nodes[i], j)

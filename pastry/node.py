@@ -1,5 +1,6 @@
 import pprint
 import sys
+from filter_table import filter_table
 
 
 class Node:
@@ -12,7 +13,7 @@ class Node:
 
     def __init__(self, node_id, m=4):
         self.node_id = str(node_id)
-        self.nodes_num = 2**m  # Network's ring size
+        self.nodes_num = m**2
         self.leaf_set = {"left": [], "right": []}
         self.routing_table = [[None] * self.nodes_num for _ in range(m)]
         self.data = {}
@@ -21,9 +22,9 @@ class Node:
     def __str__(self):
         return str(self.node_id)
 
-    def print_routing_table_and_leaf_set(self):  # DONE
+    def print_routing_table_and_leaf_set(self):
         print(f"ID: {self.node_id}")
-        print(f"Κοντινότερος: {self.closest_preceding_node().node_id}")
+        print(f"Κοντινότερος: {self.closest_preceding_node(self).node_id}")
         print(f"Δεδομένα: ")
         pprint.pprint(self.data, depth=5)
         print(f"Routing Table: ")
@@ -36,12 +37,13 @@ class Node:
             for node in self.leaf_set[leaf]:
                 print(node.node_id)
 
-    def lcp(self, key):  # DONE
+    def lcp(self, key):
         """Calculate the Longest Common Prefix (LCP) between the node's id and the key.
         :param str key: Node's id or data key
         :return: Least common prefix between self and key.
         :rtype: int"""
         key = str(key)
+        self.node_id = str(self.node_id)
         lcp = ""
         if len(key) > len(self.node_id):
             for i in range(len(self.node_id)):
@@ -52,82 +54,88 @@ class Node:
                 if key[i] == self.node_id[i]:
                     lcp += lcp.join(key[i])
         if lcp != "":
-            return lcp
+            return int(lcp)
         else:
             return -1
 
-    def join(self, node_id):  # DONE
+    def join(self, node):
         """Βάζει τον κόμβο στο δίκτυο.
         Η τιμή του κόμβου είναι ήδη hashed
-        :param str node_id: Node's ID
+        :param Node node: Node that we want to insert/join
         :return: Nothing.
         :rtype: None
         """
         # node_place = node_id.find_node_place(self.node_id)
-        self.update_routing_table(node_id, "INSERT")
-        self.update_leaf_set(node_id, "INSERT")
+        self.update_routing_table(node, "INSERT")
+        self.update_leaf_set(node, "INSERT")
 
-    def leave(self):  # ?
+    def leave(self):
         """Αφαιρεί τον κόμβο"""
-        closest_node = self.closest_preceding_node()
+        closest_node = self.closest_preceding_node(self)
         # closest_node.routing_table = self.routing_table ?
         closest_node.data = {
             **closest_node.data,
             **self.data,
         }  # add node's data to the closest node with dict unpacking
 
-    def find_node_place(self, node_id):  # ?
+    def find_node_place(self, node):  # ?
         """Βρίσκει τη θέση του κόμβου.
         Αν υπάρχει common prefix, ελέγχει ένα εκ των 2 φύλλων του leaf_set ανάλογα με την τιμή του node_id.
         Αλλιώς πηγαίνει στο routing table
-        :param str node_id: Node's ID
-        :return: Closest Node node.
+        :param Node node: Node
+        :return: Closest Node.
         :rtype: Node
         """
         # check if it is first or second node
-        if self.nodes_cnt == 0 or self.nodes_cnt == 1:
-            return self.nodes_cnt
-        lcp = self.lcp(node_id)
+        if Node.nodes_cnt == 1 or Node.nodes_cnt == 2:
+            return self
+        lcp = self.lcp(node.node_id)
         max_lcp = lcp  # find the longest prefix
         node_list = []
-        if int(node_id) <= int(self.node_id):
-            for node in self.leaf_set["left"]:
-                lcp = node.lcp(node_id)
-                print(f"left {lcp}")
-                if lcp == -1 or lcp == "" or lcp is None:
-                    continue
-                elif int(lcp) >= int(max_lcp):
+        if lcp == -1 or lcp == "":
+            # check on Routing Table, it's not on the leaf set
+            clean_routing_table = filter_table(self.routing_table)
+            for n in clean_routing_table:
+                lcp = n.lcp(node.node_id)
+                if int(lcp) >= int(max_lcp):
                     max_lcp = lcp
-                    node_list.append(node.node_id)
-        elif int(node_id) > int(self.node_id):
-            for node in self.leaf_set["right"]:
-                lcp = node.lcp(node_id)
-                if lcp == -1 or lcp == "" or lcp is None:
-                    continue
-                elif int(lcp) >= int(max_lcp):
+                    node_list.append(n)
+        if int(node.node_id) <= int(self.node_id):  # It's on Leaf set
+            for n in self.leaf_set["left"]:
+                lcp = n.lcp(node.node_id)
+                if int(lcp) >= int(max_lcp):
                     max_lcp = lcp
-                    node_list.append(node.node_id)
-        if lcp == -1 or lcp == "" or lcp is None:
-            for node in self.routing_table:
-                lcp = node.lcp(node_id)
-                if lcp == -1 or lcp == "" or lcp is None:
-                    continue
-                elif int(lcp) >= int(max_lcp):
+                    node_list.append(n)
+        elif int(node.node_id) > int(self.node_id):
+            for n in self.leaf_set["right"]:
+                lcp = n.lcp(node.node_id)
+                if int(lcp) >= int(max_lcp):
                     max_lcp = lcp
-                    node_list.append(node.node_id)
-        node_list.append(self.node_id)
-        if len(node_list) == 1:
-            return self.node_id
-        node_list.sort()
-        node_index = node_list.index(node_id)
-        # print(f'Nodes Index: {node_index}')
+                    node_list.append(n)
+        if len(node_list) == 0:
+            #  if it's not on the routing table
+            min_distance = sys.maxsize
+            closest_node = self
+            clean_routing_table = filter_table(self.routing_table)
+            for n in clean_routing_table:
+                distance = self.distance(n.node_id, node.node_id)
+                if distance < min_distance:
+                    min_distance = distance
+                    closest_node = node
+            if closest_node != self:
+                return closest_node.find_node_place(node)
+        node_list.append(node)
+        sorted_node_list = sorted(node_list, key=lambda node_in_list: node_in_list.node_id)
+        if len(sorted_node_list) == 1:
+            return self
+        node_index = sorted_node_list.index(node)
         if node_index == 0:
-            return node_list[node_index + 1]  # returns suc or pre if is it on edges of the list
-        if node_index + 1+ 1 > len(node_list):
-            return node_list[node_index - 1]
+            return sorted_node_list[node_index + 1]  # returns suc or pre if is it on edges of the list
+        if node_index + 1 >= len(sorted_node_list):
+            return sorted_node_list[node_index - 1]
 
-        successor = node_list[node_index + 1]
-        predecessor = node_list[node_index - 1]
+        successor = sorted_node_list[node_index + 1]
+        predecessor = sorted_node_list[node_index - 1]
         suc_distance = self.distance(self.node_id, successor.node_id)
         pre_distance = self.distance(self.node_id, predecessor.node_id)
         if suc_distance <= pre_distance:
@@ -135,81 +143,84 @@ class Node:
         else:
             return predecessor  # must have same prefix
 
-    def update_routing_table(self, node_id, action):  # DONE
-        """Ανανεώνει το routing table για τον κόμβο"""
-        if action == "INSERT":
-            # if node_id in self.routing_table:
-            if Node.nodes_cnt == 0:
-                self.routing_table.insert(0, node_id)
+    def update_routing_table(self, node, action):  # DONE
+        """Ανανεώνει το routing table για τον κόμβο
+        :param Node node: Node.
+        :param str action: Either Insert or Delete. The action will be performed.
+        :return: Nothing.
+        :rtype: None
+        """
+        if action == "INSERT":  # TODO
+            if Node.nodes_cnt == 1:
+                self.routing_table.insert(0, node)
             else:
-                node_place = self.find_node_place(node_id)
-                if node_place.node_id == node_id:  # TODO
+                node_place = self.find_node_place(node)
+                if node_place.node_id != node.node_id:
                     least_dist = sys.maxsize  # max int
-                    for node in self.routing_table:
-                        dist = self.distance(node.node_id, node_id)
+                    clean_routing_table = filter_table(self.routing_table)
+                    for n in clean_routing_table:
+                        dist = self.distance(node.node_id, n.node_id)
                         if dist < least_dist:
-                            node_place = node
+                            node_place = n
                 nodes_index = self.routing_table.index(node_place)
                 if self.routing_table[nodes_index] is not None:
-                    self.routing_table.insert(nodes_index, node_id)
+                    self.routing_table.insert(nodes_index, node)
                 else:
-                    self.routing_table[nodes_index] = node_id
+                    self.routing_table[nodes_index] = node
         elif action == "DELETE":
             self.routing_table = [
-                None if x == node_id else x for x in self.routing_table
+                None if x.node_id == node.node_id else x for x in self.routing_table
             ]
         else:
             print("ERROR")
 
-    def update_leaf_set(self, node_id, action):  # DONE
+    def update_leaf_set(self, node, action):  # DONE
         """Ανανεώνει το leaf set για τον κόμβο.
-
-        :param str node_id: Node's id.
-        :param str action: Either INSERT or DELETE.
-        :return: None"""
-        if self.lcp(node_id) != -1:
-            if int(node_id) >= int(self.node_id):
+        :param Node node: Node.
+        :param str action: Either Insert or Delete. The action will be performed.
+        :return: Nothing.
+        :rtype: None"""
+        # node_id = node.node_id
+        if self.lcp(node.node_id) != -1:
+            if int(node.node_id) >= int(self.node_id):
                 leaf = "right"
             else:
                 leaf = "left"
             if action == "INSERT":  # TODO
-                node_place = self.find_node_place(node_id)
-                if node_place.node_id == node_id:
+                node_place = self.find_node_place(node)
+                if node_place.node_id == node.node_id:
                     least_dist = sys.maxsize  # max int
-                    for node in self.leaf_set[leaf]:
-                        dist = self.distance(node.node_id, node_id)
+                    for n in self.leaf_set[leaf]:
+                        dist = self.distance(node.node_id, n.node_id)
                         if dist < least_dist:
-                            node_place = node
+                            node_place = n
                 nodes_index = self.leaf_set[leaf].index(node_place)
                 if self.leaf_set[leaf] is not None:
-                    self.leaf_set[leaf].insert(nodes_index, node_id)
+                    self.leaf_set[leaf].insert(nodes_index, node)
                 else:
-                    self.leaf_set[leaf][nodes_index] = node_id
+                    self.leaf_set[leaf][nodes_index] = node
             elif action == "DELETE":
                 self.routing_table = [
-                    None if x == node_id else x for x in self.leaf_set[leaf]
+                    None if x.node_id == node.node_id else x for x in self.leaf_set[leaf]
                 ]
             else:
                 print("ERROR")
 
-    def closest_preceding_node(self):  # , node, h_key):  # TODO
-        """Βρίσκει τον κόμβο που είναι πιο κοντά στον κόμβο."""
+    def closest_preceding_node(self, node):  # , h_key):  # TODO
+        """Βρίσκει τον κόμβο που είναι πιο κοντά στον κόμβο.
+        :return: Closest Node to Key.
+        :rtype: Node"""
         min_distance = sys.maxsize  # max integer
-        closest_node = self
+        closest_node = node
         for leaf in ["left", "right"]:
-            for node in self.leaf_set[leaf]:
-                distance = self.distance(self.node_id, node.node_id)
+            for n in self.leaf_set[leaf]:
+                distance = self.distance(node.node_id, n.node_id)
                 if distance < min_distance:
                     min_distance = distance
-                    closest_node = node
+                    closest_node = n
+        return closest_node
 
-        return closest_node  # closest_node.node_id
-        # if closest_node != self:
-        #     return closest_node
-        # else:
-        #     return -1
-
-    def distance(self, n1, n2):  # DONE
+    def distance(self, n1, n2):
         """Υπολογισμός απόστασης μεταξύ 2 κόμβων στο δίκτυο"""
         n1 = int(n1)
         n2 = int(n2)
@@ -218,12 +229,22 @@ class Node:
         else:
             return self.nodes_num - n1 + n2
 
-    def find_successor(self, key):
-        """Βρίσκει τον κόμβο που έχει την ευθύνη για το key"""
-        closest_node = self.closest_preceding_node()
+    def find_successor(self, key):  # TODO
+        """Βρίσκει τον κόμβο που έχει την ευθύνη για το key
+        :param str key: Hashed Key.
+        :return: Closest node to key.
+        :rtype: Node"""
         if self.node_id == key:
             return self
-        if self.lcp(key) <= closest_node.lcp(key):
+        closest_node = self.closest_preceding_node(self)
+        if self.lcp(key) == -1:
+            # it has not the same prefix, check routing table
+            clean_routing_table = filter_table(self.routing_table)
+            for n in clean_routing_table:
+                if n.lcp(key) != -1:
+                    return n.find_successor(key)
+        elif self.lcp(key) < closest_node.lcp(key):
+            # we pass the key to the closest node
             return closest_node.find_successor(key)
         elif self.lcp(key) >= closest_node.lcp(key):
             dist1 = self.distance(self.node_id, key)

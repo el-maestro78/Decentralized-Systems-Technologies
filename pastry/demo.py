@@ -1,7 +1,7 @@
 from network import Network
 from node import Node
 from random import sample
-# from hash import hash_function
+from hash import hash_function
 
 m_user = int(input("Παράμετρoς m: "))
 Node.m = m_user
@@ -25,12 +25,13 @@ s_network = Network(m_user, node_ids)
 
 # Κατασκευή των κόμβων που θα εισαχθούν στο δίκτυο
 for node_id in node_ids:
+    node_id = hash_function(node_id)
     node = Node(str(node_id), m_user)
     s_network.nodes.append(node)
 
 # Προσθήκη των κόμβων στο δίκτυο
 for node in s_network.nodes:
-    node.join(s_network.first_node.node_id)
+    s_network.first_node.join(node)
     print(f"Κόμβος {node.node_id} προστέθηκε στο δίκτυο")
 
 # Προσθήκη δεδομένων στους κόμβους του δικτύου
