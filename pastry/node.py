@@ -258,8 +258,8 @@ class Node:
                         dist = self.distance(node.node_id, n.node_id)
                         if dist < least_dist:
                             node_place = n
-                    print(f"Node Place: {node_place}")  # Debug print  | Φτάσαμε εδώ
-                    print(f"Leaf Set: {self.leaf_set}")  # Debug print | Φτάσαμε εδώ
+                    print(f"Node Place: {node_place}")  # Debug print
+                    print(f"Leaf Set: {self.leaf_set}")  # Debug print
 
                     if node_place in self.leaf_set[leaf]:
                         nodes_index = self.leaf_set[leaf].index(node_place)
