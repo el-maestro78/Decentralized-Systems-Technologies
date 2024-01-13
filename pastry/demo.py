@@ -1,3 +1,8 @@
+# Βεβαιωθείτε ότι έχετε εγκαταστήσει τα πακέτα networkx και matplotlib για την λειτουργία του Network.
+# Οι εντολές για την εγκατάσταση των πακέτων στο cmd των Windows είναι:
+# pip install networkx
+# pip install matplotlib
+
 from network import Network
 from node import Node
 from random import sample
