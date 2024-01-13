@@ -19,16 +19,16 @@ class Node:
         self.data = {}
         Node.nodes_cnt += 1
 
-    def print_routing_table(self):
-        print(f"Routing Table for Node {self.node_id}:")
-        for i, row in enumerate(self.routing_table):
-            print(f"Row {i}: {row}")
-
     def __str__(self):
         return str(self.node_id)
     
     def __hash__(self):
         return hash(self.node_id)
+    
+    def print_routing_table(self):
+        print(f"Routing Table for Node {self.node_id}:")
+        for i, row in enumerate(self.routing_table):
+            print(f"Row {i}: {row}")
 
     def print_routing_table_and_leaf_set(self):
         print(f"ID: {self.node_id}")
