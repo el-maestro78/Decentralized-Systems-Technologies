@@ -6,7 +6,7 @@ import random
 def create_education_dictionary(n):
     education_dict = {}
     # Το path που περιέχει το csv αρχείο με τους επιστήμονες
-    CSV_PATH = './computer_scientists_data.csv'
+    CSV_PATH = 'computer_scientists_data.csv'
     with open(CSV_PATH, 'r', encoding="utf-8") as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
