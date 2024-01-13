@@ -180,3 +180,4 @@ class Network:
         plt.gca().set_aspect("equal", adjustable="box")
         plt.pause(0.001)
         plt.ioff()
+        
