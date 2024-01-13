@@ -19,8 +19,16 @@ class Node:
         self.data = {}
         Node.nodes_cnt += 1
 
+    def print_routing_table(self):
+        print(f"Routing Table for Node {self.node_id}:")
+        for i, row in enumerate(self.routing_table):
+            print(f"Row {i}: {row}")
+
     def __str__(self):
         return str(self.node_id)
+    
+    def __hash__(self):
+        return hash(self.node_id)
 
     def print_routing_table_and_leaf_set(self):
         print(f"ID: {self.node_id}")
@@ -77,7 +85,6 @@ class Node:
             **closest_node.data,
             **self.data,
         }  # add node's data to the closest node with dict unpacking
-
 
     def find_node_place(self, node):
         """Βρίσκει τη θέση του κόμβου.
@@ -148,8 +155,6 @@ class Node:
         else:
             return predecessor  # must have same prefix
 
-
-
     def __eq__(self, other):
         return isinstance(other, Node) and self.node_id == other.node_id
 
@@ -170,7 +175,7 @@ class Node:
                     clean_routing_table = filter_table(self.routing_table)
                     for n in clean_routing_table:
                         if n[0] is not None:
-                            dist = self.distance(node.node_id, n[0].node_id)
+                            dist = self.distance(node.node_id, int(n[0].node_id))
                             if dist < least_dist:
                                 node_place = n[0]
                 nodes_index = int(node_place.node_id, 16)
@@ -189,8 +194,6 @@ class Node:
         else:
             print("ERROR")
 
-
-
     def closest_preceding_node(self, node):  # , h_key):  # TODO
         """Βρίσκει τον κόμβο που είναι πιο κοντά στον κόμβο.
         :return: Closest Node to Key.
@@ -208,36 +211,45 @@ class Node:
     def distance(self, n1, n2):
         """Υπολογισμός απόστασης μεταξύ 2 κόμβων στο δίκτυο"""
         n1 = int(n1)
-        n2 = int(n2)
+
+        if isinstance(n2, Node):
+            n2 = int(n2.node_id)
+        else:
+            n2 = int(n2)
+
         if n1 <= n2:
             return n2 - n1
         else:
             return self.nodes_num - n1 + n2
 
-    def find_successor(self, key):  # TODO
+    def find_successor(self, key):
         """Βρίσκει τον κόμβο που έχει την ευθύνη για το key
         :param str key: Hashed Key.
         :return: Closest node to key.
-        :rtype: Node"""
+        :rtype: Node or None"""
         if self.node_id == key:
             return self
         closest_node = self.closest_preceding_node(self)
-        if self.lcp(key) == -1:
-            # it has not the same prefix, check routing table
-            clean_routing_table = filter_table(self.routing_table)
-            for n in clean_routing_table:
-                if n.lcp(key) != -1:
-                    return n.find_successor(key)
-        elif self.lcp(key) < closest_node.lcp(key):
-            # we pass the key to the closest node
-            return closest_node.find_successor(key)
-        elif self.lcp(key) >= closest_node.lcp(key):
-            dist1 = self.distance(self.node_id, key)
-            dist2 = self.distance(closest_node.node_id, key)
-            if dist2 > dist1:
-                return closest_node
-            else:
-                return self
+        if isinstance(self, Node) and isinstance(closest_node, Node):
+            if self.lcp(key) == -1:
+                # it has not the same prefix, check routing table
+                clean_routing_table = filter_table(self.routing_table)
+                for n in clean_routing_table:
+                    if isinstance(n, Node) and n.lcp(key) != -1:
+                        return n.find_successor(key)
+            elif self.lcp(key) < closest_node.lcp(key):
+                # we pass the key to the closest node
+                return closest_node.find_successor(key)
+            elif self.lcp(key) >= closest_node.lcp(key):
+                dist1 = self.distance(self.node_id, key)
+                dist2 = self.distance(closest_node.node_id, key)
+                if dist2 > dist1:
+                    return closest_node
+                else:
+                    return self
+        else:
+            print("ERROR: Not a Node")
+            return None  # Προσθέστε αυτήν τη γραμμή για να επιστρέφει None σε περίπτωση που υπάρξει κάποιο σφάλμα
 
     def update_leaf_set(self, node, action):  # DONE
         """Ανανεώνει το leaf set για τον κόμβο.

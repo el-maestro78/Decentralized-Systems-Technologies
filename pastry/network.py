@@ -140,10 +140,13 @@ class Network:
             node = self.first_node
             h_key = hash_function(key)
             suc = node.find_successor(h_key)
-            print(
-                f"Αποθήκευση του key '{key}' με hash {h_key} στον κόμβο {suc.node_id}"
-            )
-            suc.data[h_key] = {"key": key, "value": values}
+            if suc is not None:
+                print(
+                    f"Αποθήκευση του key '{key}' με hash {h_key} στον κόμβο {suc.node_id}"
+                )
+                suc.data[h_key] = {"key": key, "value": values}
+            else:
+                print(f"Δεν βρέθηκε διάδοχος για το key '{key}' με hash {h_key}")
 
     def visualize_pastry(self):  # DONE
         plt.figure()
@@ -154,12 +157,13 @@ class Network:
             self.pastry_ring.add_node(node.node_id)
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
-            node = sorted_nodes[i].node
+            node = sorted_nodes[i]
             successor = sorted_nodes[i].find_successor(node)
             self.pastry_ring.add_edge(sorted_nodes[i].node_id, successor.node_id)
             # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
             for j in sorted_nodes[i].routing_table:
-                self.pastry_ring.add_edge(sorted_nodes[i], j)
+                if isinstance(j, Node):
+                    self.pastry_ring.add_edge(sorted_nodes[i].node_id, j.node_id)
         rotated_pos = {
             node: (-y, x)
             for node, (x, y) in nx.circular_layout(self.pastry_ring).items()
