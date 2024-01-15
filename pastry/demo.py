@@ -30,7 +30,7 @@ s_network = Network(m_user, node_ids)
 
 # Κατασκευή των κόμβων που θα εισαχθούν στο δίκτυο
 for node_id in node_ids:
-    node_id = hash_function(node_id)
+    node_id = hash_function(str(node_id))
     node = Node(str(node_id), m_user)
     s_network.nodes.append(node)
 

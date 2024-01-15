@@ -1,6 +1,7 @@
 import pprint
 import sys
 from filter_table import filter_table
+from hash import hash_function
 
 
 class Node:
@@ -23,7 +24,7 @@ class Node:
         return str(self.node_id)
     
     def __hash__(self):
-        return hash(self.node_id)
+        return hash_function(self.node_id)
     
     def print_routing_table(self):
         print(f"Routing Table for Node {self.node_id}:")
@@ -262,8 +263,9 @@ class Node:
                 leaf = "right"
             else:
                 leaf = "left"
+            node_place = self.find_node_place(node)
             if action == "INSERT":  
-                node_place = self.find_node_place(node)
+                # node_place = self.find_node_place(node)
                 if node_place.node_id == node.node_id:
                     least_dist = sys.maxsize  # max int
                     for n in self.leaf_set[leaf]:
