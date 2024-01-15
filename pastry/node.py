@@ -137,6 +137,8 @@ class Node:
                         closest_node = node
             if closest_node != self:
                 return closest_node.find_node_place(node)
+            else:
+                return self
         node_list.append(node)
         sorted_node_list = sorted(node_list, key=lambda node_in_list: node_in_list.node_id)
         if len(sorted_node_list) == 1:
@@ -179,6 +181,14 @@ class Node:
                             dist = self.distance(node.node_id, int(n[0].node_id))
                             if dist < least_dist:
                                 node_place = n[0]
+                elif node_place == self or node_place is None:
+                    # if the table is not full or there is not a node with lcp,
+                    # it just adds it in the first none place it finds
+                    for row in enumerate(self.routing_table):
+                        for n in range(len(row)):
+                            if self.routing_table[n] is None:
+                                self.routing_table[n] = node
+                                break
                 nodes_index = int(node_place.node_id, 16)
                 if nodes_index >= len(self.routing_table):
                     self.routing_table.append([node])
