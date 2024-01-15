@@ -18,6 +18,7 @@ class Network:
         self.add_first_node(node_ids[0])
         self.first_node = self.nodes[0]
         self.pastry_ring = nx.Graph()
+        self.node_ids = []
 
     def __str__(self):
         start = "---------------\n"

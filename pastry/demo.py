@@ -48,8 +48,9 @@ while n_data > 2**m_user:
 s_network.add_data(n_data)
 
 # s_network.update_routing_tables()
-for node in s_network.nodes:
+for node in s_network.nodes:  # DEBUG
     node.print_routing_table_and_leaf_set()
+
 s_network.visualize_pastry()
 
 while True:
@@ -67,7 +68,7 @@ while True:
             print(f"Το ID πρέπει να είναι από 0 έως {s_network.r_size}!")
         else:
             s_network.add_node(node_id)
-            node_ids.append(node_id)
+            s_network.node_ids.append(node_id)
     elif choice == 2:
         node_id = int(input("ID Κόμβου: "))
         if node_id not in node_ids:
