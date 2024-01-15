@@ -48,7 +48,8 @@ while n_data > 2**m_user:
 s_network.add_data(n_data)
 
 # s_network.update_routing_tables()
-
+for node in s_network.nodes:
+    node.print_routing_table_and_leaf_set()
 s_network.visualize_pastry()
 
 while True:

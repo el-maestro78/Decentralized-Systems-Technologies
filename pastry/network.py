@@ -28,7 +28,7 @@ class Network:
         end = "---------------\n"
         return f"{start}{quantity}{capacity}{routing_table_size}{first_node_id}{end}"
 
-    def print_network(self):  # DONE
+    def print_network(self):
         print(self)
         for node in self.nodes:
             print(node.node_id)
@@ -63,17 +63,17 @@ class Network:
             for n in self.nodes:
                 n.update_routing_table(node, action)
 
-    def add_node(self, node_id):  # DONE
+    def add_node(self, node_id):
         """Προσθέτει έναν κόμβο"""
         new_node = Node(node_id, self.m)
         self.nodes.append(new_node)
-        # node = self.nodes[-1]
-        # node.join(self.first_node)
-        self.first_node.join(new_node)
+        node = self.nodes[-1]
+        node.join(new_node)
+        # self.first_node.join(new_node)
         self.update_routing_tables(new_node, "INSERT")
         self.update_leaf_sets(new_node, "INSERT")
 
-    def remove_node(self, node):  # DONE
+    def remove_node(self, node):
         """Αφαιρεί έναν κόμβο"""
         node.leave()
         # for n in self.nodes:
@@ -86,7 +86,7 @@ class Network:
         #             n.leaf_set[leaf].remove(node)
         self.update_leaf_sets(node, "DELETE")
 
-    def lookup(self, data, threshold):  # DONE
+    def lookup(self, data, threshold):
         """Ψάχνει για το key στους κόμβους"""
         h_key = hash_function(data)
         node = self.first_node
@@ -133,7 +133,7 @@ class Network:
                 return current_node
         """
 
-    def add_data(self, n):  # DONE
+    def add_data(self, n):
         """Βάζει τα δεδομένα στους κόμβους"""
         my_dict = create_education_dictionary(n)
         for key, values in my_dict.items():
@@ -148,7 +148,7 @@ class Network:
             else:
                 print(f"Δεν βρέθηκε διάδοχος για το key '{key}' με hash {h_key}")
 
-    def visualize_pastry(self):  # DONE
+    def visualize_pastry(self):
         plt.figure()
         self.pastry_ring.clear()
         sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse=True)
@@ -158,7 +158,8 @@ class Network:
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
             node = sorted_nodes[i]
-            successor = sorted_nodes[i].find_successor(node)
+            # successor = sorted_nodes[i].find_successor(node)
+            successor = sorted_nodes[i].closest_preceding_node(node)
             self.pastry_ring.add_edge(sorted_nodes[i].node_id, successor.node_id)
             # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
             for j in sorted_nodes[i].routing_table:

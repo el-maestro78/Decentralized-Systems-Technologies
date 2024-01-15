@@ -31,20 +31,20 @@ class Node:
         for i, row in enumerate(self.routing_table):
             print(f"Row {i}: {row}")
 
+    def print_leaf_sets(self):
+        for leaf in ["left", "right"]:
+            print(f"{leaf.capitalize()} Leaf:")
+            for node in self.leaf_set[leaf]:
+                print(node.node_id)
+            print("--------------")
+
     def print_routing_table_and_leaf_set(self):
         print(f"ID: {self.node_id}")
         print(f"Κοντινότερος: {self.closest_preceding_node(self).node_id}")
         print(f"Δεδομένα: ")
         pprint.pprint(self.data, depth=5)
-        print(f"Routing Table: ")
-        for i in range(int(self.node_id)):
-            print(
-                f"{(self.node_id + 2 ** i) % self.nodes_num} : {self.routing_table[i].node_id}"
-            )
-        for leaf in ["left", "right"]:
-            print(f"{leaf.capitalize()} Leaf:")
-            for node in self.leaf_set[leaf]:
-                print(node.node_id)
+        self.print_routing_table()
+        self.print_leaf_sets()
 
     def lcp(self, key):
         """Calculate the Longest Common Prefix (LCP) between the node's id and the key.
@@ -197,7 +197,7 @@ class Node:
 
     def closest_preceding_node(self, node):  # , h_key):  # TODO
         """Βρίσκει τον κόμβο που είναι πιο κοντά στον κόμβο.
-        :return: Closest Node to Key.
+        :return: Closest Node to another.
         :rtype: Node"""
         min_distance = sys.maxsize  # max integer
         closest_node = node
@@ -212,12 +212,10 @@ class Node:
     def distance(self, n1, n2):
         """Υπολογισμός απόστασης μεταξύ 2 κόμβων στο δίκτυο"""
         n1 = int(n1)
-
         if isinstance(n2, Node):
             n2 = int(n2.node_id)
         else:
             n2 = int(n2)
-
         if n1 <= n2:
             return n2 - n1
         else:
@@ -228,8 +226,8 @@ class Node:
         :param str key: Hashed Key.
         :return: Closest node to key.
         :rtype: Node or None"""
-        if self.node_id == key:
-            return self
+        # if self.node_id == key:
+        #     return self
         closest_node = self.closest_preceding_node(self)
         if isinstance(self, Node) and isinstance(closest_node, Node):
             if self.lcp(key) == -1:
