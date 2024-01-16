@@ -14,11 +14,12 @@ class Network:
     def __init__(self, m, node_ids):
         self.nodes = []
         self.m = m
-        self.r_size = 2**m
+        self.r_size = 2 ** m
         self.add_first_node(node_ids[0])
         self.first_node = self.nodes[0]
         self.pastry_ring = nx.Graph()
-        self.node_ids = []
+        self.node_ids = node_ids
+        node_ids.pop(0)
 
     def __str__(self):
         start = "---------------\n"
@@ -46,18 +47,24 @@ class Network:
         self.update_leaf_sets(node, action)
 
     def update_leaf_sets(self, node, action):
+        """Ανανεώνει τα leaf sets για όλους τους κόμβους του δικτύου
+        :param Node node: Node.
+        :param str action: Either Insert or Delete. The action will be performed.
+        :return: Nothing.
+        :rtype: None
+        """
         if action != "INSERT" and action != "DELETE":
             print("Error")
         else:
             for n in self.nodes:
                 n.update_leaf_set(node, action)
 
-    def update_routing_tables(self, node, action):  # DONE
-        """Ανανεώνει το routing table για όλους τους κόμβους του δικτύου"""
-        # self.first_node.update_routing_table()
-        # for node in self.nodes:
-        #    if node is not self.first_node:
-        #       node.update_routing_table()
+    def update_routing_tables(self, node, action):
+        """Ανανεώνει το routing table για όλους τους κόμβους του δικτύου
+        :param Node node: Node.
+        :param str action: Either Insert or Delete. The action will be performed.
+        :return: Nothing.
+        :rtype: None"""
         if action != "INSERT" and action != "DELETE":
             print("Error")
         else:
@@ -77,14 +84,7 @@ class Network:
     def remove_node(self, node):
         """Αφαιρεί έναν κόμβο"""
         node.leave()
-        # for n in self.nodes:
-        #     if node in n.routing_table:
-        #         n.routing_table.remove(node)
         self.update_routing_tables(node, "DELETE")
-        # for leaf in ["left", "right"]:
-        #     for n in self.nodes:
-        #         if node in node.leaf_set[leaf]:
-        #             n.leaf_set[leaf].remove(node)
         self.update_leaf_sets(node, "DELETE")
 
     def lookup(self, data, threshold):
@@ -182,4 +182,3 @@ class Network:
         plt.gca().set_aspect("equal", adjustable="box")
         plt.pause(0.001)
         plt.ioff()
-        
