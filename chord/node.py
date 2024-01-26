@@ -6,6 +6,7 @@ class Node():
     # Μέγεθος δακτύλιου
     r_size = 2 ** m
 
+    # Κατασκευάζει αντικείμενα Node
     def __init__(self, node_id, m):
         self.node_id = node_id
         self.predecessor = self
@@ -13,10 +14,11 @@ class Node():
         self.fingers_table = [self]*m
         self.data = {}
     
+    # Τυπώνει αντικείμενα Node
     def __str__(self):
         return str(self.node_id)
     
-    # Δείχνει το fingers table του κόμβου
+    # Εμφανίζει το fingers table του κόμβου
     def print_fingers_table(self):
         print(f'ID: {self.node_id}\nΕπόμενος: {self.successor.node_id}\nΠροηγούμενος: {self.predecessor.node_id}')
         print(f'Δεδομένα: ')
@@ -43,7 +45,7 @@ class Node():
 
     # Αφαίρεση κόμβου από το δίκτυο
     def leave(self):
-        # Διόρθωση successor, predecessor, και fingers table αυτών
+        # Διόρθωση successor, predecessor, και fingers tables τους
         self.predecessor.successor = self.successor
         self.predecessor.fingers_table[0] = self.successor
         self.successor.predecessor = self.predecessor
@@ -51,7 +53,7 @@ class Node():
         for key in sorted(self.data.keys()):
             self.successor.data[key] = self.data[key]
 
-    # Βρίσκει τη θέση του κόμβο
+    # Βρίσκει τη θέση του κόμβου
     def find_node_place(self, pre, suc):
         pre.fingers_table[0] = self
         pre.successor = self
