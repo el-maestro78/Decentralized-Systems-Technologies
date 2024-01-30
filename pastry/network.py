@@ -5,6 +5,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from filter_table import filter_table
 
+
 class Network:
     """Pastry Network
     :param int m: number of bits of the id, routing table size

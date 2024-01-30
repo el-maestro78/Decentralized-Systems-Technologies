@@ -29,7 +29,11 @@ class Node:
     def print_routing_table(self):
         print(f"Routing Table for Node {self.node_id}:")
         for i, row in enumerate(self.routing_table):
-            print(f"Row {i}: {row}")
+            nodes = []
+            for node in row:
+                if isinstance(node, Node):
+                    nodes.append(node.node_id)
+            print(f"Row {i}: {nodes}")
 
     def print_leaf_sets(self):
         for leaf in ["left", "right"]:
@@ -52,16 +56,20 @@ class Node:
         :return: Least common prefix between self and key.
         :rtype: int"""
         key = str(key)
-        self.node_id = str(self.node_id)
+        node_id = str(self.node_id)
         lcp = ""
-        if len(key) > len(self.node_id):
-            for i in range(len(self.node_id)):
-                if key[i] == self.node_id[i]:
-                    lcp += lcp.join(key[i])
+        if len(key) > len(node_id):
+            for i in range(len(node_id)):
+                for j in range(len(key)):
+                    if key[j] == node_id[i]:
+                        lcp += lcp.join(key[j])
+                        break
         else:
             for i in range(len(key)):
-                if key[i] == self.node_id[i]:
-                    lcp += lcp.join(key[i])
+                for j in range(len(node_id)):
+                    if key[i] == node_id[j]:
+                        lcp += lcp.join(key[i])
+                        break
         if lcp != "":
             return int(lcp)
         else:
@@ -183,36 +191,36 @@ class Node:
                         break
                     else:
                         self.routing_table[row_index][0] = node
-               # node_place = self.closest_preceding_node(node)
-               # if node_place == self or node_place is None or node_place.lcp(node.node_id) == -1:
-               #     # if the table is not full or there is not a node with lcp,
-               #     # it just adds it in the first None place it finds
-               #     # for row in enumerate(self.routing_table):
-               #     #     for n in range(len(row)):
-               #     #         if self.routing_table[n] is None:
-               #     #             self.routing_table[n] = [node]
-               #     #             break
-#
-               #     for row_index, row in enumerate(self.routing_table):
-               #         if None in row:
-               #             node_index = row.index(None)
-               #             self.routing_table[row_index][node_index] = node
-               #             break
-               # elif node_place.node_id != node.node_id:
-               #     least_dist = sys.maxsize  # max int
-               #     clean_routing_table = filter_table(self.routing_table)
-               #     for n in clean_routing_table:
-               #         if n[0] is not None:
-               #             dist = self.distance(node.node_id, int(n[0].node_id))
-               #             if dist < least_dist:
-               #                 node_place = n[0]
-               #     nodes_index = int(node_place.node_id, 16)
-               #     if nodes_index >= len(self.routing_table):
-               #         self.routing_table.append([node])
-               #     elif self.routing_table[nodes_index][0] is not None:
-               #         self.routing_table[nodes_index].insert(0, node)
-               #     else:
-               #         self.routing_table[nodes_index][0] = node
+            # node_place = self.closest_preceding_node(node)
+            # if node_place == self or node_place is None or node_place.lcp(node.node_id) == -1:
+            #     # if the table is not full or there is not a node with lcp,
+            #     # it just adds it in the first None place it finds
+            #     # for row in enumerate(self.routing_table):
+            #     #     for n in range(len(row)):
+            #     #         if self.routing_table[n] is None:
+            #     #             self.routing_table[n] = [node]
+            #     #             break
+        #
+        #     for row_index, row in enumerate(self.routing_table):
+        #         if None in row:
+        #             node_index = row.index(None)
+        #             self.routing_table[row_index][node_index] = node
+        #             break
+        # elif node_place.node_id != node.node_id:
+        #     least_dist = sys.maxsize  # max int
+        #     clean_routing_table = filter_table(self.routing_table)
+        #     for n in clean_routing_table:
+        #         if n[0] is not None:
+        #             dist = self.distance(node.node_id, int(n[0].node_id))
+        #             if dist < least_dist:
+        #                 node_place = n[0]
+        #     nodes_index = int(node_place.node_id, 16)
+        #     if nodes_index >= len(self.routing_table):
+        #         self.routing_table.append([node])
+        #     elif self.routing_table[nodes_index][0] is not None:
+        #         self.routing_table[nodes_index].insert(0, node)
+        #     else:
+        #         self.routing_table[nodes_index][0] = node
         elif action == "DELETE":
             for i in range(len(self.routing_table)):
                 self.routing_table[i] = [
