@@ -97,7 +97,7 @@ class Node:
             **self.data,
         }  # add node's data to the closest node with dict unpacking
 
-    def find_node_place(self, node):  # TODO
+    def find_node_place(self, node):  # TODO ABORT
         """Βρίσκει τη θέση του κόμβου.
         Αν υπάρχει common prefix, ελέγχει ένα εκ των 2 φύλλων του leaf_set ανάλογα με την τιμή του node_id.
         Αλλιώς πηγαίνει στο routing table
@@ -166,12 +166,12 @@ class Node:
         if suc_distance <= pre_distance:
             return successor
         else:
-            return predecessor  # must have same prefix
+            return predecessor  # must have same prefix #
 
     def __eq__(self, other):
         return isinstance(other, Node) and self.node_id == other.node_id
 
-    def update_routing_table(self, node, action):  # TODO
+    def update_routing_table(self, node, action):  # TODO FIX
         """Ανανεώνει το routing table για τον κόμβο
         :param Node node: Node.
         :param str action: Either Insert or Delete. The action will be performed.
@@ -183,44 +183,26 @@ class Node:
                 self.routing_table[0] = [node]
             elif Node.nodes_cnt == 1:
                 self.routing_table[1] = [node]
+            elif Node.nodes_cnt < self.nodes_num:
+                while node not in self.routing_table:
+                    for row_index, row in enumerate(self.routing_table):
+                        for row_node in row:  # find a not none Node
+                            if isinstance(row_node, Node):
+                                if node.lcp(row_node.node_id) != -1:
+                                    if None in row:
+                                        node_index = row.index(None)
+                                        self.routing_table[row_index][node_index] = node
+                                        return
+                                    else:
+                                        new_row = sorted(row[:-1] + [node])
+                                        self.routing_table[row_index] = new_row
+                            else:
+                                node_index = row.index(None)
+                                self.routing_table[row_index][node_index] = node
+                                break
             else:
-                for row_index, row in enumerate(self.routing_table):
-                    if None in row:
-                        node_index = row.index(None)
-                        self.routing_table[row_index][node_index] = node
-                        break
-                    else:
-                        self.routing_table[row_index][0] = node
-            # node_place = self.closest_preceding_node(node)
-            # if node_place == self or node_place is None or node_place.lcp(node.node_id) == -1:
-            #     # if the table is not full or there is not a node with lcp,
-            #     # it just adds it in the first None place it finds
-            #     # for row in enumerate(self.routing_table):
-            #     #     for n in range(len(row)):
-            #     #         if self.routing_table[n] is None:
-            #     #             self.routing_table[n] = [node]
-            #     #             break
-        #
-        #     for row_index, row in enumerate(self.routing_table):
-        #         if None in row:
-        #             node_index = row.index(None)
-        #             self.routing_table[row_index][node_index] = node
-        #             break
-        # elif node_place.node_id != node.node_id:
-        #     least_dist = sys.maxsize  # max int
-        #     clean_routing_table = filter_table(self.routing_table)
-        #     for n in clean_routing_table:
-        #         if n[0] is not None:
-        #             dist = self.distance(node.node_id, int(n[0].node_id))
-        #             if dist < least_dist:
-        #                 node_place = n[0]
-        #     nodes_index = int(node_place.node_id, 16)
-        #     if nodes_index >= len(self.routing_table):
-        #         self.routing_table.append([node])
-        #     elif self.routing_table[nodes_index][0] is not None:
-        #         self.routing_table[nodes_index].insert(0, node)
-        #     else:
-        #         self.routing_table[nodes_index][0] = node
+                self.add_in_full_routing_table(node)
+
         elif action == "DELETE":
             for i in range(len(self.routing_table)):
                 self.routing_table[i] = [
@@ -230,7 +212,35 @@ class Node:
         else:
             print("ERROR")
 
-    def closest_preceding_node(self, node):  # , h_key):  # TODO
+    def add_in_full_routing_table(self, node):
+        """Προσθέτει τον κόμβο στην κατάλληλη θέση αν είναι γεμάτο το Routing Table.
+                :return: Nothing.
+                :rtype: None"""
+        for row_index, row in enumerate(self.routing_table):
+            if None in row:
+                # Κανονικά δε θα έπρεπε να μπούμε εδώ μέσα μιας και η συνάρτηση
+                # πρέπει να καλείται μόνο όταν ο πίνακας είναι γεμάτος.
+                # Για αποφυγή λαθών συμπεριλαμβάνεται
+                node_index = row.index(None)
+                self.routing_table[row_index][node_index] = node
+                break
+            else:
+                for row_node in row:
+                    if node.lcp(row_node.node_id) != -1:
+                        # Εισάγουμε ελέγχοντας την απόσταση
+                        new_row = sorted(row[:-1] + [node])
+                        self.routing_table[row_index] = new_row
+                        break
+        # Τελικός έλεγχος αν μπήκε
+        for row_index, row in enumerate(self.routing_table):
+            if node not in row:
+                break
+            if row_index == len(self.routing_table)-1:
+                # Δεν έχει μπει επειδή δεν υπάρχει lcp με κανέναν. Εισάγουμε ελέγχοντας την απόσταση
+                new_row = sorted(row[:-1] + [node])
+                self.routing_table[row_index] = new_row
+
+    def closest_preceding_node(self, node):  # , h_key):  # TODO FIX
         """Βρίσκει τον κόμβο που είναι πιο κοντά στον κόμβο.
         :return: Closest Node to another.
         :rtype: Node"""
@@ -264,7 +274,7 @@ class Node:
         else:
             return self.nodes_num - n1 + n2
 
-    def find_successor(self, key):  # TODO
+    def find_successor(self, key):  # TODO ?
         """Βρίσκει τον κόμβο που έχει την ευθύνη για το key
         :param str key: Hashed Key.
         :return: Closest node to key.
@@ -293,7 +303,7 @@ class Node:
             print("ERROR: Not a Node")
             return None  # Προσθέστε αυτήν τη γραμμή για να επιστρέφει None σε περίπτωση που υπάρξει κάποιο σφάλμα
 
-    def update_leaf_set(self, node, action):  # DONE
+    def update_leaf_set(self, node, action):  # TODO like Routing table methods
         """Ανανεώνει το leaf set για τον κόμβο.
         :param Node node: Node.
         :param str action: Either Insert or Delete. The action will be performed.

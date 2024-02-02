@@ -109,32 +109,6 @@ class Network:
                 print(f'Δεν υπάρχουν επιστήμονες με >= {threshold} βραβεία')
         else:
             print(f'Το \'{data}\' δεν υπάρχει σε κανένα κόμβο')
-        """
-        while True:
-            # Calculate the LCP between the current node and the key
-            lcp = current_node.lcp(data)
-            # Check if the key matches the current node's identifier
-            if lcp == len(current_node.node_id) and lcp == len(data):
-                return current_node  # Found the responsible node
-            # Check if the LCP points to a node in the routing table
-            if lcp < len(current_node.node_id):
-                next_hop = current_node.routing_table[lcp][
-                    int(current_node.node_id[lcp], 16)
-                ]
-                if next_hop:
-                    current_node = next_hop
-                else:
-                    return current_node  # No more specific route in the routing table
-            # Check the leaf set for a closer node
-            elif lcp < len(data):
-                if int(data[lcp], 16) < int(current_node.node_id[lcp], 16):
-                    current_node = current_node.leaf_set["left"]
-                else:
-                    current_node = current_node.leaf_set["right"]
-            # No specific route found, return the current node
-            else:
-                return current_node
-        """
 
     def add_data(self, n):
         """Βάζει τα δεδομένα στους κόμβους"""
