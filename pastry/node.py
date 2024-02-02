@@ -14,6 +14,7 @@ class Node:
 
     def __init__(self, node_id, m=4):
         self.node_id = str(node_id)
+        self.m = m
         self.nodes_num = m ** 2
         self.leaf_set = {"left": [], "right": []}
         self.routing_table = [[None] * self.nodes_num for _ in range(m)]
@@ -180,26 +181,26 @@ class Node:
         """
         if action == "INSERT":
             if Node.nodes_cnt == 1:
-                self.routing_table[0] = [node]
+                self.routing_table[0][0] = [node]
             elif Node.nodes_cnt == 1:
-                self.routing_table[1] = [node]
+                self.routing_table[1][0] = [node]
             elif Node.nodes_cnt < self.nodes_num:
-                while node not in self.routing_table:
-                    for row_index, row in enumerate(self.routing_table):
-                        for row_node in row:  # find a not none Node
-                            if isinstance(row_node, Node):
-                                if node.lcp(row_node.node_id) != -1:
-                                    if None in row:
-                                        node_index = row.index(None)
-                                        self.routing_table[row_index][node_index] = node
-                                        return
-                                    else:
-                                        new_row = sorted(row[:-1] + [node])
-                                        self.routing_table[row_index] = new_row
-                            else:
-                                node_index = row.index(None)
-                                self.routing_table[row_index][node_index] = node
-                                break
+                for row_index, row in enumerate(self.routing_table):
+                    for row_node in row:  # find a not none Node
+                        if isinstance(row_node, Node):
+                            if node.lcp(row_node.node_id) != -1:
+                                if None in row:
+                                    node_index = row.index(None)
+                                    self.routing_table[row_index][node_index] = node
+                                    return
+                                else:
+                                    # new_row = sorted(row[:-1] + [node])
+                                    # self.routing_table[row_index] = new_row
+                                    self.add_in_full_routing_table(node)
+                        else:
+                            node_index = row.index(None)
+                            self.routing_table[row_index][node_index] = node
+                            return
             else:
                 self.add_in_full_routing_table(node)
 
@@ -211,6 +212,7 @@ class Node:
                 ]
         else:
             print("ERROR")
+    # def add_in_full_routing_table(self, node):
 
     def add_in_full_routing_table(self, node):
         """Προσθέτει τον κόμβο στην κατάλληλη θέση αν είναι γεμάτο το Routing Table.
@@ -225,10 +227,12 @@ class Node:
                 self.routing_table[row_index][node_index] = node
                 break
             else:
+                if row.count(None) == 0 and len(row) == self.m:
+                    continue
                 for row_node in row:
                     if node.lcp(row_node.node_id) != -1:
                         # Εισάγουμε ελέγχοντας την απόσταση
-                        new_row = sorted(row[:-1] + [node])
+                        new_row = sorted(row[:-1] + [node], key=lambda x: x.node_id)
                         self.routing_table[row_index] = new_row
                         break
         # Τελικός έλεγχος αν μπήκε
@@ -240,7 +244,7 @@ class Node:
                 new_row = sorted(row[:-1] + [node])
                 self.routing_table[row_index] = new_row
 
-    def closest_preceding_node(self, node):  # , h_key):  # TODO FIX
+    def closest_preceding_node(self, node):  # , h_key):  # TODO FIX Ή θα βρίσκει τον κοντινότερο ή θα επιστρέφει self
         """Βρίσκει τον κόμβο που είναι πιο κοντά στον κόμβο.
         :return: Closest Node to another.
         :rtype: Node"""

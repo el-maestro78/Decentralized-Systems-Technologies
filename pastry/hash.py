@@ -30,13 +30,13 @@ def check_hash(truncated_hash, num_bits, repetitions=1):
             :return: New hashed value.
             :rtype: int"""
     if truncated_hash in hashed_id_list:
-        random.seed(random.randint(repetitions * 100, 10000))
+        random.seed(random.randint(repetitions * 100, 1000 * repetitions))
         exp = random.randint(1, 50)
         current_time = datetime.now()
         timestamp = int(current_time.timestamp() * repetitions)
         random.seed(timestamp * repetitions)
 
-        truncated_hash = str(random.randint(1, truncated_hash**exp))
+        truncated_hash = str(random.randint(1, truncated_hash**exp+3))
         sha1_hash = hashlib.sha1(truncated_hash.encode('utf-8')).hexdigest()
         truncated_hash = int(sha1_hash[:num_bits], 16)
         truncated_hash = fix_prefix(truncated_hash, num_bits)

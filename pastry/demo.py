@@ -19,7 +19,7 @@ while num_nodes > 2**m_user:
 
 # Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό.
 # Χωρίζονται σε εκατοντάδες για να υπάρχουν κοινά prefix.
-node_ids = sample(range(100), num_nodes)
+node_ids = sample(range(100*Node.m), num_nodes)
 # i = int(Node.m/num_nodes)  #
 # for i in range(1, Node.m):
 #     for j in range(i):
