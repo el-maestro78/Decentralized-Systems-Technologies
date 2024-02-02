@@ -252,18 +252,19 @@ class Node:
         closest_node = node
         for leaf in ["left", "right"]:
             for n in self.leaf_set[leaf]:
-                distance = self.distance(node.node_id, n.node_id)
+                distance = self.distance(closest_node.node_id, n.node_id)
                 if distance < min_distance:
                     min_distance = distance
                     closest_node = n
         if closest_node == node:
             clean_routing_table = filter_table(self.routing_table)
-            for row, n in enumerate(clean_routing_table):
-                if isinstance(n, Node):
-                    distance = self.distance(node.node_id, n.node_id)
-                    if distance < min_distance:
-                        min_distance = distance
-                        closest_node = n
+            for index, row in enumerate(clean_routing_table):
+                for n in row:
+                    if isinstance(n, Node):
+                        distance = self.distance(node.node_id, n.node_id)
+                        if distance < min_distance:
+                            min_distance = distance
+                            closest_node = n
         return closest_node
 
     def distance(self, n1, n2):
@@ -324,7 +325,8 @@ class Node:
             # node_place = self.find_node_place(node)
             if action == "INSERT":
                 # node_place = self.find_node_place(node)
-                if node_place.node_id == node.node_id:
+                self.leaf_set[leaf].append(node)
+                """if node_place.node_id == node.node_id or node_place.node_id == self.node_id:
                     least_dist = sys.maxsize  # max int
                     for n in self.leaf_set[leaf]:
                         dist = self.distance(node.node_id, n.node_id)
@@ -340,7 +342,7 @@ class Node:
                         else:
                             self.leaf_set[leaf][nodes_index] = node
                     else:
-                        print(f"Node Place not found in Leaf Set")
+                        print(f"Node Place not found in Leaf Set")"""
             elif action == "DELETE":
                 print(f"Node Place: {node_place}")  # Debug print
                 print(f"Leaf Set: {self.leaf_set}")  # Debug print

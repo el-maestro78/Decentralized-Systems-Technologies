@@ -134,6 +134,43 @@ class Network:
             self.pastry_ring.add_node(node.node_id)
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
+            node = sorted_nodes[i]
+            successor = sorted_nodes[i].find_successor(node)
+            # successor = sorted_nodes[i].closest_preceding_node(node)
+            self.pastry_ring.add_edge(node.node_id, successor.node_id)
+            # for sublist in node.routing_table:
+            #     for rt_node in sublist:
+            #         if isinstance(rt_node, Node):
+            #             if self.pastry_ring.has_edge(node.node_id, rt_node.node_id):
+            #                 pass
+            #             else:
+            #                 self.pastry_ring.add_edge(node.node_id, rt_node.node_id)
+        rotated_pos = {
+            node: (-y, x)
+            for node, (x, y) in nx.circular_layout(self.pastry_ring).items()
+        }
+        nx.draw(
+            self.pastry_ring,
+            rotated_pos,
+            with_labels=True,
+            node_color="lightgreen",
+            node_size=1000,
+            font_size=10,
+        )
+        plt.title("Pastry DHT")
+        plt.gca().set_aspect("equal", adjustable="box")
+        plt.pause(0.001)
+        plt.ioff()
+
+    def visualize_connections(self):
+        plt.figure()
+        self.pastry_ring.clear()
+        sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse=True)
+        # Προσθέτει τους κόμβους στο γράφο
+        for node in sorted_nodes:
+            self.pastry_ring.add_node(node.node_id)
+        # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
+        for i in range(len(sorted_nodes)):
             # node = sorted_nodes[i]
             # # successor = sorted_nodes[i].find_successor(node)
             # successor = sorted_nodes[i].closest_preceding_node(node)
