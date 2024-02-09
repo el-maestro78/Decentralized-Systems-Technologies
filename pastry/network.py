@@ -38,6 +38,16 @@ class Network:
             node.print_routing_table()
             print("---------------")
 
+    def get_node(self, nodeID):
+        """Επιστρέφει τον κόμβο με το συγκεκριμένο node_id.
+        :param int nodeID: Το node_id του κόμβου που ψάχνουμε.
+        :return: Ο κόμβος με το συγκεκριμένο node_id, αν υπάρχει. Διαφορετικά, επιστρέφει None.
+        :rtype: Node or None"""
+        for node in self.nodes:
+            if node.node_id == nodeID:
+                return node
+        return None
+
     def add_first_node(self, node_id):
         """Αρχικοποίηση του 1ου κόμβου"""
         node = Node(node_id, self.m)
@@ -83,11 +93,16 @@ class Network:
         self.update_routing_tables(new_node, "INSERT")
         self.update_leaf_sets(new_node, "INSERT")
 
-    def remove_node(self, node):
+    def remove_node(self, node_id):
         """Αφαιρεί έναν κόμβο"""
-        node.leave()
-        self.update_routing_tables(node, "DELETE")
-        self.update_leaf_sets(node, "DELETE")
+        node = self.get_node(node_id)
+        if node is not None:
+            self.nodes.remove(node) # node.leave()
+            self.update_routing_tables(node, "DELETE")
+            self.update_leaf_sets(node, "DELETE")
+            self.nodes.remove(node)
+        else:
+            print(f"Ο κόμβος με ID {node_id} δεν υπάρχει στο δίκτυο.")
 
     def lookup(self, data, threshold):
         """Ψάχνει για το key στους κόμβους"""

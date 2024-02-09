@@ -61,6 +61,7 @@ while True:
     print("3 -> Αναζήτηση δεδομένων")
     print("4 -> Πληροφορίες κόμβων")
     print("5 -> Προβολή γράφου")
+    print("Άλλο -> Τερματισμός")
     choice = int(input("# -> "))
     if choice == 1:
         node_id = int(input("ID Κόμβου: "))
