@@ -205,11 +205,12 @@ class Node:
                 self.add_in_full_routing_table(node)
 
         elif action == "DELETE":
-            for i in range(len(self.routing_table)):
-                self.routing_table[i] = [
-                    None if (x[0] is not None and x[0].node_id == node.node_id) else x[0]
-                    for x in self.routing_table[i]
-                ]
+            for row_index, row in enumerate(self.routing_table):
+                for i in range(len(row)):
+                    n = row[i]
+                    if isinstance(n, Node):
+                        if node.node_id == n.node_id:
+                            self.routing_table[row_index][i] = None
         else:
             print("ERROR")
     # def add_in_full_routing_table(self, node):

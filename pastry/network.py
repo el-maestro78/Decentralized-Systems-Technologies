@@ -20,7 +20,7 @@ class Network:
         self.first_node = self.nodes[0]
         self.pastry_ring = nx.Graph()
         self.node_ids = node_ids
-        node_ids.pop(0)
+        # node_ids.pop(0)
 
     def __str__(self):
         start = "---------------\n"
@@ -86,23 +86,29 @@ class Network:
         """Προσθέτει έναν κόμβο"""
         new_node = Node(node_id, self.m)
         self.nodes.append(new_node)
-        node = self.nodes[-1]
+        # node = self.nodes[-1]
         for n in self.nodes:
             n.join(new_node)
         # self.first_node.join(new_node)
         self.update_routing_tables(new_node, "INSERT")
         self.update_leaf_sets(new_node, "INSERT")
 
-    def remove_node(self, node_id):
+    def remove_node(self, node):
         """Αφαιρεί έναν κόμβο"""
-        node = self.get_node(node_id)
-        if node is not None:
-            self.nodes.remove(node) # node.leave()
-            self.update_routing_tables(node, "DELETE")
-            self.update_leaf_sets(node, "DELETE")
+        # node = self.get_node(node_id)
+        # if node is not None:
+        #     self.nodes.remove(node)  # node.leave()
+        #     self.update_routing_tables(node, "DELETE")
+        #     self.update_leaf_sets(node, "DELETE")
+        #     self.nodes.remove(node)\
+        node.leave()
+        if node in self.nodes:
             self.nodes.remove(node)
-        else:
-            print(f"Ο κόμβος με ID {node_id} δεν υπάρχει στο δίκτυο.")
+        for n in self.nodes:
+            n.update_routing_table(node, "DELETE")
+            n.update_leaf_set(node, "DELETE")
+        # else:
+        #     print(f"Ο κόμβος με ID {node.node_id} δεν υπάρχει στο δίκτυο.")
 
     def lookup(self, data, threshold):
         """Ψάχνει για το key στους κόμβους"""
@@ -227,3 +233,4 @@ class Network:
         plt.gca().set_aspect("equal", adjustable="box")
         plt.pause(0.001)
         plt.ioff()
+
