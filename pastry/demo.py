@@ -53,6 +53,7 @@ for node in s_network.nodes:  # DEBUG
     node.print_routing_table_and_leaf_set()
 
 s_network.visualize_pastry()
+s_network.visualize_connections()
 
 while True:
     print("1 -> Προσθήκη κόμβου")
@@ -60,6 +61,7 @@ while True:
     print("3 -> Αναζήτηση δεδομένων")
     print("4 -> Πληροφορίες κόμβων")
     print("5 -> Προβολή γράφου")
+    print("6 -> Προβολή συνδέσεων")
     print("Άλλο -> Τερματισμός")
     choice = int(input("# -> "))
     if choice == 1:
@@ -91,6 +93,8 @@ while True:
         s_network.print_network()
     elif choice == 5:
         s_network.visualize_pastry()
+    elif choice == 6:
+        s_network.visualize_connections()
     else:
         print("Τερματισμός")
         break

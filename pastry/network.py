@@ -4,7 +4,7 @@ from csv_to_dict import create_education_dictionary
 import networkx as nx
 import matplotlib.pyplot as plt
 from filter_table import filter_table
-
+import sys
 
 class Network:
     """Pastry Network
@@ -83,7 +83,11 @@ class Network:
                 n.update_routing_table(node, action)
 
     def add_node(self, node_id):
-        """Προσθέτει έναν κόμβο"""
+        """Προσθέτει έναν κόμβο
+                :param str node_id: Node id of the new node.
+                :return: Nothing.
+                :rtype: None
+        """
         new_node = Node(node_id, self.m)
         self.nodes.append(new_node)
         # node = self.nodes[-1]
@@ -94,7 +98,11 @@ class Network:
         self.update_leaf_sets(new_node, "INSERT")
 
     def remove_node(self, node):
-        """Αφαιρεί έναν κόμβο"""
+        """Αφαιρεί έναν κόμβο
+         :param Node node: Node we remove from the network.
+         :return: Nothing.
+         :rtype: None
+        """
         # node = self.get_node(node_id)
         # if node is not None:
         #     self.nodes.remove(node)  # node.leave()
@@ -111,7 +119,12 @@ class Network:
         #     print(f"Ο κόμβος με ID {node.node_id} δεν υπάρχει στο δίκτυο.")
 
     def lookup(self, data, threshold):
-        """Ψάχνει για το key στους κόμβους"""
+        """Ψάχνει για το key στους κόμβους
+        :param str data: Data we want to retrieve from the network.
+        :param int threshold: User defined threshold for what we are looking for.
+        :return: Nothing.
+        :rtype: None
+        """
         h_key = hash_function(data)
         node = self.first_node
         node = node.find_successor(h_key)
@@ -135,9 +148,11 @@ class Network:
         """Βάζει τα δεδομένα στους κόμβους"""
         my_dict = create_education_dictionary(n)
         for key, values in my_dict.items():
-            node = self.first_node
+            # node = self.first_node
+            # h_key = hash_function(key)
+            # suc = node.find_successor(h_key)
             h_key = hash_function(key)
-            suc = node.find_successor(h_key)
+            suc = self.find_closest_to_key(h_key)
             if suc is not None:
                 print(
                     f"Αποθήκευση του key '{key}' με hash {h_key} στον κόμβο {suc.node_id}"
@@ -145,6 +160,34 @@ class Network:
                 suc.data[h_key] = {"key": key, "value": values}
             else:
                 print(f"Δεν βρέθηκε διάδοχος για το key '{key}' με hash {h_key}")
+
+    def find_closest_to_key(self, key):
+        not_data_nodes = []
+        for n in self.nodes:
+            if n.data == {}:
+                not_data_nodes.append(n)
+        if len(not_data_nodes) > 0:
+            # min_lcp = sys.maxsize
+            # closest = not_data_nodes[0]
+            # for n in not_data_nodes:
+            #     new_lcp = n.lcp(key)
+            #     if new_lcp > min_lcp:
+            #         min_lcp = new_lcp
+            #         closest = n
+            closest = self.static_get_lcp(key, not_data_nodes)
+        else:
+            closest = self.static_get_lcp(key, self.nodes)
+        return closest
+
+    def static_get_lcp(self, key, nodes_list):
+        min_lcp = sys.maxsize
+        closest = nodes_list[0]
+        for n in nodes_list:
+            new_lcp = n.lcp(key)
+            if new_lcp > min_lcp:
+                min_lcp = new_lcp
+                closest = n
+        return closest
 
     def visualize_pastry(self):
         plt.figure()
@@ -156,16 +199,13 @@ class Network:
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
             node = sorted_nodes[i]
-            successor = sorted_nodes[i].find_successor(node)
-            # successor = sorted_nodes[i].closest_preceding_node(node)
-            self.pastry_ring.add_edge(node.node_id, successor.node_id)
-            # for sublist in node.routing_table:
-            #     for rt_node in sublist:
-            #         if isinstance(rt_node, Node):
-            #             if self.pastry_ring.has_edge(node.node_id, rt_node.node_id):
-            #                 pass
-            #             else:
-            #                 self.pastry_ring.add_edge(node.node_id, rt_node.node_id)
+            for sublist in node.routing_table:
+                for rt_node in sublist:
+                    if isinstance(rt_node, Node):
+                        if self.pastry_ring.has_edge(node.node_id, rt_node.node_id):
+                            pass
+                        else:
+                            self.pastry_ring.add_edge(node.node_id, rt_node.node_id)
         rotated_pos = {
             node: (-y, x)
             for node, (x, y) in nx.circular_layout(self.pastry_ring).items()
@@ -192,31 +232,9 @@ class Network:
             self.pastry_ring.add_node(node.node_id)
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
-            # node = sorted_nodes[i]
-            # # successor = sorted_nodes[i].find_successor(node)
-            # successor = sorted_nodes[i].closest_preceding_node(node)
-            # self.pastry_ring.add_edge(sorted_nodes[i].node_id, successor.node_id)
-            # # Προσθέτει ακμές σε κάθε κόμβο του fingers table του
-            # for j in sorted_nodes[i].routing_table:
-            #     if isinstance(j, Node):
-            #         self.pastry_ring.add_edge(sorted_nodes[i].node_id, j.node_id)
             node = sorted_nodes[i]
-            for sublist in node.routing_table:
-                for rt_node in sublist:
-                    if isinstance(rt_node, Node):
-                        if self.pastry_ring.has_edge(node.node_id, rt_node.node_id):
-                            pass
-                        else:
-                            self.pastry_ring.add_edge(node.node_id, rt_node.node_id)
-                # # if node.node_id == n.node_id and self.pastry_ring.has_edge(n, Node):
-                # for sublist in n.routing_table:
-                #     for rt_node in sublist:
-                #         if isinstance(rt_node, Node):
-                #             if node.node_id == rt_node.node_id:
-                #                 if self.pastry_ring.has_edge(node.node_id, rt_node.node_id):
-                #                     pass
-                #                 else:
-                #                     self.pastry_ring.add_edge(node.node_id, rt_node.node_id)
+            successor = sorted_nodes[i].find_successor(node)
+            self.pastry_ring.add_edge(node.node_id, successor.node_id)
         rotated_pos = {
             node: (-y, x)
             for node, (x, y) in nx.circular_layout(self.pastry_ring).items()
