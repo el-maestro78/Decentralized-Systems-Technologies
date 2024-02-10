@@ -124,13 +124,14 @@ class Network:
         :rtype: None
         """
         h_key = hash_function(data)
-        i = 0
-        node = self.nodes[i]
-        node = node.find_successor(h_key)
-        while node is None:
-            i += 1
-            node = self.nodes[i]
-            node = node.find_successor(h_key)
+        # i = 0
+        # node = self.nodes[i]
+        # node = node.find_successor(h_key)
+        # while node is None:
+        #     i += 1
+        #     node = self.nodes[i]
+        #     node = node.find_successor(h_key)
+        node = self.find_closest_to_key(h_key)
         found_data = node.data.get(h_key, None)
         if found_data is not None:
             found = False
