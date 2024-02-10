@@ -65,7 +65,7 @@ while True:
     print("Άλλο -> Τερματισμός")
     choice = int(input("# -> "))
     if choice == 1:
-        node_id = input("ID Κόμβου: ")
+        node_id = int(input("ID Κόμβου: "))
         if node_id in node_ids:
             print("Υπάρχει ήδη κόμβος με αυτό το ID!")
         elif node_id > s_network.r_size:
