@@ -124,7 +124,7 @@ class Network:
         :rtype: None
         """
         h_key = hash_function(data)
-        node = self.first_node
+        node = self.nodes[0]
         node = node.find_successor(h_key)
         found_data = node.data.get(h_key, None)
         if found_data is not None:
