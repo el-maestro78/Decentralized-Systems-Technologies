@@ -1,6 +1,13 @@
 from node import Node
 from network import Network
 from random import sample
+from time import perf_counter_ns
+# Χρησιμοποιούμε την συηνάρτηση perf_counter_ns() της βιβλιοθήκης time, για να μετρήσουμε τον χρόνο εισαγωγής/εύρεσης.
+# Η συνάρτηση, μετρράει σε nanoseconds τον χρόνο που πέρασε.
+# Στην αρχή κάθε εισαγωγής, μετράμε τον χρόνο έναρξης σε μια μεταβλητή start,
+# και μόλις ολοκληρωθεί η εισαγωγή, κρατάμε τον χρόνο σε μια άλλη μετβλητή end
+# Η διάρκεια τότε, θα είναι start-end.
+start = end = 0
 
 
 m_user = int(input('m: '))
@@ -52,19 +59,28 @@ while True:
         elif node_id > s_network.r_size:
             print(f'Το ID πρέπει να είναι από 0 έως {s_network.r_size}!')
         else:
+            start = perf_counter_ns()
             s_network.add_node(node_id)
             node_ids.append(node_id)
+            end = perf_counter_ns()
+            print("Ο κόμβος προστέθηκε σε: ", (end-start)/1000000, " milliseconds.")
     elif choice == 2: 
         node_id = int(input('ID Κόμβου: '))
         if node_id not in node_ids:
             print('Δεν υπάρχει κόμβος με αυτό το ID!')
         else:
+            start = perf_counter_ns()
             node_ids.remove(node_id)
             s_network.remove_node(node_id)
+            end = perf_counter_ns()
+            print("Ο κόμβος αφαιρέθηκε σε: ", (end-start)/1000000, " milliseconds.")
     elif choice == 3: 
         query = input('Πανεπιστήμιο: ')
         num_awards = int(input('# Βραβεία: '))
+        start = perf_counter_ns()
         s_network.lookup(query, num_awards)
+        end = perf_counter_ns()
+        print("Η αναζήτηση ολοκληρώθηκε σε: ", (end-start)/1000000, " milliseconds.")
     elif choice == 4: 
         s_network.print_network()
     elif choice == 5:

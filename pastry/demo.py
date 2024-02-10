@@ -15,6 +15,7 @@ from time import perf_counter_ns
 # Η διάρκεια τότε, θα είναι start-end.
 start = end = 0
 
+
 m_user = int(input("Παράμετρoς m: "))
 Node.m = m_user
 Node.r_size = 2**m_user
@@ -70,7 +71,7 @@ while True:
     print("4 -> Πληροφορίες κόμβων")
     print("5 -> Προβολή γράφου")
     print("6 -> Προβολή συνδέσεων")
-    print("Άλλο -> Τερματισμός")
+    print("0 -> Τερματισμός")
     choice = int(input("# -> "))
     if choice == 1:
         node_id = int(input("ID Κόμβου: "))
@@ -113,6 +114,6 @@ while True:
         s_network.visualize_pastry()
     elif choice == 6:
         s_network.visualize_connections()
-    else:
-        print("Τερματισμός")
-        break
+    elif choice == 0: break
+    else: 
+        choice = int(input('# -> '))
