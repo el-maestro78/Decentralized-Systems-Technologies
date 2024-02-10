@@ -14,15 +14,14 @@ def create_education_dictionary(n):
             surname = row['Surname']
 
             for education_value in education_values:
-                education_str = education_value.strip("'\"")  # Remove excess quotes
-                # If the education key is not in the dictionary, add it
+                education_str = education_value.strip("'\"")  # Αφαίρεση περιττών εισαγωγικών χαρακτήρων
+                # Κατασκευή ενός dictionary που περιέχει ως key το education και ως value surname και awards
                 if education_str not in education_dict:
                     education_dict[education_str] = [(surname, awards)]
                 else:
-                    # If it already exists, add it to the existing list
                     education_dict[education_str].append((surname, awards))
 
-    # Remove scientists with an empty education
+    # Αφαίρεση επιστημόνων με κενό " " education 
     education_dict.pop('', None)
 
     # Ανακατεύει τα περιεχόμενα του dictionary
