@@ -7,7 +7,7 @@ from time import perf_counter_ns
 # Στην αρχή κάθε εισαγωγής, μετράμε τον χρόνο έναρξης σε μια μεταβλητή start,
 # και μόλις ολοκληρωθεί η εισαγωγή, κρατάμε τον χρόνο σε μια άλλη μετβλητή end
 # Η διάρκεια τότε, θα είναι start-end.
-start = end = 0
+start = end = time1 = time2 = 0
 
 
 m_user = int(input('m: '))
@@ -19,6 +19,7 @@ while num_nodes > 2 ** m_user:
     print(f'Δε μπορείς να εισάγεις πάνω από {Node.r_size} κόμβους')
     num_nodes = int(input('Κόμβοι: '))
 
+start = perf_counter_ns()
 # Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό
 node_ids = sample(range(Node.r_size), num_nodes)
 
@@ -34,6 +35,9 @@ for node_id in node_ids:
 for node in s_network.nodes:
     node.join(s_network.first_node)
     print(f'Κόμβος {node.node_id} προστέθηκε στο δίκτυο')
+end = perf_counter_ns()
+# time1: χρόνος κατασκευής κόμβων
+time1=end-start
 
 # Προσθήκη δεδομένων στους κόμβους του δικτύου
 n_data = int(input(f'Δεδομένα: '))
@@ -41,11 +45,17 @@ while n_data > 2 ** m_user:
     print(f'Δε μπορείς να εισάγεις πάνω από {Node.r_size} δεδομένα')
     n_data = int(input('Δεδομένα: '))
 
+start = perf_counter_ns()
 s_network.add_data(n_data)
 
 s_network.update_fingers_tables()
+end = perf_counter_ns()
+# time2 : χρόνος προσθήκης δεδομένων και ενημέρωσης fingers table
+time2 = end-start
 
 s_network.visualize_chord()
+
+print("\nΤο δίκτυο κατασκευάστηκε σε: ", (time1+time2)/1000000, " milliseconds (ή ",(time1+time2)/pow(10,9), " seconds).\n")
 
 while True:
     print('1 -> Προσθήκη κόμβου | 2 -> Αφαίρεση κόμβου | 3 -> Αναζήτηση δεδομένων | 4 -> Πληροφορίες κόμβων | 5 -> Προβολή γράφου | 6 -> Σταθεροποίηση | 0 -> Τερματισμός')
