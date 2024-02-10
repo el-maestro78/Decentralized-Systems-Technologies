@@ -8,10 +8,10 @@ from node import Node
 from random import sample
 from hash import hash_function
 from time import perf_counter_ns
-# Χρησιμοποιούμε την συηνάρτηση perf_counter_ns() της βιβλιοθήκης time, για να μετρήσουμε τον χρόνο εισαγωγής/εύρεσης.
-# Η συνάρτηση, μετρράει σε nanoseconds τον χρόνο που πέρασε.
+# Χρησιμοποιούμε τη συνάρτηση perf_counter_ns() της βιβλιοθήκης time, για να μετρήσουμε τον χρόνο εισαγωγής/εύρεσης.
+# Η συνάρτηση, μετράει σε nanoseconds τον χρόνο που πέρασε.
 # Στην αρχή κάθε εισαγωγής, μετράμε τον χρόνο έναρξης σε μια μεταβλητή start,
-# και μόλις ολοκληρωθεί η εισαγωγή, κρατάμε τον χρόνο σε μια άλλη μετβλητή end
+# και μόλις ολοκληρωθεί η εισαγωγή, κρατάμε τον χρόνο σε μια άλλη μεταβλητή end
 # Η διάρκεια τότε, θα είναι start-end.
 start = end = 0
 
@@ -114,6 +114,7 @@ while True:
         s_network.visualize_pastry()
     elif choice == 6:
         s_network.visualize_connections()
-    elif choice == 0: break
+    elif choice == 0:
+        break
     else: 
         choice = int(input('# -> '))

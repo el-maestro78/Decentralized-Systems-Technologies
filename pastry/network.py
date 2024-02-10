@@ -111,7 +111,7 @@ class Network:
         """
         node.leave()  # Ο κόμβος χάνει τα δεδομένα του
         if node in self.nodes:
-            self.nodes.remove(node)  # αφαιρείται από την λίστα αν δεν έχει ήδη αφαιρεθεί
+            self.nodes.remove(node)  # αφαιρείται από τη λίστα αν δεν έχει ήδη αφαιρεθεί
         for n in self.nodes:  # αφαιρείται από τα routing & leaf tables.
             n.update_routing_table(node, "DELETE")
             n.update_leaf_set(node, "DELETE")
@@ -131,7 +131,8 @@ class Network:
         #     i += 1
         #     node = self.nodes[i]
         #     node = node.find_successor(h_key)
-        node = self.find_closest_to_key(h_key)
+        # node = self.find_closest_to_key(str(h_key))
+        node = self.static_get_lcp(str(h_key), self.nodes)
         found_data = node.data.get(h_key, None)
         if found_data is not None:
             found = False
@@ -155,7 +156,8 @@ class Network:
         my_dict = create_education_dictionary(n)
         for key, values in my_dict.items():
             h_key = hash_function(key)
-            suc = self.find_closest_to_key(h_key)
+            # suc = self.find_closest_to_key(str(h_key))
+            suc = self.static_get_lcp(str(h_key), self.nodes)
             if suc is not None:
                 print(
                     f"Αποθήκευση του key '{key}' με hash {h_key} στον κόμβο {suc.node_id}"

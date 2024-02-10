@@ -63,7 +63,7 @@ class Node:
         node_id = str(self.node_id)
         lcp = ""
         # Ανάλογα με το ποιός είναι μεγαλύτερος κάνουμε τη σύγκριση
-        # για να μην βγει out of index error
+        # για να μη βγει out of index error
         if len(key) > len(node_id):
             for i in range(len(node_id)):
                 for j in range(len(key)):
