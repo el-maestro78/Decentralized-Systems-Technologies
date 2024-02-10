@@ -15,6 +15,7 @@ from time import perf_counter_ns
 # Η διάρκεια τότε, θα είναι start-end.
 start = end = 0
 
+
 m_user = int(input("Παράμετρoς m: "))
 Node.m = m_user
 Node.r_size = 2**m_user
