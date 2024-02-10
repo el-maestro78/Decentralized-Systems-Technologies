@@ -94,9 +94,9 @@ class Node():
         if self.node_id == key:
             return self
         if self.distance(self.node_id, key) <= self.distance(self.successor.node_id, key):
-            # print('jump')
+            # print('jump') # KANTO COMMENT-IN AN THES NA DEIKSEIS TA VHMATA POU XREIAZONTAI GIA NA FTASEI STO KEY
             return self.successor
         else:
-            # print('jump')
+            # print('jump') # KANTO COMMENT-IN AN THES NA DEIKSEIS TA VHMATA POU XREIAZONTAI GIA NA FTASEI STO KEY
             return self.closest_preceding_node(self, key).find_successor(key)
 
