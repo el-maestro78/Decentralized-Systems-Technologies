@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from filter_table import filter_table
 import sys
 
+
 class Network:
     """Pastry Network
     :param int m: number of bits of the id, routing table size
@@ -16,13 +17,14 @@ class Network:
         self.nodes = []
         self.m = m
         self.r_size = 2 ** m
-        self.add_first_node(node_ids[0])
-        self.first_node = self.nodes[0]
+        # self.add_first_node(node_ids[0])
+        self.first_node = node_ids[0]
         self.pastry_ring = nx.Graph()
         self.node_ids = node_ids
         # node_ids.pop(0)
 
     def __str__(self):
+        """Τυπώνει τα δεδομένα όλου του δικτύου"""
         start = "---------------\n"
         quantity = f"Πλήθος: {len(self.nodes)} κόμβοι\n"
         capacity = f"Χωρητικότητα: {self.r_size} κόμβοι\n"
@@ -32,6 +34,7 @@ class Network:
         return f"{start}{quantity}{capacity}{routing_table_size}{first_node_id}{end}"
 
     def print_network(self):
+        """Τυπώνει τα Routing Tables όλου του δικτύου"""
         print(self)
         for node in self.nodes:
             print(node.node_id)
@@ -49,11 +52,15 @@ class Network:
         return None
 
     def add_first_node(self, node_id):
-        """Αρχικοποίηση του 1ου κόμβου"""
+        """Αρχικοποίηση του 1ου κόμβου
+        :param str node_id: Το node_id του κόμβου που εισάγεται.
+        :return: Nothing.
+        :rtype: None"""
         node = Node(node_id, self.m)
         self.nodes.append(node)
 
     def update_sets_and_tables(self, node, action):
+        """Ανανεώνει τα leaf sets και τα routing tables για όλους τους κόμβους του δικτύου"""
         self.update_routing_tables(node, action)
         self.update_leaf_sets(node, action)
 
@@ -88,12 +95,11 @@ class Network:
                 :return: Nothing.
                 :rtype: None
         """
-        new_node = Node(node_id, self.m)
+        new_node = Node(node_id, self.m)  # δημιουργείται ο νέος κόμβος
         self.nodes.append(new_node)
-        # node = self.nodes[-1]
         for n in self.nodes:
-            n.join(new_node)
-        # self.first_node.join(new_node)
+            n.join(new_node)  # τον προσθέτουν όλοι οι υπόλοιποι
+        # ενημερώνουν τα tables
         self.update_routing_tables(new_node, "INSERT")
         self.update_leaf_sets(new_node, "INSERT")
 
@@ -103,20 +109,12 @@ class Network:
          :return: Nothing.
          :rtype: None
         """
-        # node = self.get_node(node_id)
-        # if node is not None:
-        #     self.nodes.remove(node)  # node.leave()
-        #     self.update_routing_tables(node, "DELETE")
-        #     self.update_leaf_sets(node, "DELETE")
-        #     self.nodes.remove(node)\
-        node.leave()
+        node.leave()  # Ο κόμβος χάνει τα δεδομένα του
         if node in self.nodes:
-            self.nodes.remove(node)
-        for n in self.nodes:
+            self.nodes.remove(node)  # αφαιρείται από την λίστα αν δεν έχει ήδη αφαιρεθεί
+        for n in self.nodes:  # αφαιρείται από τα routing & leaf tables.
             n.update_routing_table(node, "DELETE")
             n.update_leaf_set(node, "DELETE")
-        # else:
-        #     print(f"Ο κόμβος με ID {node.node_id} δεν υπάρχει στο δίκτυο.")
 
     def lookup(self, data, threshold):
         """Ψάχνει για το key στους κόμβους
@@ -128,7 +126,6 @@ class Network:
         h_key = hash_function(data)
         node = self.first_node
         node = node.find_successor(h_key)
-        # current_node = self
         found_data = node.data.get(h_key, None)
         if found_data is not None:
             found = False
@@ -145,12 +142,12 @@ class Network:
             print(f'Το \'{data}\' δεν υπάρχει σε κανένα κόμβο')
 
     def add_data(self, n):
-        """Βάζει τα δεδομένα στους κόμβους"""
+        """Βάζει τα δεδομένα στους κόμβους
+        :param int n: User defined threshold for what we are looking for.
+        :return: Nothing.
+        :rtype: None"""
         my_dict = create_education_dictionary(n)
         for key, values in my_dict.items():
-            # node = self.first_node
-            # h_key = hash_function(key)
-            # suc = node.find_successor(h_key)
             h_key = hash_function(key)
             suc = self.find_closest_to_key(h_key)
             if suc is not None:
@@ -162,24 +159,29 @@ class Network:
                 print(f"Δεν βρέθηκε διάδοχος για το key '{key}' με hash {h_key}")
 
     def find_closest_to_key(self, key):
+        """Βρίσκει τον κοντινότερο στο key ανάμεσα σε όλους τους κόμβους
+        ώστε να αποθηκευτούν εκεί data με το αντίστοιχο key.
+        :param str key: Το data key που πρέπει να αποθηκευτεί στον κοντινότερο κόμβο
+        :returns: Κοντινότερος κόμβος
+        :rtype: Node"""
         not_data_nodes = []
         for n in self.nodes:
-            if n.data == {}:
+            if n.data == {}:  # ελέγχουμε αν ο κόμβος έχει ήδη δεδομένα, κάνουμε balancing το δίκτυο
                 not_data_nodes.append(n)
         if len(not_data_nodes) > 0:
-            # min_lcp = sys.maxsize
-            # closest = not_data_nodes[0]
-            # for n in not_data_nodes:
-            #     new_lcp = n.lcp(key)
-            #     if new_lcp > min_lcp:
-            #         min_lcp = new_lcp
-            #         closest = n
+            # Υπάρχει έστω και ένας χωρίς δεδομένα, τα παίρνει αυτός. Πρέπει να έχει lcp
             closest = self.static_get_lcp(key, not_data_nodes)
         else:
+            # Έχουν όλοι δεδομένα, βρές αυτόν με το μεγαλύτερο lcp
             closest = self.static_get_lcp(key, self.nodes)
         return closest
 
     def static_get_lcp(self, key, nodes_list):
+        """Υπολογίζει το max lcp για όλους τους κόμβους και επιστρέφει τον κόμβο που το έχει
+        :param str key: Το data key που πρέπει να αποθηκευτεί στον κοντινότερο κόμβο
+        :param list nodes_list: Η λίστα με τους κόμβους που θέλουμε να ψάξουμε
+        :returns: Κοντινότερος κόμβος
+        :rtype: Node"""
         min_lcp = sys.maxsize
         closest = nodes_list[0]
         for n in nodes_list:
@@ -190,6 +192,7 @@ class Network:
         return closest
 
     def visualize_pastry(self):
+        """Οπτικοποιεί το δίκτυο Pastry"""
         plt.figure()
         self.pastry_ring.clear()
         sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse=True)
@@ -224,6 +227,7 @@ class Network:
         plt.ioff()
 
     def visualize_connections(self):
+        """Οπτικοποιεί τις συνδέσεις του Pastry όπου γίνονται τα hops"""
         plt.figure()
         self.pastry_ring.clear()
         sorted_nodes = sorted(self.nodes, key=lambda x: x.node_id, reverse=True)
@@ -233,7 +237,7 @@ class Network:
         # Προσθέτει ακμές από κάθε κόμβο στον επόμενο του
         for i in range(len(sorted_nodes)):
             node = sorted_nodes[i]
-            successor = sorted_nodes[i].find_successor(node)
+            successor = sorted_nodes[i].find_successor(node)  # πάνω έχει το routing table
             self.pastry_ring.add_edge(node.node_id, successor.node_id)
         rotated_pos = {
             node: (-y, x)
@@ -251,4 +255,3 @@ class Network:
         plt.gca().set_aspect("equal", adjustable="box")
         plt.pause(0.001)
         plt.ioff()
-
