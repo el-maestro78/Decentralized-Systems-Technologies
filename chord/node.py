@@ -63,8 +63,7 @@ class Node():
         self.predecessor = pre
 
 
-    # Ανανεώνει τα fingers στους κόμβους, με παράμετρο leave True όταν φεύγει κόμβος, γιατί για κάποιο λόγο μένει στα fingers των άλλων αυτός που έφυγε
-    # και πρέπει να τσεκάρει ότι δεν θα μπει στο finger table καλώντας την find successor για τον successor αυτού που έφυγε (?!?)
+    # Ανανεώνει τα fingers του κόμβου
     def update_fingers_table(self, node_left = None, leave = False):
         for i in range(1, len(self.fingers_table)):
             temp_node = self.find_successor((self.node_id + 2 ** i) % self.r_size)
