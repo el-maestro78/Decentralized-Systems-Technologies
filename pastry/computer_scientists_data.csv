@@ -1,0 +1,682 @@
+,Surname,#Awards,Education
+0,Khan,10,"['University of Malaya', 'COMSATS University']"
+1,Aalst,0,['Technische Universiteit Eindhoven']
+2,Aaronson,4,"['Cornell University', 'University of California, Berkeley']"
+3,Abebe,3,"['Cornell University', 'University of Cambridge', 'Harvard University']"
+4,Abelson,1,"['Princeton University', 'Massachusetts Institute of Technology']"
+5,Abiteboul,4,['University of Southern California']
+6,Abramsky,4,"[""King's College, Cambridge"", 'Queen Mary University of London']"
+7,Adleman,2,"['University of California, Berkeley']"
+8,Agrawal,8,['Indian Institute of Technology Kanpur']
+9,Ahn,3,"['Duke University', 'BS', 'Carnegie Mellon University']"
+10,Aho,7,"['University of Toronto', 'Princeton University']"
+11,Allen,6,"['University at Albany', 'University of Michigan']"
+12,Amdahl,2,"['South Dakota State University', 'BS', 'University of Wisconsin', 'MS', 'PhD']"
+13,Anderson,2,"['Wesleyan University', 'University of Wisconsin-Madison']"
+14,Anthony,6,['Drexel University']
+15,Appel,0,['Princeton University']
+16,Aragon,1,"['California Institute of Technology', 'University of California, Berkeley']"
+17,Arden,0,['Purdue University']
+18,Jones,0,"['Tennessee State University', 'North Carolina State University']"
+19,Arora,0,"['SB', 'Massachusetts Institute of Technology', 'PhD', 'UC Berkeley']"
+20,Asprey,0,"['Vassar College', 'University of Iowa']"
+21,Atanasoff,2,"['University of Florida', 'Iowa State University', 'University of Wisconsin–Madison']"
+22,Atre,0,"['University of Poona', 'University of Heidelberg']"
+23,Babbage,2,"['Peterhouse, Cambridge']"
+24,Bachman,3,"['University of Pennsylvania', 'Michigan State University']"
+25,Backhouse,0,"['Churchill College, Cambridge', 'Imperial College London']"
+26,Backus,3,"['University of Virginia', 'University of Pittsburgh', 'Haverford College', 'Columbia University']"
+27,Bacon,1,['U.C. Berkeley']
+28,Bader,5,"['Lehigh University', 'University of Maryland, College Park']"
+29,Bahl,4,"['University of Massachusetts, Amherst', 'Modern School, New Delhi']"
+30,Barr,0,['North Carolina State University']
+31,Bartik,4,"['Northwest Missouri State Teachers College', 'University of Pennsylvania']"
+32,Barto,3,['University of Michigan']
+33,Bauer,3,['Ludwig-Maximilians-Universität']
+34,Bayer,2,['University of Illinois at Urbana–Champaign']
+35,Bell,8,['MIT']
+36,Bellovin,0,"['Columbia University', 'University of North Carolina at Chapel Hill']"
+37,Berdichevsky,0,[]
+38,Berners-Lee,5,"[""The Queen's College, Oxford""]"
+39,Bernstein,0,"['University of California, Berkeley', 'New York University']"
+40,Bernus,0,['Budapest Technical University']
+41,Bhushan,0,"['Indian Institute of Technology Kanpur', 'Massachusetts Institute of Technology', 'MIT Sloan School of Management']"
+42,Bjørner,4,['Technical University of Denmark']
+43,Blaauw,0,['Delft University of Technology']
+44,Black,1,['London South Bank University']
+45,Blei,2,"['Brown University', 'University of California, Berkeley']"
+46,Blum,0,['Brooklyn College']
+47,Blum,3,"['Simmons College', 'Massachusetts Institute of Technology']"
+48,Blum,4,"['Massachusetts Institute of Technology', 'BA', 'MA', 'PhD']"
+49,Boehm,3,['Harvard University']
+50,Böhm,0,['ETH Zürich']
+51,Bollacker,0,[]
+52,Bonwick,0,[]
+53,Booch,2,"['U.S. Air Force Academy', 'B.S.', 'University of California, Santa Barbara', 'M.S.']"
+54,Boole,17,['[3]']
+55,Booth,0,['Jesus College']
+56,Booth,0,[]
+57,Borg,18,['New York University']
+58,Bos,0,[]
+59,Botvinnik,0,[]
+60,Bowen,4,"['University College', 'Oxford']"
+61,Bourne,3,"[""King's College London"", 'BSc', 'Trinity College, Cambridge', 'Diploma in Computer Science', 'Ph.D.']"
+62,Bouwman,0,['VU University Amsterdam']
+63,Boyer,0,"['Ph.D.', 'Mathematics']"
+64,Brandenburg,1,['University of Erlangen-Nuremberg']
+65,Brassard,3,[]
+66,Breed,2,[]
+67,Bresenham,0,['Winthrop University']
+68,Brin,5,"['University of Maryland, College Park', 'BS', 'Stanford University', 'MS']"
+69,Brown,0,['University of Pennsylvania']
+70,Hansen,1,['Technical University of Denmark']
+71,Brinkkemper,0,['University of Amsterdam']
+72,Brooks,5,"['Duke University', 'Harvard University']"
+73,Brooks,1,"['Stanford University', 'Flinders University']"
+74,Burnett,0,[]
+75,Butler,0,"['Trinity College, Dublin', 'Wolfson College', 'Oxford']"
+76,Gil,3,[]
+77,Camp,2,"['The College of William and Mary', 'Michigan State University', 'Kalamazoo College']"
+78,Campbell-Kelly,0,['Sunderland Polytechnic']
+79,Candlin,0,['University of Cambridge']
+80,Canion,0,['University of Houston']
+81,Cantrill,0,[]
+82,Cardelli,2,"['University of Pisa', 'University of Edinburgh']"
+83,Carmack,0,['University of Missouri–Kansas City']
+84,Caspersen,8,"['Aarhus U.', 'Aarhus U.', '[11]', 'PhD', 'Aarhus U.']"
+85,Catmull,4,['University of Utah']
+86,Cerf,12,"['Stanford University', 'BS', 'University of California, Los Angeles', 'MS', 'PhD']"
+87,Chaitin,0,[]
+88,Cailliau,12,"['Ghent University', 'University of Michigan']"
+89,Chaochen,3,[]
+90,Chen,7,"['National Taiwan University', 'Harvard University']"
+91,Chiariglione,8,['Polytechnic University of Turin']
+92,Chou,0,"['Stanford University', '[1]', 'B.S.', 'M.S.']"
+93,Church,0,"['Princeton University', 'BS', 'PhD']"
+94,Ciaramella,0,[]
+95,Clarke,1,['Cornell University']
+96,Cocke,6,['Duke University']
+97,Codd,3,"['Exeter College, Oxford', 'University of Michigan']"
+98,Cohen,0,[]
+99,Coldwater,0,[]
+100,Colton,0,"['Durham University', 'University of Liverpool', 'University of Edinburgh']"
+101,Colmerauer,0,[]
+102,Comer,8,[]
+103,Compton,0,[]
+104,Conway,2,"['Cornell', 'PhD', 'Cornell']"
+105,Cormack,0,[]
+106,Cook,8,"['Harvard University', 'University of Michigan']"
+107,Cooley,0,[]
+108,Cooper,0,"['University of California, Los Angeles', 'BA']"
+109,Corbató,2,"['California Institute of Technology', 'Massachusetts Institute of Technology']"
+110,Cosper,0,[]
+111,Cousot,8,['École Nationale Supérieure des Mines de Nancy']
+112,Cox,4,"['University College London', 'Oxford University']"
+113,Cray,0,['University of Minnesota']
+114,Cristianini,3,"['University of Trieste', 'University of London', 'University of Bristol']"
+115,Crowcroft,2,"['University of Cambridge', 'University College London']"
+116,Croft,8,['Monash University']
+117,Culler,5,"['University of California, Berkeley', 'University of California, Los Angeles']"
+118,Curry,0,"['Harvard University', 'University of Göttingen']"
+119,Dadda,0,['Politecnico di Milano']
+120,Dahl,2,['University of Oslo']
+121,Dahl,0,"['UC San Diego', 'University of Rochester']"
+122,Dam,0,[]
+123,Das,0,"['Georgia Tech', 'Indian Institute of Science', 'Jadavpur University']"
+124,Daswani,0,"['Stanford University', 'Columbia University']"
+125,Date,0,['University of Cambridge']
+126,Davis,0,"[""Bachelor's degree"", 'computer engineering', ""master's degree"", 'electrical engineering', 'Arizona State University']"
+127,Dean,6,"['University of Minnesota', 'University of Washington']"
+128,Demaine,3,"['Dalhousie University', 'University of Waterloo']"
+129,DeMarco,2,"['Cornell University', 'Columbia University', 'University of Paris']"
+130,DeMillo,0,"['University of St. Thomas', 'Georgia Institute of Technology']"
+131,Denning,2,"['University of Michigan', 'Purdue University']"
+132,Denning,2,"['Massachusetts Institute of Technology', '[1]', 'Manhattan College']"
+133,Dertouzos,0,[]
+134,Dewdney,0,[]
+135,Dewar,0,"['University of Chicago', 'B.S.', 'Ph.D.']"
+136,Dham,0,"['Delhi College of Engineering', 'Delhi Technological University', 'Delhi University', 'University of Cincinnati']"
+137,Dietz,0,['Eindhoven University of Technology']
+138,Diffie,6,['Massachusetts Institute of Technology']
+139,Dijkstra,5,"['Leiden University', 'University of Amsterdam']"
+140,Dillon,0,"['University of California, Berkeley']"
+141,Dix,0,[]
+142,Dongarra,15,"['Chicago State University', 'BS', 'Illinois Institute of Technology', 'MS', 'University of New Mexico', 'PhD']"
+143,Dorigo,0,[]
+144,Dourish,7,['Computer Science']
+145,Draper,6,"['Massachusetts Institute of Technology', 'Stanford University']"
+146,Dumais,1,"['Indiana University', 'Bates College']"
+147,Dunkels,0,"['Swedish Institute of Computer Science', 'B.S.', 'M.S.', 'Ph.D.']"
+148,Dunn,11,"['Oberlin College', 'University of Pittsburgh']"
+149,Dustdar,0,[]
+150,Eades,0,[]
+151,Easley,0,['Cleveland State University']
+152,Ebbinkhuijsen,0,[]
+153,Eckert,4,['University of Pennsylvania']
+154,Edelman,7,"['MIT', 'Yale University']"
+155,Eich,0,"['University of Illinois Urbana-Champaign', 'Santa Clara University']"
+156,Emeagwali,0,"['George Washington University School of Engineering and Applied Science', 'Oregon State University']"
+157,Emerson,2,"['Harvard', 'UT Austin']"
+158,Engelbart,7,"['Oregon State University', 'University of California, Berkeley']"
+159,Engelhardt,2,"['Stanford University', 'University of California, Berkeley']"
+160,Eppstein,0,"['Stanford University', 'Columbia University']"
+161,Yershov,0,['Moscow State University']
+162,Estridge,0,['University of Florida']
+163,Etzioni,2,"['Harvard University', 'Carnegie Mellon University']"
+164,Evans,0,"['University College London', 'University of Reading']"
+165,Evans,3,[]
+166,Even,0,['Harvard University']
+167,Fahlman,3,"['Massachusetts Institute of Technology', 'B.S.', 'M.S.', 'Ph.D.']"
+168,Feigenbaum,4,['Carnegie Mellon University']
+169,Felten,2,"['California Institute of Technology', 'BS', 'University of Washington', 'MS', 'PhD']"
+170,Finin,3,['University of Illinois']
+171,Finkel,0,['University of Chicago']
+172,Firesmith,0,['Arizona State University']
+173,Flake,0,[]
+174,Flowers,0,['University of London']
+175,Floyd,2,"['University of Chicago', 'B.A.']"
+176,Floyd,1,"['University of California, Berkeley']"
+177,Fogel,0,"['New York University', 'Rutgers University', 'University of California, Los Angeles']"
+178,Foley,11,"['University of Michigan', 'Lehigh University']"
+179,Forbus,0,"['Massachusetts Institute of Technology', 'BS', 'MS', 'PhD']"
+180,Jr.,0,[]
+181,Fortnow,7,"['Cornell University', 'Massachusetts Institute of Technology']"
+182,Fayed,0,"['Menoufia University', 'King Saud University']"
+183,Fowler,0,"['University College London', 'BSc', '[1]']"
+184,France,2,"['University of the West Indies', 'Trinidad and Tobago', 'Massey University', 'New Zealand']"
+185,Franke,9,[]
+186,Fredkin,2,['California Institute of Technology']
+187,Freund,2,"['The Hebrew University of Jerusalem', 'University of California, Santa Cruz']"
+188,Friedman,0,"['University of Houston', '[1]']"
+189,Fischer,8,"['University of British Columbia', 'University of Cambridge']"
+190,Fu,53,"['University of California, San Diego']"
+191,Fu,6,[]
+192,Fukushima,1,['Kyoto University']
+193,Fulkerson,5,"['Southern Illinois University', 'University of Wisconsin–Madison']"
+194,Gabriel,2,"['Northeastern University', 'Massachusetts Institute of Technology', 'University of Illinois', 'Stanford University', 'Warren Wilson College']"
+195,Galil,3,"['Tel Aviv University', 'BSc', 'MSc', 'Cornell University', 'PhD']"
+196,Galler,0,"['University of Chicago', 'UCLA']"
+197,García-Molina,3,"['Monterrey Institute of Technology and Higher Education', 'BS', 'Stanford University', 'MS', 'PhD']"
+198,Garey,0,['University of Wisconsin–Madison']
+199,Garis,0,[]
+200,Gates,4,['Harvard University']
+201,Gelernter,3,"['Yale University', 'BA', 'State University of New York at Stony Brook', 'PhD']"
+202,Gelobter,4,['Brown University']
+203,Geschke,3,"['Xavier University', 'AB', 'MS', 'Carnegie Mellon University', 'PhD']"
+204,Ghahramani,3,"['University of Pennsylvania', 'Massachusetts Institute of Technology']"
+205,Ghemawat,1,"['Cornell University', 'MIT']"
+206,Gibbons,0,"['University of Edinburgh', 'B.Sc.', 'University of Oxford', 'D.Phil.']"
+207,Gilbert,1,"['Miami University', 'University of Cincinnati']"
+208,Giles,7,"['Rhodes College', 'University of Tennessee', 'University of Michigan', 'University of Arizona']"
+209,Ginsburg,0,"['City College of New York', 'University of Michigan']"
+210,Glass,0,[]
+211,Gödel,3,"['University of Vienna', 'PhD']"
+212,Goel,3,['Ohio State University']
+213,Goguen,0,"['Harvard University', 'University of California, Berkeley']"
+214,Gold,0,[]
+215,Goldberg,0,"['University of Michigan', 'University of Chicago']"
+216,Goldberg,2,"['Massachusetts Institute of Technology', 'University of California, Berkeley']"
+217,Goldberg,0,"['University of California, Berkeley', 'University of Waterloo']"
+218,Goldsmith,0,[]
+219,Goldreich,2,"['Technion', 'Weizmann Institute']"
+220,Goldwasser,11,"['Carnegie Mellon University', 'University of California, Berkeley']"
+221,Golub,0,['University of Illinois at Urbana-Champaign']
+222,Golumbic,0,[]
+223,Gonnet,1,['University of Waterloo']
+224,Goodfellow,0,"['Stanford University', 'Université de Montréal']"
+225,Gosling,7,"['University of Calgary', 'BSc', 'Carnegie Mellon University', 'MA', 'PhD']"
+226,Graham,0,"['Cornell University', 'Harvard University']"
+227,Graham,0,[]
+228,Graham,5,"['Harvard', 'Stanford']"
+229,Gray,2,"['University of California, Berkeley']"
+230,Greibach,0,"['Radcliffe College', 'Harvard University']"
+231,Gries,4,"['B.S.', 'Queens College', 'M.S.', 'University of Illinois at Urbana-Champaign', 'Dr. rer. nat.', 'Technical University of Munich']"
+232,Griswold,0,[]
+233,Gropp,2,['Stanford University']
+234,Gruber,0,['Loyola University New Orleans']
+235,Guberman,0,[]
+236,Guha,16,"['Indian Institute of Technology Madras', 'University of California, Berkeley', 'Stanford University']"
+237,Gunther,9,"['La Trobe University', 'University of Southampton']"
+238,Gutknecht,0,"['Ph.D.', 'ETH Zurich']"
+239,Guy,0,[]
+240,Griesemer,0,[]
+241,Habermann,0,"['Free University of Amsterdam', 'Eindhoven University of Technology']"
+242,Hahn,0,[]
+243,Hall,1,"['University of Washington', 'Rutgers University', 'Eastern Nazarene College', 'Boston University', 'Massachusetts Institute of Technology', 'Harvard University']"
+244,Hall,2,"['University of Southampton', 'City University London', '[5]']"
+245,Halpern,3,['University of Toronto']
+246,Hamilton,1,"['University of Michigan', 'Earlham College', 'BA']"
+247,Hamming,4,"['University of Chicago', 'University of Nebraska', 'University of Illinois at Urbana–Champaign']"
+248,Han,0,"['University of Wisconsin - Madison', 'PhD', 'University of Science and Technology of China', 'BSc.']"
+249,Harary,0,"['Brooklyn College', 'University of California, Berkeley']"
+250,Harris,0,"['School of Oriental and African Studies', 'American University in Cairo', ""Quai d'Orsay""]"
+251,Hartmanis,2,"['University of Marburg', 'University of Kansas City', 'Caltech']"
+252,Håstad,4,"['Massachusetts Institute of Technology', 'Uppsala University', 'Stockholm University']"
+253,Hatton,2,"[""King's College, Cambridge""]"
+254,Hawryszkiewycz,0,[]
+255,Jifeng,0,['Fudan University']
+256,Hehner,0,"['Carleton University', 'B.Sc.', 'University of Toronto', 'M.Sc.', 'Ph.D.']"
+257,Hellman,9,"['New York University', 'Stanford University']"
+258,Heiser,6,"['University of Freiburg', 'Brock University', 'ETH Zurich']"
+259,Hendler,0,"['Yale University', 'Southern Methodist University', 'Brown University']"
+260,Hennessy,9,"['Villanova University', 'Stony Brook University']"
+261,Herbert,0,['Leeds University']
+262,Hewitt,0,['MIT']
+263,Hightower,0,[]
+264,Hillis,2,['Massachusetts Institute of Technology']
+265,Hinton,9,"['University of Cambridge', 'BA', 'University of Edinburgh']"
+266,Hirschberg,10,"['University of Pennsylvania', 'University of Michigan']"
+267,Ho,7,['Chinese University of Hong Kong']
+268,Hoare,7,"['University of Oxford', 'Moscow State University']"
+269,Hodes,0,"['B.S.', 'Polytechnic Institute of Brooklyn', 'Ph.D.', 'MIT']"
+270,Holberton,4,['University of Pennsylvania']
+271,Holland,3,['University of Michigan']
+272,Hollerith,3,"['City College of New York', 'Columbia University']"
+273,Holzmann,2,['Delft University of Technology']
+274,Hopcroft,8,"['Seattle University', 'Stanford University']"
+275,Hopper,9,"['Vassar College', 'BA', 'Yale University', 'MS', 'PhD']"
+276,Horvitz,0,['Stanford University']
+277,Householder,0,['University of Chicago']
+278,Hudak,6,"['Vanderbilt University', 'B.S.', 'Massachusetts Institute of Technology', 'M.S.', 'University of Utah', 'Ph.D.']"
+279,Huffman,2,"['Ohio State University', 'Massachusetts Institute of Technology']"
+280,Hughes,3,"['University of Oxford', 'PhD']"
+281,Hui,1,"['University of Alberta', 'University of Toronto']"
+282,Humphrey,1,['United States Navy']
+283,Hutchins,0,[]
+284,Ichbiah,6,[]
+285,Ierusalimschy,0,['Pontifical Catholic University of Rio de Janeiro']
+286,Ingalls,2,"['Harvard University', 'B.A.', 'Stanford University', 'M.S.']"
+287,Irwin,3,"['University of Illinois at Urbana-Champaign', 'Memphis State University']"
+288,Iverson,4,"[""Queen's University"", 'Harvard University']"
+289,Jacobson,0,"['Chalmers Institute of Technology', 'Gothenburg', 'Royal Institute of Technology', 'Stockholm']"
+290,Jain,10,"['Indian Institute of Technology, Kanpur', 'Ohio State University']"
+291,Jain,0,"['Indian Institute of Technology, Kharagpur', 'Visvesvaraya National Institute of Technology Nagpur']"
+292,James,0,[]
+293,Johnson,2,"['Amherst College', 'MIT']"
+294,Johnson,0,"['Columbia University', 'Haverford College']"
+295,Jones,0,['University of Oxford']
+296,Jordan,5,"['University of California, San Diego']"
+297,Joseph,2,"['Wilson College, Mumbai', 'University of Bombay', 'Welsh College of Advanced Technology', 'University of Cambridge']"
+298,Joshi,12,"['College of Engineering, Pune', 'Indian Institute of Science', 'University of Pennsylvania']"
+299,Joy,4,"['University of Michigan', 'University of California, Berkeley']"
+300,Jurafsky,2,"['University of California at Berkeley', '[1]']"
+301,Kahan,4,['University of Toronto']
+302,Kahn,12,"['City College of New York', 'Princeton University']"
+303,Kak,0,"['University of Madras', 'Indian Institute of Technology, Delhi']"
+304,Kamp,0,[]
+305,Karger,1,"['Harvard University', 'Stanford University']"
+306,Karp,10,['Harvard University']
+307,Karmarkar,11,"['IIT Bombay', 'Caltech', 'University of California, Berkeley']"
+308,Karpinski,0,[]
+309,Kaehler,0,"['Stanford University', 'B.S.', 'Carnegie Mellon University', 'MSc']"
+310,Kay,3,"['University of Colorado at Boulder', 'BS', 'University of Utah College of Engineering', 'MS', 'PhD']"
+311,Kayal,8,['IIT Kanpur']
+312,Kellis,3,['Massachusetts Institute of Technology']
+313,Kemeny,2,['Princeton University']
+314,Kennedy,0,"['Rice University', 'New York University']"
+315,Kernighan,0,"['University of Toronto', 'BASc', 'Princeton University', 'PhD']"
+316,Kesselman,0,[]
+317,Kiczales,0,['Massachusetts Institute of Technology']
+318,Kirstein,3,"['University of Cambridge', 'Stanford University']"
+319,Kleene,2,"['Amherst College', 'Princeton University']"
+320,Klein,4,"['Cornell University', 'University of Oxford', 'Stanford University']"
+321,Kleinrock,5,"['City College of New York', 'MIT']"
+322,Knuth,14,"['Case Institute of Technology', 'BS', 'MS', 'California Institute of Technology', 'PhD']"
+323,Koenig,0,['Columbia University']
+324,Koller,5,"['Hebrew University of Jerusalem', 'Stanford University']"
+325,Kölling,3,"['University of Bremen', 'University of Sydney']"
+326,Kolmogorov,7,"['Moscow State University', 'Ph.D.']"
+327,Kolodner,2,"['Brandeis University', 'Yale University']"
+328,Korn,0,[]
+329,Koster,0,['University of Amsterdam']
+330,Kowalski,2,"['University of Chicago', 'University of Bridgeport', 'BA', 'Stanford University', 'MSc', 'University of Warsaw', 'University of Edinburgh', 'PhD']"
+331,Koza,0,[]
+332,Krogstie,0,[]
+333,Kruskal,0,"['University of Chicago', 'Princeton University']"
+334,Kruusmaa,4,"['Tallinn University of Technology', 'Chalmers University of Technology']"
+335,Kurtz,2,"['Princeton University', 'Knox College', 'mathematics']"
+336,Ladner,5,"[""St. Mary's College of California"", 'University of California, Berkeley']"
+337,Lam,9,['Carnegie Mellon University']
+338,Lamport,6,"['Massachusetts Institute of Technology', 'BS', 'Brandeis University', 'MA', 'PhD']"
+339,Lampson,6,"['Harvard University', 'University of California, Berkeley']"
+340,Landin,0,"['Clare College', 'Cambridge University']"
+341,Lane,0,"['Carnegie Mellon University', 'Ph.D.']"
+342,Langefors,0,['Stockholm University']
+343,Lattner,2,"['University of Portland', 'University of Illinois at Urbana-Champaign']"
+344,Lawrence,8,[]
+345,Lazowska,0,"['Brown University', 'University of Toronto']"
+346,Lederberg,3,"['Stuyvesant High School', 'Columbia University', 'Yale University']"
+347,Lehman,2,['Imperial College London']
+348,Leiserson,0,"['Carnegie Mellon University', 'Yale University']"
+349,Lenat,2,"['University of Pennsylvania', 'Stanford University']"
+350,LeCun,3,"['ESIEE Paris', 'MS', 'Pierre and Marie Curie University', 'PhD']"
+351,Lerdorf,0,['University of Waterloo']
+352,Levchin,0,['University of Illinois at Urbana-Champaign']
+353,Levin,2,"['Moscow University', 'Massachusetts Institute of Technology']"
+354,Leyton-Brown,1,"['McMaster University', 'Stanford University']"
+355,Licklider,0,"['Washington University in St. Louis', 'University of Rochester']"
+356,Liddle,0,[]
+357,Liedtke,0,"['Bielefeld University', 'Technical University of Berlin']"
+358,Lions,0,"['University of Sydney', 'University of Cambridge']"
+359,Lindsey,0,[]
+360,Lipton,2,['Carnegie Mellon']
+361,Liskov,3,"['University of California, Berkeley', 'Stanford University']"
+362,Liu,0,"['Cornell University', 'Tsinghua University', 'Peking University']"
+363,Long,2,"['San Diego State University', 'University of California, San Diego']"
+364,Lopez,1,['New Mexico State University']
+365,Lovegrove,0,"['Newnham College, Cambridge', 'Cambridge University']"
+366,Luckham,0,"['Ph.D.', 'MIT']"
+367,Luks,3,[]
+368,Lynch,7,"['Brooklyn College', 'MIT']"
+369,Thalmann,2,"['University of Geneva', 'École Polytechnique Fédérale de Lausanne']"
+370,Maibaum,1,"['B.Sc.', 'University of Toronto', 'Ph.D.', 'University of London']"
+371,Marlow,2,"['University of Glasgow', 'University of Bristol']"
+372,Manna,4,"['Technion – Israel Institute of Technology', 'Carnegie Mellon University']"
+373,Martin,3,['University of Oxford']
+374,Martin,0,[]
+375,Mashey,0,[]
+376,Matiyasevich,3,['Leningrad State University']
+377,Matsumoto,0,"['University of Tsukuba', 'Shimane University']"
+378,Mauchly,3,['Johns Hopkins University']
+379,Maulik,11,"['Nabadwip Bakultala High School', 'Calcutta University', 'Jadavpur University']"
+380,McAuley,1,['University of Cambridge']
+381,McCarthy,6,"['Princeton University', 'California Institute of Technology']"
+382,McCallum,1,"['Dartmouth College', 'University of Rochester', '[2]']"
+383,McIlroy,3,"['Cornell University', 'Massachusetts Institute of Technology']"
+384,McKinstry,0,[]
+385,McKusick,0,"['University of California, Berkeley']"
+386,Meertens,2,[]
+387,Mehlhorn,4,"['Cornell University', '[2]']"
+388,Metcalf,0,[]
+389,Meyer,3,"['Université de Nancy', 'Stanford University', 'École Polytechnique']"
+390,Micali,3,"['La Sapienza University of Rome', 'UC Berkeley']"
+391,Milner,5,[]
+392,Minker,2,"['Brooklyn College', 'University of Wisconsin', 'University of Pennsylvania']"
+393,Minsky,6,"['Harvard University', 'BA', 'Princeton University', 'MA', 'PhD']"
+394,Mitchell,2,"['University of Waterloo', 'Carnegie Mellon University']"
+395,Mitchell,3,"['Stanford University', 'Massachusetts Institute of Technology']"
+396,Arvind,14,"['IIT Kanpur', 'B.Sc., 1969', 'University of Minnesota', 'M.S.', 'Ph.D.']"
+397,Mockapetris,4,"['Massachusetts Institute of Technology', 'University of California at Irvine']"
+398,Moler,2,"['California Institute of Technology', 'Stanford University']"
+399,Moller,0,"['University of British Columbia', 'University of Waterloo', 'University of Edinburgh']"
+400,Moon,0,['Pennsylvania State University']
+401,Moore,0,[]
+402,Moore,0,"['Virginia Tech', 'Brown University']"
+403,Moore,9,"['University of California, Berkeley', 'BS', 'California Institute of Technology', 'PhD']"
+404,Moore,0,[]
+405,Moore,4,['Stanford University']
+406,Moravec,0,"['Acadia University', '[1]', 'University of Western Ontario', '[1]', 'Stanford University', '[1]']"
+407,Morgan,0,"['Ph.D.', 'University of Sydney']"
+408,Morris,0,"['Harvard University ', 'Cornell University']"
+409,Moses,0,"['BA', 'MA', 'Columbia University', 'PhD', 'mathematics', 'MIT']"
+410,Motwani,1,"['IIT Kanpur', 'B.Tech', 'C.S.', 'UC Berkeley', 'Ph.D.', 'C.S.']"
+411,Mukhanov,0,[]
+412,Muggleton,4,['University of Edinburgh']
+413,Müller,1,"['University of Karlsruhe', 'Diplom', 'University of Karlsruhe']"
+414,Mycroft,0,"['University of Cambridge', 'University of Edinburgh']"
+415,Myers,8,"['University of Toronto', 'Massachusetts Institute of Technology']"
+416,Nadin,0,[]
+417,Nagao,8,['Kyoto University']
+418,Nake,9,[]
+419,Nardi,0,[]
+420,Naur,2,['Technical University of Denmark']
+421,Needham,2,['University of Cambridge']
+422,Nell,0,['Drexel University']
+423,Nelson,2,"['Harvard University', 'Stanford University']"
+424,Neumann,0,[]
+425,Neumann,0,[]
+426,Neumann,6,"['Pázmány Péter University', 'University of Berlin', 'ETH Zürich']"
+427,Newell,5,"['Stanford University', 'Princeton University', 'Carnegie Mellon University']"
+428,Newman,3,"[""St John's College, Cambridge""]"
+429,Ng,9,"['University of California, Berkeley', 'Massachusetts Institute of Technology', 'Carnegie Mellon University']"
+430,Nilsson,6,['Stanford University']
+431,Nijssen,0,['Eindhoven University of Technology']
+432,Nipkow,0,[]
+433,Nivat,7,['Joseph Fourier University']
+434,Nkambule,3,"['University of Pretoria', 'Cefups Academy']"
+435,Noe,0,"['UC Berkeley', 'Stanford University']"
+436,Nordin,0,"['University of Dortmund', 'Chalmers University of Technology', 'Göteborg University']"
+437,Norman,4,"['MIT', 'University of Pennsylvania']"
+438,Norvig,2,"['Brown University', 'University of California, Berkeley']"
+439,Novacky,0,['University of Pittsburgh']
+440,Nygaard,4,"['M.Sc.', 'University of Oslo']"
+441,Odersky,0,"['Ludwig Maximilian University of Munich', 'ETH Zurich']"
+442,O'Hearn,9,"['Dalhousie University', ""Queen's University""]"
+443,Olle,0,['University of Manchester']
+444,Omohundro,0,"['Stanford University', 'University of California, Berkeley']"
+445,Ornstein,0,[]
+446,O'Sullivan,2,[]
+447,Ousterhout,2,"[""Bachelor's degree"", 'Ph.D']"
+448,Overmars,0,['Utrecht University']
+449,Owicki,0,['Cornell University']
+450,Page,9,"['University of Michigan', 'BS', 'Stanford University', 'MS']"
+451,Pal,2,"['Rajabazar Science College', 'University of Calcutta', 'Indian Statistical Institute', 'Imperial College London']"
+452,Pandya,2,[]
+453,Papadimitriou,5,"['Athens Polytechnic', 'Princeton University']"
+454,Park,0,"['University of Oxford', 'Massachusetts Institute of Technology']"
+455,Parnas,0,[]
+456,Patil,0,"['University of California, San Diego', 'BA', 'University of Maryland College Park', 'PhD']"
+457,Patt,6,[]
+458,Patterson,6,"['University of California, Los Angeles']"
+459,Paterson,2,"['Ph.D.', 'University of Cambridge']"
+460,Pătrașcu,0,['Massachusetts Institute of Technology']
+461,Paulson,1,"['California Institute of Technology', 'Stanford University']"
+462,Pausch,5,"['Brown University', 'Carnegie Mellon University']"
+463,Pavón,0,"['Technical University of Madrid', 'Université Pierre et Marie Curie']"
+464,Pearl,5,"['Technion – Israel Institute of Technology', 'New Jersey Institute of Technology', 'Rutgers University', 'New York University Tandon School of Engineering']"
+465,Perlis,2,"['Chemistry', 'Carnegie Mellon', 'MIT']"
+466,Perlman,11,['MIT']
+467,Perotto,0,[]
+468,Péter,0,[]
+469,Jones,3,['University of Cambridge']
+470,Pham,0,"['Georgia Institute of Technology', 'Supélec', 'MIT Media Lab', 'Harvard University']"
+471,Pieraccini,11,['University of Pisa']
+472,Pingali,3,"['IIT Kanpur', 'MIT']"
+473,Plotkin,3,"['University of Glasgow', 'University of Edinburgh']"
+474,Pnueli,2,['Stanford University']
+475,Poel,2,"['Delft University of Technology', 'B.S.', 'University of Amsterdam', 'Ph.D.']"
+476,Popplewell,0,['University of Cambridge']
+477,Post,0,"['City College of New York', '[1]', 'Columbia University', '[2]']"
+478,Postel,6,['UCLA']
+479,Preparata,2,['University of Rome']
+480,Press,0,"['Harvard University', 'California Institute of Technology']"
+481,Rabana,0,[]
+482,Rozenberg,10,['Polish Academy of Sciences']
+483,Rabin,10,"['Hebrew University of Jerusalem', 'MSc', 'University of Pennsylvania', 'Princeton University', 'PhD']"
+484,Radev,2,[]
+485,Raman,4,[]
+486,Randell,0,['Imperial College London']
+487,Ravn,2,"['University of Copenhagen', 'Technical University of Denmark']"
+488,Reddy,6,"['University of Madras', 'BE', 'University of New South Wales', 'MTech', 'Stanford University', 'PhD']"
+489,Reed,0,['MIT']
+490,Reenskaug,0,[]
+491,Reynolds,2,"['Purdue University', 'Ph.D.', 'Harvard University']"
+492,Reynolds,0,['University of Southern California']
+493,Riet,0,"['University of Amsterdam', 'Ph.D.']"
+494,Richards,0,[]
+495,Richards,1,['University of Cambridge']
+496,Ries,0,[]
+497,Rijsbergen,1,"['University of Western Australia', 'University of Cambridge']"
+498,Ritchie,8,['Harvard University']
+499,Rivest,5,"['Stanford University', 'Yale University']"
+500,Robinson,2,['University of Sydney']
+501,Rolland,0,['University of Nancy']
+502,Romero,0,[]
+503,Rosenfeld,3,[]
+504,Ross,3,"['Oberlin College', 'B.Sc.', 'Massachusetts Institute of Technology', 'M.Sc.']"
+505,Rossum,2,['University of Amsterdam']
+506,Rothman,0,['United States Patent and Trademark Office']
+507,Royce,0,[]
+508,Rucker,0,"['St. Xavier High School', 'Swarthmore College', 'BA', 'Rutgers University', 'MS', 'PhD']"
+509,Rudich,1,[]
+510,Rulifson,25,"['University of Washington', 'Stanford University']"
+511,Rumbaugh,0,[]
+512,Ružička,4,['Comenius University in Bratislava']
+513,Sadowsky,0,['Harvard University']
+514,Sadrzadeh,0,"['Université du Québec à Montréal', 'Sharif University of Technology']"
+515,Saif,0,"['Lahore University of Management Sciences', 'University of Cambridge', 'Massachusetts Institute of Technology']"
+516,Salton,6,"['Brooklyn College', 'Harvard University']"
+517,Sammet,3,"['Mount Holyoke College', 'B.A.', 'University of Illinois at Urbana Champaign', 'M.A.', 'Columbia University']"
+518,Sammut,0,[]
+519,Sassenrath,0,"['University of California, Davis']"
+520,Satyanarayanan,5,"['Carnegie Mellon University (Ph.D.)', 'IIT Madras (M.Tech., B.Tech.)']"
+521,Savitch,0,"['University of California, Berkeley']"
+522,Schaeffer,2,"['University of Waterloo', 'University of Toronto']"
+523,Schickard,0,[]
+524,Schmidhuber,0,['Technical University of Munich']
+525,Schneider,0,['University of Oxford']
+526,Schneier,0,"['American University', 'University of Rochester']"
+527,Schneider,5,['Stony Brook University']
+528,Schoenebeck,6,"['Georgia Institute of Technology', 'University of California, Berkeley', 'Dartmouth College']"
+529,Schroeder,0,['Unix shell']
+530,Schölkopf,10,"['University of London', 'University of Tübingen', 'TU Berlin']"
+531,Scott,6,"['UC Berkeley', 'Princeton University']"
+532,Scott,0,[]
+533,Sedgewick,4,['Brown University']
+534,Sethi,0,"['Indian Institute of Technology, Kanpur', 'Princeton University']"
+535,Shadbolt,2,"['Newcastle University', 'University of Edinburgh']"
+536,Shamir,6,"['Tel Aviv University', 'Weizmann Institute of Science']"
+537,Shannon,10,"['University of Michigan', 'AB', 'BS', 'Massachusetts Institute of Technology', 'MS', 'PhD']"
+538,Shaw,0,"['University of California, San Diego', 'BS', 'Stanford University', 'MS', 'PhD']"
+539,Shaw,0,[]
+540,Shenker,5,"['Brown University', 'University of Chicago']"
+541,Shekhar,28,"['University of California, Berkeley']"
+542,Shneiderman,3,"['City College of New York', 'Stony Brook University']"
+543,Shortliffe,0,"['Harvard University', 'Stanford University']"
+544,Siewiorek,4,"['University of Michigan', 'B.A.', 'Stanford University', 'M.A.', 'Ph.D.']"
+545,Sifakis,2,"['National Technical University of Athens', 'University of Grenoble']"
+546,Simon,10,['University of Chicago']
+547,Singh,5,"['University of Texas at Austin', 'Indian Institute of Technology Delhi']"
+548,Sitaraman,0,"['Indian Institute of Technology, Madras', '[2]', 'Princeton University', '[2]']"
+549,Sleator,2,"['University of Illinois at Urbana–Champaign', 'Stanford University']"
+550,Sloman,0,[]
+551,Sølvberg,0,[]
+552,Smith,0,['MIT']
+553,Smith,1,"['Oberlin College', 'Stanford University']"
+554,Spewak,0,['Case Western Reserve University']
+555,Spradling,0,['University of Nebraska - Lincoln']
+556,Sproull,0,"['Deep Springs College', 'Cornell University']"
+557,Srihari,0,"['University of Waterloo', 'University at Buffalo']"
+558,Srihari,3,"['Bangalore University', 'Indian Institute of Science', 'Ohio State University']"
+559,Stachowiak,0,"['Course 6 - Electrical Engineering and Computer Science', 'S.B.', 'M.Eng.']"
+560,Stallman,5,"['Harvard University', 'BS', 'Massachusetts Institute of Technology']"
+561,Stamper,0,['United Kingdom']
+562,Stearns,2,"['Carleton College', 'Princeton University']"
+563,Jr.,2,"['BA', 'Harvard University', 'MS', 'PhD', 'MIT']"
+564,Sterling,6,"['Old Dominion University', 'Massachusetts Institute of Technology']"
+565,Stepanov,0,[]
+566,Stevens,0,"['University of Michigan', 'University of Arizona']"
+567,Stockmeyer,0,[]
+568,Stolfo,0,[]
+569,Stonebraker,2,"['Princeton University', 'University of Michigan']"
+570,Storaasli,0,['University of Edinburgh']
+571,Strachey,0,['University of Cambridge']
+572,Strassen,8,['University of Göttingen']
+573,Stroustrup,11,"['Aarhus University', 'Cand.scient.', 'University of Cambridge', 'PhD']"
+574,Sudan,2,"['IIT Delhi', 'University of California, Berkeley']"
+575,Sussman,2,"['SB', 'PhD']"
+576,Sutherland,1,"['RPI', 'MIT']"
+577,Sutherland,8,"['MIT', 'Caltech', 'Carnegie Institute of Technology']"
+578,Sweeney,0,"['Harvard University', 'ALB', 'MIT', 'SM', 'PhD']"
+579,Szegedy,2,['University of Chicago']
+580,Tabriz,0,['University of Illinois at Urbana–Champaign']
+581,Tamassia,4,[]
+582,Tanenbaum,22,"['Massachusetts Institute of Technology', 'University of California, Berkeley']"
+583,Tate,2,"['Lancaster University', 'University of Edinburgh']"
+584,Thalheim,4,"['Dresden University of Technology', 'Lomonosov Moscow State University']"
+585,Tardos,5,['Eötvös Loránd University']
+586,Tardos,4,['Eötvös Loránd University']
+587,Tarjan,3,"['California Institute of Technology', 'BS', 'Stanford University', 'MS', 'PhD']"
+588,Taylor,5,"['Purdue University', 'University of California at Berkeley']"
+589,Tchou,0,[]
+590,Teevan,7,"['Yale University', 'BS', 'Massachusetts Institute of Technology', 'PhD']"
+591,Teng,6,"['Shanghai Jiao Tong University', 'University of Southern California', 'Carnegie Mellon']"
+592,Tesler,0,['Stanford University']
+593,Tevanian,0,[]
+594,Thacker,3,"['University of California, Berkeley']"
+595,Thalmann,4,['University of Geneva']
+596,Thompson,9,"['University of California, Berkeley']"
+597,Thrun,3,"['University of Bonn', 'University of Hildesheim']"
+598,Tichy,0,"['Technische Universität München', 'Carnegie Mellon University']"
+599,Toda,0,[]
+600,Torvalds,3,"['University of Helsinki', '[2]']"
+601,Quevedo,1,"[""Official School of the Road Engineers' Corps of Madrid"", 'es']"
+602,Toussaint,11,['University of Tulsa']
+603,Townsend,2,['Indiana University']
+604,Tozer,0,[]
+605,Traub,0,[]
+606,Tucker,0,['University of Warwick']
+607,Tukey,7,"['Brown University', 'Princeton University']"
+608,Turing,2,"['University of Cambridge', 'BA', 'MA', 'Princeton University']"
+609,Turner,0,"['D.Phil.', 'University of Oxford']"
+610,Turoff,1,"['University of California - Berkeley', 'Brandeis University']"
+611,Ullman,4,"['Columbia University', 'Princeton University']"
+612,Valiant,6,"['University of Cambridge', 'Imperial College London', 'University of Warwick']"
+613,Vapnik,11,"['Institute of Control Sciences, Russian Academy of Sciences', 'Uzbek State University']"
+614,Vardi,7,"['Bar-Ilan University', 'Weizmann Institute of Science', '[4]', 'Hebrew University of Jerusalem']"
+615,Vaughan,7,"['Wilberforce University', 'BA']"
+616,Vauquois,0,['Ph.D.']
+617,Vazirani,2,"['MIT', 'University of California, Berkeley']"
+618,Veloso,3,"['Instituto Superior Técnico', 'University of Lisbon', 'Boston University', 'Carnegie Mellon University']"
+619,Vernadat,0,['University of Clermont']
+620,Veryard,0,['Open University']
+621,Vilkomir,4,"['Kharkov State University', 'Kharkov Polytechnic Institute']"
+622,Vitányi,8,"['Delft University of Technology', 'Free University of Amsterdam']"
+623,Viterbi,8,"['Massachusetts Institute of Technology', 'BS', 'MS', 'University of Southern California', 'PhD']"
+624,Vitter,0,"['University of Notre Dame', 'BS', 'Duke University', 'MBA', 'Stanford University', 'PhD']"
+625,Vixie,0,['Keio University']
+626,Wada,0,['University of Tokyo']
+627,Wagner,0,[]
+628,Waltz,2,['Massachusetts Institute of Technology']
+629,Wang,2,"['Stanford University', 'M.S.', 'M.S.', 'Ph.D.', 'University of Minnesota', 'B.S.']"
+630,Ward,0,[]
+631,Warmuth,3,"['University of Colorado, Boulder']"
+632,Warren,0,['University of Edinburgh']
+633,Warwick,4,"['Aston University', 'Imperial College London']"
+634,Węglarz,0,['Poznań University of Technology']
+635,Wadler,4,"['Stanford University', 'Carnegie Mellon University']"
+636,Wegner,2,['[1]']
+637,Wegstein,0,"['University of Illinois', 'B.S.', 'M.S.']"
+638,Weinberger,0,"['University of California, Berkeley']"
+639,Weiser,0,['University of Michigan']
+640,Weizenbaum,0,['Wayne State University']
+641,Wheeler,3,['University of Cambridge']
+642,Westervelt,0,[]
+643,Whittaker,3,[]
+644,Widom,6,"['Cornell University', 'Indiana University Jacobs School of Music']"
+645,Wiederhold,3,"['University of California, San Francisco']"
+646,Wiener,2,"['Tufts College', 'BA', 'Cornell University', 'MA', 'Harvard University', 'PhD']"
+647,Wijngaarden,2,['Delft University of Technology']
+648,Wilkes,0,"['Wellesley College', 'Harvard Law School']"
+649,Wilkes,5,['University of Cambridge']
+650,Wilks,1,['University of Cambridge']
+651,Wilkinson,3,"['Trinity College, Cambridge']"
+652,Wilson,6,"['Selwyn College, Cambridge', 'University of Cambridge']"
+653,Winograd,0,"['New York University', 'Massachusetts Institute of Technology']"
+654,Winograd,1,"['Colorado College', 'Massachusetts Institute of Technology']"
+655,Winston,1,"['MIT', '[1]']"
+656,Wirth,5,"['BS', 'MSc', 'Université Laval', 'University of California, Berkeley']"
+657,Wiseman,0,"['University of Cambridge', 'University of Illinois', 'Queen Mary College']"
+658,Wisnosky,0,['California University of Pennsylvania']
+659,Wolfram,2,"[""St. John's College, Oxford"", 'California Institute of Technology']"
+660,Woodger,0,['University College London']
+661,Woodward,3,['Oxford University']
+662,Worsley,3,"['University of Toronto', 'Massachusetts Institute of Technology', 'University of Cambridge']"
+663,Wozniak,13,"['University of Colorado Boulder', 'De Anza College', 'University of California, Berkeley', 'BS', '[3]']"
+664,Wu,0,[]
+665,Wulf,0,"['University of Illinois Urbana-Champaign', 'University of Virginia']"
+666,Yannakakis,2,"['National Technical University of Athens', 'Princeton University']"
+667,Yao,4,"['National Taiwan University', 'Harvard University', 'University of Illinois at Urbana–Champaign']"
+668,Yen,2,"['University of California, Berkeley', 'Santa Clara University', 'National Taiwan University', 'National Hsinchu Senior High School']"
+669,Yoneda,0,['University of Tokyo']
+670,Yourdon,1,['Massachusetts Institute of Technology']
+671,Yung,6,['Columbia University']
+672,Zadeh,12,"['University of Tehran', 'Massachusetts Institute of Technology', 'Columbia University']"
+673,Zantema,0,['University of Amsterdam']
+674,Zaman,0,"['Stanford University', '[2]', 'Harvey Mudd College', 'Claremont Graduate University']"
+675,Zdonik,0,['Massachusetts Institute of Technology']
+676,Zedan,0,['University of Bristol']
+677,Zilberstein,6,"['University of California, Berkeley', 'Technion – Israel Institute of Technology']"
+678,Zimmerman,0,"['Purdue University', 'University of Minnesota']"
+679,Zuse,5,['Technical University of Berlin']
+680,Wikipedia:Contents/Lists,0,[]
