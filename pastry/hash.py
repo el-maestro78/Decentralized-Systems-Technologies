@@ -16,8 +16,8 @@ def hash_function(data, num_bits=4):
     # print(sha1_hash)
     num_bits -= 2
     truncated_hash = int(sha1_hash[:num_bits], 16)
-    truncated_hash = fix_prefix(truncated_hash, num_bits)
-    truncated_hash = check_hash(truncated_hash, num_bits)
+    # truncated_hash = fix_prefix(truncated_hash, num_bits)
+    # truncated_hash = check_hash(truncated_hash, num_bits)
     hashed_id_list.append(truncated_hash)
     return truncated_hash
 
