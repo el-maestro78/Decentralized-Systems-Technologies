@@ -45,7 +45,7 @@ class Node():
 
     # Αφαίρεση κόμβου από το δίκτυο
     def leave(self):
-        # Διόρθωση successor, predecessor, και fingers tables τους
+        # Διόρθωση successor, predecessor
         self.predecessor.successor = self.successor
         self.predecessor.fingers_table[0] = self.successor
         self.successor.predecessor = self.predecessor
@@ -94,9 +94,9 @@ class Node():
         if self.node_id == key:
             return self
         if self.distance(self.node_id, key) <= self.distance(self.successor.node_id, key):
-            # print('jump') # KANTO COMMENT-IN AN THES NA DEIKSEIS TA VHMATA POU XREIAZONTAI GIA NA FTASEI STO KEY
+            # print('jump')
             return self.successor
         else:
-            # print('jump') # KANTO COMMENT-IN AN THES NA DEIKSEIS TA VHMATA POU XREIAZONTAI GIA NA FTASEI STO KEY
+            # print('jump')
             return self.closest_preceding_node(self, key).find_successor(key)
 

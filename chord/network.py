@@ -71,7 +71,7 @@ class Network():
         self.nodes.append(new_node)   
         node = self.nodes[-1]
         node.join(self.first_node)
-        self.update_fingers_tables() # AXRHSTO UPDATE DEN KANEI TIPOTA MALLON -- REMOVE
+        # self.update_fingers_tables()
 
     # Αφαιρεί έναν κόμβο
     def remove_node(self, node_id):
@@ -81,7 +81,7 @@ class Network():
         self.nodes.remove(node)
         # Καλεί την update με παράμετρο leave = True
         self.update_fingers_tables(node, leave = True)
-        self.update_fingers_tables() # KANTO COMMENT-OUT AN THES NA DEIKSEIS TO ERROR STA FINGERS TABLE PRIN TO STABILIZE
+        # self.update_fingers_tables()
 
     # Ψάχνει για το key στους κόμβους
     def lookup(self, data, threshold):
