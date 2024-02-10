@@ -13,7 +13,7 @@ from time import perf_counter_ns
 # Στην αρχή κάθε εισαγωγής, μετράμε τον χρόνο έναρξης σε μια μεταβλητή start,
 # και μόλις ολοκληρωθεί η εισαγωγή, κρατάμε τον χρόνο σε μια άλλη μεταβλητή end
 # Η διάρκεια τότε, θα είναι start-end.
-start = end = 0
+start = end = time1 = time2 = 0
 
 
 m_user = int(input("Παράμετρoς m: "))
@@ -25,6 +25,7 @@ while num_nodes > 2**m_user:
     print("Μη έγκυρο πλήθος κόμβων")
     num_nodes = int(input("Πλήθος κόμβων: "))
 
+start = perf_counter_ns()
 # Γεννήτρια x τυχαίων/unique id από 0 έως το μέγιστο επιτρεπτό.
 # Χωρίζονται σε εκατοντάδες για να υπάρχουν κοινά prefix.
 rand_ints = sample(range(100*Node.m), num_nodes)
@@ -47,6 +48,9 @@ for node in s_network.nodes:
         if node != new:
             node.join(new)
     print(f"Κόμβος {node.node_id} προστέθηκε στο δίκτυο")
+end = perf_counter_ns()
+# time1: χρόνος κατασκευής κόμβων
+time1=end-start
 
 # Προσθήκη δεδομένων στους κόμβους του δικτύου
 n_data = int(input(f"Πλήθος δεδομένων: "))
@@ -54,8 +58,11 @@ while n_data > 2**m_user:
     print("Μη έγκυρο πλήθος δεδομένων")
     n_data = int(input("Πλήθος δεδομένων: "))
 
+start = perf_counter_ns()
 s_network.add_data(n_data)
-
+end = perf_counter_ns()
+# time2 : χρόνος προσθήκης δεδομένων
+time2 = end-start
 # DEBUG
 # s_network.update_routing_tables()
 # for node in s_network.nodes:
@@ -63,6 +70,8 @@ s_network.add_data(n_data)
 
 s_network.visualize_pastry()
 # s_network.visualize_connections()
+
+print("\nΤο δίκτυο κατασκευάστηκε σε: ", (time1+time2)/1000000, " milliseconds (ή ",(time1+time2)/pow(10,9), " seconds).\n")
 
 while True:
     print("1 -> Προσθήκη κόμβου")
