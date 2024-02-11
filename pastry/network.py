@@ -29,7 +29,7 @@ class Network:
         quantity = f"Πλήθος: {len(self.nodes)} κόμβοι\n"
         capacity = f"Χωρητικότητα: {self.r_size} κόμβοι\n"
         routing_table_size = f"Μέγεθος Routing Table: {self.m}\n"
-        first_node_id = f"Πρώτος Κόμβος: {self.first_node.node_id}\n"
+        first_node_id = f"Πρώτος Κόμβος: {self.first_node}\n"
         end = "---------------\n"
         return f"{start}{quantity}{capacity}{routing_table_size}{first_node_id}{end}"
 
