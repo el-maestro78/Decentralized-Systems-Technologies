@@ -59,9 +59,19 @@ print("\nΤο δίκτυο κατασκευάστηκε σε: ", (time1+time2)/1
 
 while True:
     print("1 -> Προσθήκη κόμβου\n2 -> Αφαίρεση κόμβου\n3 -> Αναζήτηση δεδομένων\n4 -> Πληροφορίες κόμβων\n5 -> Προβολή γράφου\n6 -> Σταθεροποίηση\n0 -> Τερματισμός")
-    choice = int(input('# -> '))
+    try:
+        choice = int(input('# -> '))
+    except ValueError:
+        print("Εισάγετε έναν έγκυρο αριθμό.")
+        continue
+
     if choice == 1: 
-        node_id = int(input('ID Κόμβου: '))
+        try:
+            node_id = int(input('ID Κόμβου: '))
+        except ValueError:
+            print("Το ID του κόμβου πρέπει να είναι ακέραιος αριθμός.")
+            continue
+
         if node_id in node_ids:
             print('Υπάρχει ήδη κόμβος με αυτό το ID!')
         elif len(s_network.nodes) > Node.r_size - 1:
@@ -75,7 +85,12 @@ while True:
             end = perf_counter_ns()
             print("Ο κόμβος προστέθηκε σε: ", (end-start)/1000000, " milliseconds.")
     elif choice == 2: 
-        node_id = int(input('ID Κόμβου: '))
+        try:
+            node_id = int(input('ID Κόμβου: '))
+        except ValueError:
+            print("Το ID του κόμβου πρέπει να είναι ακέραιος αριθμός.")
+            continue
+
         if node_id not in node_ids:
             print('Δεν υπάρχει κόμβος με αυτό το ID!')
         else:
@@ -86,7 +101,12 @@ while True:
             print("Ο κόμβος αφαιρέθηκε σε: ", (end-start)/1000000, " milliseconds.")
     elif choice == 3: 
         query = input('Πανεπιστήμιο: ')
-        num_awards = int(input('# Βραβεία: '))
+        try:
+            num_awards = int(input('# Βραβεία: '))
+        except ValueError:
+            print("Το πλήθος των βραβείων πρέπει να είναι ακέραιος αριθμός.")
+            continue
+
         start = perf_counter_ns()
         s_network.lookup(query, num_awards)
         end = perf_counter_ns()
@@ -97,7 +117,8 @@ while True:
         s_network.visualize_chord()
     elif choice == 6:
         s_network.update_fingers_tables()
-    elif choice == 0: break
+    elif choice == 0: 
+        break
     else: 
-        choice = int(input('# -> '))
-        
+        print("Εισάγετε έναν έγκυρο αριθμό.\n")
+
