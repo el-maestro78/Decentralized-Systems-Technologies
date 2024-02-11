@@ -62,7 +62,7 @@ while True:
     try:
         choice = int(input('# -> '))
     except ValueError:
-        print("Εισάγετε έναν έγκυρο αριθμό.")
+        print("Εισάγετε έναν έγκυρο αριθμό.\n")
         continue
 
     if choice == 1: 
