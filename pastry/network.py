@@ -246,7 +246,8 @@ class Network:
         for i in range(len(sorted_nodes)):
             node = sorted_nodes[i]
             successor = sorted_nodes[i].find_successor(node)  # πάνω έχει το routing table
-            self.pastry_ring.add_edge(node.node_id, successor.node_id)
+            if successor != self:
+                self.pastry_ring.add_edge(node.node_id, successor.node_id)
         rotated_pos = {
             node: (-y, x)
             for node, (x, y) in nx.circular_layout(self.pastry_ring).items()
