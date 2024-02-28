@@ -1,10 +1,11 @@
-from node import Node
+from chord.node import Node
 from csv_to_dict import create_education_dictionary
 import hashlib
 import networkx as nx
 import matplotlib.pyplot as plt
 
-class Network():
+
+class Network:
     def __init__(self, m, node_ids):
         self.nodes = []
         self.m = m

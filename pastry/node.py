@@ -1,7 +1,6 @@
 import pprint
 import sys
-from filter_table import filter_table
-from hash import hash_function
+from pastry.hash import hash_function
 
 
 class Node:
@@ -135,8 +134,8 @@ class Node:
                                 if None in row:
                                     node_index = row.index(None)
                                     self.routing_table[row_index][node_index] = node
-                                    return  # για να μη τον βάλει σε όλες τις γραμμές
-                                else:  # αν υπάρχει lcp το προσθέτουμε στην γραμμή
+                                    return  # για να μην τον βάλει σε όλες τις γραμμές
+                                else:  # αν υπάρχει lcp το προσθέτουμε στη γραμμή
                                     self.add_in_full_routing_table(node)
                         else:
                             node_index = row.index(None)
@@ -199,8 +198,7 @@ class Node:
                     closest_node = n
         # αν δε βρήκαμε τίποτα κοιτάμε routing table
         if closest_node == node:
-            clean_routing_table = filter_table(self.routing_table)
-            for index, row in enumerate(clean_routing_table):
+            for index, row in enumerate(self.routing_table):
                 for n in row:
                     if isinstance(n, Node):
                         distance = self.distance(node.node_id, n.node_id)
@@ -234,8 +232,7 @@ class Node:
         if isinstance(self, Node) and isinstance(closest_node, Node):
             if self.lcp(key) == -1:
                 # δεν έχουν κοινό prefix, ελέγχουμε routing table
-                clean_routing_table = filter_table(self.routing_table)
-                for n in clean_routing_table:
+                for n in self.routing_table:
                     if isinstance(n, Node) and n.lcp(key) != -1:
                         return n.find_successor(key)
             elif self.lcp(key) < closest_node.lcp(key):

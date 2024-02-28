@@ -3,10 +3,10 @@
 # pip install networkx
 # pip install matplotlib
 
-from network import Network
-from node import Node
+from pastry.network import Network
+from pastry.node import Node
 from random import sample
-from hash import hash_function
+from pastry.hash import hash_function
 from time import perf_counter_ns
 # Χρησιμοποιούμε τη συνάρτηση perf_counter_ns() της βιβλιοθήκης time, για να μετρήσουμε τον χρόνο εισαγωγής/εύρεσης.
 # Η συνάρτηση, μετράει σε nanoseconds τον χρόνο που πέρασε.

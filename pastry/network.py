@@ -1,9 +1,8 @@
-from node import Node
-from hash import hash_function
-from csv_to_dict import create_education_dictionary
+from pastry.node import Node
+from pastry.hash import hash_function
+from pastry.csv_to_dict import create_education_dictionary
 import networkx as nx
 import matplotlib.pyplot as plt
-from filter_table import filter_table
 import sys
 
 
@@ -17,11 +16,8 @@ class Network:
         self.nodes = []
         self.m = m
         self.r_size = 2 ** m
-        # self.add_first_node(node_ids[0])
-        self.first_node = node_ids[0]
         self.pastry_ring = nx.Graph()
         self.node_ids = node_ids
-        # node_ids.pop(0)
 
     def __str__(self):
         """Τυπώνει τα δεδομένα όλου του δικτύου"""
@@ -29,9 +25,8 @@ class Network:
         quantity = f"Πλήθος: {len(self.nodes)} κόμβοι\n"
         capacity = f"Χωρητικότητα: {self.r_size} κόμβοι\n"
         routing_table_size = f"Μέγεθος Routing Table: {self.m}\n"
-        first_node_id = f"Πρώτος Κόμβος: {self.first_node}\n"
         end = "---------------\n"
-        return f"{start}{quantity}{capacity}{routing_table_size}{first_node_id}{end}"
+        return f"{start}{quantity}{capacity}{routing_table_size}{end}"
 
     def print_network(self):
         """Τυπώνει τα Routing Tables όλου του δικτύου"""
@@ -50,14 +45,6 @@ class Network:
             if node.node_id == nodeID:
                 return node
         return None
-
-    def add_first_node(self, node_id):
-        """Αρχικοποίηση του 1ου κόμβου
-        :param str node_id: Το node_id του κόμβου που εισάγεται.
-        :return: Nothing.
-        :rtype: None"""
-        node = Node(node_id, self.m)
-        self.nodes.append(node)
 
     def update_sets_and_tables(self, node, action):
         """Ανανεώνει τα leaf sets και τα routing tables για όλους τους κόμβους του δικτύου"""
@@ -124,14 +111,6 @@ class Network:
         :rtype: None
         """
         h_key = hash_function(data)
-        # i = 0
-        # node = self.nodes[i]
-        # node = node.find_successor(h_key)
-        # while node is None:
-        #     i += 1
-        #     node = self.nodes[i]
-        #     node = node.find_successor(h_key)
-        # node = self.find_closest_to_key(str(h_key))
         node = self.static_get_lcp(str(h_key), self.nodes)
         found_data = node.data.get(h_key, None)
         if found_data is not None:

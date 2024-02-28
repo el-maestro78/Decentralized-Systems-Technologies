@@ -13,12 +13,12 @@ def hash_function(data, num_bits=4):
             :rtype: int"""
     data = str(data)
     sha1_hash = hashlib.sha1(data.encode('utf-8')).hexdigest()
-    # print(sha1_hash)
     num_bits -= 2
     truncated_hash = int(sha1_hash[:num_bits], 16)
     # truncated_hash = fix_prefix(truncated_hash, num_bits)
     # truncated_hash = check_hash(truncated_hash, num_bits)
-    hashed_id_list.append(truncated_hash)
+    # hashed_id_list.append(truncated_hash)
+    truncated_hash = truncated_hash % num_bits
     return truncated_hash
 
 
@@ -60,3 +60,7 @@ def fix_prefix(hashed_value, num_bits):
         else:
             prefix += 1
     return int(str(prefix).join(str(hashed_value)))
+
+
+print(hash_function('University of Ohio'))
+print(hash_function('University of Athens'))

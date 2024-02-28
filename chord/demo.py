@@ -1,5 +1,5 @@
-from node import Node
-from network import Network
+from chord.node import Node
+from chord.network import Network
 from random import sample
 from time import perf_counter_ns
 # Χρησιμοποιούμε την συηνάρτηση perf_counter_ns() της βιβλιοθήκης time, για να μετρήσουμε τον χρόνο εισαγωγής/εύρεσης.

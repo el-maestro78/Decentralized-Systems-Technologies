@@ -9,7 +9,7 @@ def create_education_dictionary(n):
     # Η απόλυτη διαδρομή του script
     script_directory = os.path.dirname(os.path.abspath(__file__))
     # Συνδυάζουμε την απόλυτη διαδορμή με το όνομα του αρχείου CSV που περιέχει τους επιστήμονες
-    CSV_PATH = os.path.join(script_directory, 'computer_scientists_data.csv')
+    CSV_PATH = os.path.join(script_directory, '../computer_scientists_data.csv')
     with open(CSV_PATH, 'r', encoding="utf-8") as file:
         csv_reader = csv.DictReader(file)
         for row in csv_reader:
